@@ -7,6 +7,7 @@ import {
 
 
 import styles from './App.style.js'
+import Template from "../Template/Template";
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -29,6 +30,7 @@ export default class App extends Component<Props> {
         <Text style={styles.instructions}>
           {instructions}
         </Text>
+        <Template />
       </View>
     )
   }
