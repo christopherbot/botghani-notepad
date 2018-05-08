@@ -1,37 +1,25 @@
 import React, { Component } from 'react'
+import { Provider } from 'react-redux'
 import {
   Platform,
   Text,
-  View
+  View,
 } from 'react-native'
+import store from '../../state/store'
 
+import TempBeerList from '../TempBeerList/TempBeerList'
 
 import styles from './App.style.js'
-import Template from "../Template/Template";
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
 type Props = {};
-export default class App extends Component<Props> {
+class App extends Component<Props> {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-        <Template />
-      </View>
+      <Provider store={store}>
+        <TempBeerList />
+      </Provider>
     )
   }
 }
+
+export default App
