@@ -16,8 +16,8 @@ type Props = {};
 export default class Template extends Component<Props> {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>{templateInfo}</Text>
+      <View style={styles.view}>
+        <Text style={styles.text}>{templateInfo}</Text>
       </View>
     )
   }
