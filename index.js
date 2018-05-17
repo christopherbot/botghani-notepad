@@ -1,5 +1,5 @@
 import { AppRegistry } from 'react-native'
-import App from './src/components/App/App'
+import BotghaniNotepad from './BotghaniNotepad'
 
 
-AppRegistry.registerComponent('botghaniNotepad', () => App)
+AppRegistry.registerComponent('botghaniNotepad', () => BotghaniNotepad)
