@@ -5,7 +5,7 @@ import {
   View
 } from 'react-native'
 
-import styles from './Template.style.js'
+import style from './Template.style.js'
 
 const templateInfo = Platform.select({
   ios: 'welcome to your template component on ios!',
