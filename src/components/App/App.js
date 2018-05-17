@@ -3,8 +3,8 @@ import {
   View,
 } from 'react-native'
 
-import TempBeerList from '../TempBeerList/TempBeerList'
 import List from '../List/List'
+import CreateList from '../CreateList/CreateList'
 
 import style from './App.style.js'
 
@@ -13,7 +13,9 @@ class App extends Component<Props> {
   render() {
     return (
       <View style={style.container}>
-        <TempBeerList />
+        <View style={style.createListWrapper}>
+          <CreateList />
+        </View>
         <List />
       </View>
     )
