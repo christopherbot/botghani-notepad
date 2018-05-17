@@ -24,6 +24,7 @@ class CreateList extends Component<Props> {
   createList() {
     if (this.state.listName.trim()) {
       this.props.createList(this.state.listName)
+      this.setState({ listName: '' })
     }
   }
 
