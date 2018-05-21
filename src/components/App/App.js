@@ -3,7 +3,7 @@ import {
   View,
 } from 'react-native'
 
-import List from '../List/List'
+import Lists from '../Lists/Lists'
 import CreateList from '../CreateList/CreateList'
 
 import style from './App.style.js'
@@ -16,7 +16,7 @@ class App extends Component<Props> {
         <View style={style.createListWrapper}>
           <CreateList />
         </View>
-        <List />
+        <Lists />
       </View>
     )
   }
