@@ -1,15 +1,12 @@
-import React, { Component } from 'react'
-import {
-  View,
-} from 'react-native'
+import React, { PureComponent } from 'react'
+import { View } from 'react-native'
 
 import Lists from '../Lists/Lists'
 import CreateList from '../CreateList/CreateList'
 
 import style from './App.style.js'
 
-type Props = {};
-class App extends Component<Props> {
+class App extends PureComponent {
   render() {
     return (
       <View style={style.container}>

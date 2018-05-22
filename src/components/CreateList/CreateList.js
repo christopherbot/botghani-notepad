@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { View, Button, TextInput } from 'react-native'
 
 import { createList } from '../../state/actions'
 
 import style from './CreateList.style.js'
 
-type Props = {};
-class CreateList extends Component<Props> {
+class CreateList extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -42,6 +42,10 @@ class CreateList extends Component<Props> {
       </View>
     )
   }
+}
+
+CreateList.propTypes = {
+  createList: PropTypes.func.isRequired,
 }
 
 const mapDispatchToProps = { createList }

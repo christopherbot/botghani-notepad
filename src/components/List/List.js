@@ -1,7 +1,11 @@
 import React  from 'react'
+import PropTypes from 'prop-types'
 import { Text } from 'react-native'
 
-type Props = {};
-const List = ({ list }) => <Text>{list}</Text>
+const List = ({ name }) => <Text>{name}</Text>
+
+List.propTypes = {
+  name: PropTypes.string.isRequired,
+}
 
 export default List
