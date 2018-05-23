@@ -27,7 +27,7 @@ if (!name) {
 name = changeCase.pascal(name)
 
 let targetfolder = argv._[1]
-targetfolder = targetfolder ? `${formatComponentName(targetfolder)}/` : console.error('You forgot to provide an argument to the create-ui script') 
+targetfolder = targetfolder ? `${formatComponentName(targetfolder)}/` : ''
 
 const cwd = process.cwd()
 const dir = path.resolve(__dirname, [COMPONENTS_FOLDER, targetfolder, name].join(''))
