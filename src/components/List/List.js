@@ -4,7 +4,8 @@ import { deleteList, renameList } from '../../state/actions'
 import PropTypes from 'prop-types'
 import { Text, View, Button, TextInput } from 'react-native'
 
-import style from './List';
+import style from './List.style'
+import ustyle from '../../utils/style'
 
 class List extends PureComponent {
   constructor(props) {
@@ -48,31 +49,29 @@ class List extends PureComponent {
   render() {
     return (
       <View>
-        <View style={style.scrollView}>
+        <View style={ustyle.f1r}>
           <Text style={style.listName}>{this.props.list.name}</Text>
-          <View style={style.buttonWrapper}>
-            <Button title="X" color="#f71b1b" onPress={this.deleteList} />
-          </View>
+          <Button title="X" color="#f71b1b" onPress={this.deleteList} />
           {
-            this.state.showEditInput ?
-            <View>
-              <Button title="Cancel" color="#000" onPress={this.cancelEditInput} />
-              <Button title="Enter" color="#000" onPress={this.enterNewListName} />
-            </View>
-            :
-            <View>
-              <Button title="Edit" color="#000" onPress={this.editCurrentName} />
-            </View>
+            this.state.showEditInput ? (
+              <View>
+                <Button title="Cancel" color="#000" onPress={this.cancelEditInput} />
+                <Button title="Enter" color="#000" onPress={this.enterNewListName} />
+              </View>
+            ) : (
+              <View>
+                <Button title="Edit" color="#000" onPress={this.editCurrentName} />
+              </View>
+            )
           }
         </View>
         {
           this.state.showEditInput &&
-          <TextInput
-            style={style.textInput}
-            placeholder="Enter a new list name"
-            onChangeText={this.setNewName}
-            value={this.state.newName}
-          />
+            <TextInput
+              style={style.textInput}
+              placeholder="Enter a new list name"
+              onChangeText={this.setNewName}
+              value={this.state.newName} />
         }
       </View>
     )
