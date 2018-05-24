@@ -4,7 +4,7 @@ import { View } from 'react-native'
 import Lists from '../Lists/Lists'
 import CreateList from '../CreateList/CreateList'
 
-import style from './App.style.js'
+import style from './App.style'
 import ustyle from '../../utils/style'
 
 class App extends PureComponent {

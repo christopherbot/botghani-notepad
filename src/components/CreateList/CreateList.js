@@ -5,7 +5,8 @@ import { View, Button, TextInput } from 'react-native'
 
 import { createList } from '../../state/actions'
 
-import style from './CreateList.style.js'
+import style from './CreateList.style'
+import ustyle from '../../utils/style'
 
 class CreateList extends PureComponent {
   constructor(props) {
@@ -30,7 +31,7 @@ class CreateList extends PureComponent {
 
   render() {
     return (
-      <View style={style.container}>
+      <View style={ustyle.fr}>
         <TextInput
           style={style.textInput}
           placeholder="Enter a list name"
