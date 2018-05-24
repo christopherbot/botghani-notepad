@@ -5,12 +5,12 @@ import { ScrollView } from 'react-native'
 
 import List from '../List/List'
 
-import style from './Lists.style.js'
+import ustyle from '../../utils/style'
 
 class Lists extends PureComponent {
   render() {
     return (
-       <ScrollView style={style.scrollView}>
+       <ScrollView style={ustyle.f1}>
         { this.props.lists.map(list => <List key={list.id} list={list} />)}
       </ScrollView>
     )
