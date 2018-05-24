@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions'
-import { createList, deleteList } from '../actions'
+import { createList, deleteList, renameList } from '../actions'
 import generateList from '../../utils/generateList'
 
 const defaultState = []
@@ -10,6 +10,19 @@ export default handleActions({
   },
 
   [deleteList](state, { payload }) {
-    return state.filter(list => payload.listId !== list.id)
+    return state.filter(list => list.id !== payload.listId)
+  },
+
+  [renameList](state, { payload }) {
+    return state.map((list) => {
+      if (list.id === payload.listId) {
+        return {
+          ...list,
+          name: payload.newName
+        }
+      }
+
+      return list
+    })
   },
 }, defaultState)
