@@ -11,8 +11,8 @@ class Lists extends PureComponent {
   render() {
     return (
        <ScrollView style={style.scrollView}>
-        { this.props.lists.map(list => <List key={list.id} name={list.name} />)}
-      </ScrollView> 
+        { this.props.lists.map(list => <List key={list.id} list={list} />)}
+      </ScrollView>
     )
   }
 }
