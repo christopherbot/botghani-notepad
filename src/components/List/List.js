@@ -12,37 +12,35 @@ class List extends PureComponent {
     super(props)
 
     this.state = {
-      showEditInput: false,
+      isEditModeDisplayed: false,
       newName : ''
     }
 
     this.deleteList = this.deleteList.bind(this)
-    this.editCurrentName = this.editCurrentName.bind(this)
-    this.cancelEditInput = this.cancelEditInput.bind(this)
-    this.enterNewListName = this.enterNewListName.bind(this)
-    this.setNewName = this.setNewName.bind(this)
+    this.toggleEditModeDisplay = this.toggleEditModeDisplay.bind(this)
+    this.renameList = this.renameList.bind(this)
+    this.onChangeNewName = this.onChangeNewName.bind(this)
   }
 
   deleteList() {
     this.props.deleteList(this.props.list.id)
   }
 
-  editCurrentName() {
-    this.setState({ showEditInput: true})
+  toggleEditModeDisplay() {
+    this.setState(prevState => ({
+      isEditModeDisplayed: !prevState.isEditModeDisplayed,
+      newName: '',
+    }))
   }
 
-  cancelEditInput() {
-    this.setState({ showEditInput: false, newName: '' })
-  }
-
-  enterNewListName() {
+  renameList() {
     if (this.state.newName.trim()) {
       this.props.renameList(this.props.list.id, this.state.newName.trim())
-      this.cancelEditInput()
+      this.toggleEditModeDisplay()
     }
   }
 
-  setNewName(newName) {
+  onChangeNewName(newName) {
     this.setState({ newName })
   }
 
@@ -52,25 +50,23 @@ class List extends PureComponent {
         <View style={ustyle.f1r}>
           <Text style={style.listName}>{this.props.list.name}</Text>
           <Button title="X" color="#f71b1b" onPress={this.deleteList} />
+          <Button
+            title={this.state.isEditModeDisplayed ? 'Cancel' : 'Edit'}
+            onPress={this.toggleEditModeDisplay}
+            color="#000" />
           {
-            this.state.showEditInput ? (
+            this.state.isEditModeDisplayed &&
               <View>
-                <Button title="Cancel" color="#000" onPress={this.cancelEditInput} />
-                <Button title="Enter" color="#000" onPress={this.enterNewListName} />
+                <Button title="Rename" color="#000" onPress={this.renameList} />
               </View>
-            ) : (
-              <View>
-                <Button title="Edit" color="#000" onPress={this.editCurrentName} />
-              </View>
-            )
           }
         </View>
         {
-          this.state.showEditInput &&
+          this.state.isEditModeDisplayed &&
             <TextInput
               style={style.textInput}
               placeholder="Enter a new list name"
-              onChangeText={this.setNewName}
+              onChangeText={this.onChangeNewName}
               value={this.state.newName} />
         }
       </View>
