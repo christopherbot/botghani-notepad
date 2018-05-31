@@ -1,5 +1,5 @@
 import React, { PureComponent }  from 'react'
-import { Text, View, Button, TextInput } from 'react-native'
+import { View, Text } from 'react-native'
 
 const generateFirstColumn = (column, rows) => [column, ...rows]
 

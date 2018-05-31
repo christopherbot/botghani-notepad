@@ -2,7 +2,7 @@ import React, { PureComponent }  from 'react'
 import { connect } from 'react-redux'
 import { deleteList, renameList } from '../../state/actions'
 import PropTypes from 'prop-types'
-import { Text, View, Button, TextInput } from 'react-native'
+import { View, Button, TextInput } from 'react-native'
 
 import Table from '../Table/Table'
 
