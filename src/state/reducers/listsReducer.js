@@ -18,7 +18,16 @@ export default handleActions({
       if (list.id === payload.listId) {
         return {
           ...list,
-          name: payload.newName
+          columns: list.columns.map((column) => {
+            if (column.isFirstColumn) {
+              return {
+                ...column,
+                value: payload.newName,
+              }
+            }
+
+            return column
+          })
         }
       }
 

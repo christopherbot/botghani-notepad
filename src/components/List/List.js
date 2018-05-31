@@ -1,8 +1,10 @@
-import React, {PureComponent}  from 'react'
+import React, { PureComponent }  from 'react'
 import { connect } from 'react-redux'
 import { deleteList, renameList } from '../../state/actions'
 import PropTypes from 'prop-types'
 import { Text, View, Button, TextInput } from 'react-native'
+
+import Table from '../Table/Table'
 
 import style from './List.style'
 import ustyle from '../../utils/style'
@@ -48,7 +50,7 @@ class List extends PureComponent {
     return (
       <View>
         <View style={ustyle.f1r}>
-          <Text style={style.listName}>{this.props.list.name}</Text>
+          <Table list={this.props.list} />
           <Button title="X" color="#f71b1b" onPress={this.deleteList} />
           <Button
             title={this.state.isEditModeDisplayed ? 'Cancel' : 'Edit'}
