@@ -1,6 +1,8 @@
 import React, { PureComponent }  from 'react'
 import { View, Text } from 'react-native'
 
+import ustyle from '../../utils/style'
+
 const generateFirstColumn = (column, rows) => [column, ...rows]
 
 const getData = (data, rowId, columnId) => {
@@ -15,13 +17,13 @@ const generateColumn = (column, rows, data) => {
   ]
 }
 
-const Column = ({ rows }) =>
-  <View>
+const Column = ({ cells }) =>
+  <View style={ustyle.fc1}>
     {
-      rows.map((row, index) =>
-        <View key={row.id || index}>
+      cells.map((cell, index) =>
+        <View key={cell.id || index}>
           <Text>
-            {row.value}
+            {cell.value}
           </Text>
         </View>,
       )
@@ -32,14 +34,14 @@ class Table extends PureComponent {
   render() {
     const { columns, rows, data } = this.props.list
     return (
-      <View>
+      <View style={ustyle.fr1}>
         {
           columns.map((column) => {
             if (column.isFirstColumn) {
-              return <Column key={column.id} rows={generateFirstColumn(column, rows)} />
+              return <Column key={column.id} cells={generateFirstColumn(column, rows)} />
             }
 
-            return <Column key={column.id} rows={generateColumn(column, rows, data)} />
+            return <Column key={column.id} cells={generateColumn(column, rows, data)} />
           })
         }
       </View>
