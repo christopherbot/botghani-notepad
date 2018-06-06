@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react'
+import { View, Button, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { View, Button, TextInput } from 'react-native'
-
 import { createList, createExampleList } from '../../state/actions'
 
 import style from './CreateList.style'
