@@ -8,6 +8,7 @@ A React-native list-creating app.
    * [Setup](#setup)
    * [Running](#running)
    * [Development Tools](#development-tools)
+   * [JS Style Guide](#js-style-guide)
 
 
 ## Development
@@ -35,5 +36,26 @@ To install the app: `brew cask install react-native-debugger` (you may need to r
 Before opening the app, ensure that no other React-native debugger is open.
 
 To open the app: `yarn rnd`
+
+**[Back to top](#table-of-contents)**
+
+### JS Style Guide
+
+### Import Statements
+
+Import statements should be structured into the following groupings:
+- packages and state/util files
+- React components
+- styles
+
+E.g.
+```javacsript
+import Module from 'package'
+import { myFunction } from '../path/to/file'
+
+import Component from '../path/to/component
+
+import style from '../path/to/style'
+```
 
 **[Back to top](#table-of-contents)**
