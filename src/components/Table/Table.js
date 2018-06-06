@@ -1,21 +1,9 @@
 import React, { PureComponent }  from 'react'
 import { View, Text } from 'react-native'
 
+import { generateFirstColumn, getCells, generateColumn } from '../../utils/table'
+
 import ustyle from '../../utils/style'
-
-const generateFirstColumn = (column, rows) => [column, ...rows]
-
-const getData = (data, rowId, columnId) => {
-  const datum = data.find(cell => cell.rowId === rowId && cell.columnId === columnId)
-  return datum || 'undefined'
-}
-
-const generateColumn = (column, rows, data) => {
-  return [
-    column,
-    ...rows.map(row => getData(data, row.id, column.id)),
-  ]
-}
 
 const Column = ({ cells }) =>
   <View style={ustyle.fc1}>
@@ -30,23 +18,17 @@ const Column = ({ cells }) =>
     }
   </View>
 
-class Table extends PureComponent {
-  render() {
-    const { columns, rows, data } = this.props.list
-    return (
-      <View style={ustyle.fr1}>
-        {
-          columns.map((column) => {
-            if (column.isFirstColumn) {
-              return <Column key={column.id} cells={generateFirstColumn(column, rows)} />
-            }
-
-            return <Column key={column.id} cells={generateColumn(column, rows, data)} />
-          })
+const Table = ({ list }) =>
+  <View style={ustyle.fr1}>
+    {
+      list.columns.map((column) => {
+        if (column.isFirstColumn) {
+          return <Column key={column.id} cells={generateFirstColumn(column, list.rows)} />
         }
-      </View>
-    )
-  }
-}
+
+        return <Column key={column.id} cells={generateColumn(column, list.rows, list.cells)} />
+      })
+    }
+  </View>
 
 export default Table

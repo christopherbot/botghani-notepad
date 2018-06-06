@@ -8,7 +8,7 @@ const generateList = (name) => ({
     isFirstColumn: true,
     value: name,
   }],
-  data: [],
+  cells: [],
   isBeingEdited: false,
 })
 
