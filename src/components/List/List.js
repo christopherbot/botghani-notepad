@@ -1,6 +1,6 @@
 import React, { PureComponent }  from 'react'
 import { connect } from 'react-redux'
-import { deleteList, renameList, createRow } from '../../state/actions'
+import { deleteList, renameList, createRow, createColumn } from '../../state/actions'
 import PropTypes from 'prop-types'
 import { View, Button, TextInput } from 'react-native'
 
@@ -18,6 +18,8 @@ class List extends PureComponent {
       newName : '',
       addRowModeOpen: false,
       rowName: '',
+      addColumnModeOpen: false,
+      columnName: '',
     }
 
     this.deleteList = this.deleteList.bind(this)
@@ -28,6 +30,10 @@ class List extends PureComponent {
     this.createRow = this.createRow.bind(this)
     this.onRowChange = this.onRowChange.bind(this)
     this.toggleAddRowDisplay = this.toggleAddRowDisplay.bind(this)
+
+    this.createColumn = this.createColumn.bind(this)
+    this.onColumnChange = this.onColumnChange.bind(this)
+    this.toggleColumnDisplay = this.toggleColumnDisplay.bind(this)
   }
 
   deleteList() {
@@ -52,10 +58,6 @@ class List extends PureComponent {
     this.setState({ newName })
   }
 
-  onRowChange(rowName) {
-    this.setState({ rowName })
-  }
-
   createRow() {
     if (this.state.rowName.trim()) {
       this.props.createRow(this.props.list.id, this.state.rowName)
@@ -63,10 +65,32 @@ class List extends PureComponent {
     }
   }
 
+  onRowChange(rowName) {
+    this.setState({ rowName })
+  }
+
   toggleAddRowDisplay() {
     this.setState(prevState => ({
       addRowModeOpen: !prevState.addRowModeOpen,
       rowName: '',
+    }))
+  }
+
+  createColumn() {
+    if (this.state.columnName.trim()) {
+      this.props.createColumn(this.props.list.id, this.state.columnName)
+      this.toggleColumnDisplay()
+    }
+  }
+
+  onColumnChange(columnName) {
+    this.setState({columnName})
+  }
+
+  toggleColumnDisplay() {
+    this.setState(prevState => ({
+      addColumnModeOpen: !prevState.addColumnModeOpen,
+      columnName: '',
     }))
   }
 
@@ -92,7 +116,15 @@ class List extends PureComponent {
                 <Button title="cancel" color="#f71b1b" onPress={this.toggleAddRowDisplay} />
                 <Button title="add" color="#32cd32" onPress={this.createRow} />
               </View>
-              : <Button title="row" color="#00a9bc" onPress={this.toggleAddRowDisplay} />
+              : <Button title="row+" color="#00a9bc" onPress={this.toggleAddRowDisplay} />
+          }
+         {
+            this.state.addColumnModeOpen ?
+              <View>
+                <Button title="cancel" color="#f71b1b" onPress={this.toggleColumnDisplay} />
+                <Button title="add" color="#32cd32" onPress={this.createColumn} />
+              </View>
+              : <Button title="col+" color="#00a9bc" onPress={this.toggleColumnDisplay} />
           }
         </View>
           {
@@ -111,6 +143,14 @@ class List extends PureComponent {
               onChangeText={this.onRowChange}
               value={this.state.rowName} />
         }
+        {
+          this.state.addColumnModeOpen &&
+            <TextInput
+              style={style.textInput}
+              placeholder="COLUMN NAME"
+              onChangeText={this.onColumnChange}
+              value={this.state.columnName} />
+        }
       </View>
     )
   }
@@ -122,8 +162,9 @@ List.propTypes = {
   deleteList: PropTypes.func.isRequired,
   renameList: PropTypes.func.isRequired,
   createRow: PropTypes.func.isRequired,
+  createColumn: PropTypes.func.isRequired,
 }
 
-const mapDispatchToProps = { deleteList, renameList, createRow }
+const mapDispatchToProps = { deleteList, renameList, createRow, createColumn }
 
 export default connect(undefined, mapDispatchToProps)(List)

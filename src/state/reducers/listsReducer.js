@@ -5,10 +5,12 @@ import {
   deleteList,
   renameList,
   createRow,
+  createColumn,
 } from '../actions'
 import generateList from '../../utils/generateList'
 import generateExampleList from '../../utils/generateExampleList'
 import generateRow from '../../utils/generateRow'
+import generateColumn from '../../utils/generateColumn'
 
 const defaultState = []
 
@@ -58,5 +60,18 @@ export default handleActions({
 
       return list
     })
-  }
+  },
+
+  [createColumn](state, { payload }) {
+    return state.map((list) => {
+      if (list.id === payload.listId) {
+        return {
+          ...list,
+          columns: [...list.columns, generateColumn(payload.columnName)]
+        }
+      }
+
+      return list
+    })
+  },
 }, defaultState)
