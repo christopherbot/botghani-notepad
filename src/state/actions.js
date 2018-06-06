@@ -7,3 +7,5 @@ export const createExampleList = createAction('CREATE_EXAMPLE_LIST', name => ({ 
 export const deleteList = createAction('DELETE_LIST', listId => ({ listId }))
 
 export const renameList = createAction('RENAME_LIST', (listId, newName) => ({ listId, newName }))
+
+export const createRow = createAction('CREATE_ROW', (listId, rowName) => ({ listId, rowName }))

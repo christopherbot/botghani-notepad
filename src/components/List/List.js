@@ -1,6 +1,6 @@
 import React, { PureComponent }  from 'react'
 import { connect } from 'react-redux'
-import { deleteList, renameList } from '../../state/actions'
+import { deleteList, renameList, createRow } from '../../state/actions'
 import PropTypes from 'prop-types'
 import { View, Button, TextInput } from 'react-native'
 
@@ -15,13 +15,19 @@ class List extends PureComponent {
 
     this.state = {
       isEditModeDisplayed: false,
-      newName : ''
+      newName : '',
+      addRowModeOpen: false,
+      rowName: '',
     }
 
     this.deleteList = this.deleteList.bind(this)
     this.toggleEditModeDisplay = this.toggleEditModeDisplay.bind(this)
     this.renameList = this.renameList.bind(this)
     this.onChangeNewName = this.onChangeNewName.bind(this)
+
+    this.createRow = this.createRow.bind(this)
+    this.onRowChange = this.onRowChange.bind(this)
+    this.toggleAddRowDisplay = this.toggleAddRowDisplay.bind(this)
   }
 
   deleteList() {
@@ -46,6 +52,24 @@ class List extends PureComponent {
     this.setState({ newName })
   }
 
+  onRowChange(rowName) {
+    this.setState({ rowName })
+  }
+
+  createRow() {
+    if (this.state.rowName.trim()) {
+      this.props.createRow(this.props.list.id, this.state.rowName)
+      this.toggleAddRowDisplay()
+    }
+  }
+
+  toggleAddRowDisplay() {
+    this.setState(prevState => ({
+      addRowModeOpen: !prevState.addRowModeOpen,
+      rowName: '',
+    }))
+  }
+
   render() {
     return (
       <View>
@@ -62,14 +86,30 @@ class List extends PureComponent {
                 <Button title="Rename" color="#000" onPress={this.renameList} />
               </View>
           }
+          {
+            this.state.addRowModeOpen ?
+              <View>
+                <Button title="cancel" color="#f71b1b" onPress={this.toggleAddRowDisplay} />
+                <Button title="add" color="#32cd32" onPress={this.createRow} />
+              </View>
+              : <Button title="row" color="#00a9bc" onPress={this.toggleAddRowDisplay} />
+          }
         </View>
+          {
+            this.state.isEditModeDisplayed &&
+              <TextInput
+                style={style.textInput}
+                placeholder="Enter a new list name"
+                onChangeText={this.onChangeNewName}
+                value={this.state.newName} />
+          }
         {
-          this.state.isEditModeDisplayed &&
+          this.state.addRowModeOpen &&
             <TextInput
               style={style.textInput}
-              placeholder="Enter a new list name"
-              onChangeText={this.onChangeNewName}
-              value={this.state.newName} />
+              placeholder="ROW NAME"
+              onChangeText={this.onRowChange}
+              value={this.state.rowName} />
         }
       </View>
     )
@@ -81,8 +121,9 @@ List.propTypes = {
   list: PropTypes.object.isRequired,
   deleteList: PropTypes.func.isRequired,
   renameList: PropTypes.func.isRequired,
+  createRow: PropTypes.func.isRequired,
 }
 
-const mapDispatchToProps = { deleteList, renameList }
+const mapDispatchToProps = { deleteList, renameList, createRow }
 
 export default connect(undefined, mapDispatchToProps)(List)
