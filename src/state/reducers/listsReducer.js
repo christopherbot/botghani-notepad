@@ -4,9 +4,11 @@ import {
   createExampleList,
   deleteList,
   renameList,
+  createRow,
 } from '../actions'
 import generateList from '../../utils/generateList'
 import generateExampleList from '../../utils/generateExampleList'
+import generateRow from '../../utils/generateRow'
 
 const defaultState = []
 
@@ -44,4 +46,17 @@ export default handleActions({
       return list
     })
   },
+
+  [createRow](state, { payload }) {
+    return state.map((list) => {
+      if (list.id === payload.listId) {
+        return {
+          ...list,
+          rows: [...list.rows, generateRow(payload.rowName)]
+        }
+      }
+
+      return list
+    })
+  }
 }, defaultState)
