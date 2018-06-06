@@ -1,8 +1,8 @@
 import React, { PureComponent }  from 'react'
-import { connect } from 'react-redux'
-import { deleteList, renameList, createRow, createColumn } from '../../state/actions'
-import PropTypes from 'prop-types'
 import { View, Button, TextInput } from 'react-native'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { deleteList, renameList, createRow, createColumn } from '../../state/actions'
 
 import Table from '../Table/Table'
 

@@ -1,6 +1,5 @@
 import React, { PureComponent }  from 'react'
 import { View, Text } from 'react-native'
-
 import { generateFirstColumn, getCells, generateColumn } from '../../utils/table'
 
 import ustyle from '../../utils/style'
