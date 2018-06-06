@@ -49,7 +49,7 @@ class List extends PureComponent {
   render() {
     return (
       <View>
-        <View style={ustyle.f1r}>
+        <View style={ustyle.fr1}>
           <Table list={this.props.list} />
           <Button title="X" color="#f71b1b" onPress={this.deleteList} />
           <Button

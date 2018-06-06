@@ -1,12 +1,22 @@
 import { handleActions } from 'redux-actions'
-import { createList, deleteList, renameList } from '../actions'
+import {
+  createList,
+  createExampleList,
+  deleteList,
+  renameList,
+} from '../actions'
 import generateList from '../../utils/generateList'
+import generateExampleList from '../../utils/generateExampleList'
 
 const defaultState = []
 
 export default handleActions({
   [createList](state, { payload }) {
     return [...state, generateList(payload.name)]
+  },
+
+  [createExampleList](state, { payload }) {
+    return [...state, generateExampleList()]
   },
 
   [deleteList](state, { payload }) {
