@@ -26,7 +26,7 @@ const generateList = () => ({
     id: 'col4',
     value: 'job',
   }],
-  data: [{
+  cells: [{
     id:'111',
     rowId: 'row1',
     columnId:'col1',
