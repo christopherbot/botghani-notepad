@@ -9,8 +9,8 @@ import style from './Table.style'
 const Column = ({ cells }) =>
   <View style={ustyle.fc1}>
     {
-      cells.map((cell, index) =>
-        <View key={cell.id || index} style={style.table}>
+      cells.map(cell =>
+        <View key={cell.id} style={style.table}>
           <Text>
             {cell.value}
           </Text>
