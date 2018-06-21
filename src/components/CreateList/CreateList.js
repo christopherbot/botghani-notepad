@@ -8,20 +8,18 @@ import style from './CreateList.style'
 import ustyle from '../../utils/style'
 
 class CreateList extends PureComponent {
-  constructor(props) {
-    super(props)
-
-    this.state = { listName: '' }
-
-    this.onChangeText = this.onChangeText.bind(this)
-    this.createList = this.createList.bind(this)
+  static propTypes = {
+    createList: PropTypes.func.isRequired,
+    createExampleList: PropTypes.func.isRequired,
   }
 
-  onChangeText(text) {
+  state = { listName: '' }
+
+  onChangeText = (text) => {
     this.setState({ listName: text })
   }
 
-  createList() {
+  createList = () => {
     if (this.state.listName.trim()) {
       this.props.createList(this.state.listName)
       this.setState({ listName: '' })
@@ -43,11 +41,6 @@ class CreateList extends PureComponent {
       </View>
     )
   }
-}
-
-CreateList.propTypes = {
-  createList: PropTypes.func.isRequired,
-  createExampleList: PropTypes.func.isRequired,
 }
 
 const mapDispatchToProps = { createList, createExampleList }
