@@ -1,19 +1,15 @@
 import React, { Component } from 'react'
 import {
-  Platform,
   Text,
   View
 } from 'react-native'
+import PropTypes from 'prop-types'
 
 import style from './{{pascal}}.style.js'
 
-const templateInfo = Platform.select({
-  ios: 'welcome to your {{param}} component on ios!',
-  android: 'welcome to your {{param}} component on android!'
-});
+export default class {{pascal}} extends Component {
+  static propTypes = {}
 
-type Props = {};
-export default class {{pascal}} extends Component<Props> {
   render() {
     return (
       <View style={style.view}>
