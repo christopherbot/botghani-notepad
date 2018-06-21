@@ -3,12 +3,13 @@ import { View, Text } from 'react-native'
 import { generateFirstColumn, getCells, generateColumn } from '../../utils/table'
 
 import ustyle from '../../utils/style'
+import style from './Table.style'
 
 const Column = ({ cells }) =>
   <View style={ustyle.fc1}>
     {
       cells.map((cell, index) =>
-        <View key={cell.id || index}>
+        <View key={cell.id || index} style={style.table}>
           <Text>
             {cell.value}
           </Text>
