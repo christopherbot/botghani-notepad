@@ -1,5 +1,6 @@
 import React, { PureComponent }  from 'react'
 import { View, Text } from 'react-native'
+import PropTypes from 'prop-types'
 import { generateFirstColumn, getCells, generateColumn } from '../../utils/table'
 
 import ustyle from '../../utils/style'
@@ -17,6 +18,10 @@ const Column = ({ cells }) =>
     }
   </View>
 
+Column.propTypes = {
+  cells: PropTypes.array,
+}
+
 const Table = ({ list }) =>
   <View style={ustyle.fr1}>
     {
@@ -29,5 +34,13 @@ const Table = ({ list }) =>
       })
     }
   </View>
+
+Table.propTypes = {
+  list: PropTypes.shape({
+    columns: PropTypes.array.isRequired,
+    rows: PropTypes.array.isRequired,
+    cells: PropTypes.array.isRequired,
+  }).isRequired,
+}
 
 export default Table
