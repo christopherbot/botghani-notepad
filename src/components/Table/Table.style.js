@@ -1,13 +1,9 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-  textInput: {
-    height: 50,
-    width: '15%',
-  },
-  list: {
-    borderTopWidth: 1,
+  table: {
+    borderRightWidth: 0.25,
+    borderBottomWidth: 0.25,
     borderColor: 'black',
-    marginBottom: 30
   },
 })
