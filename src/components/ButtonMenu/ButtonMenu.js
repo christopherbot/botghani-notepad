@@ -90,8 +90,7 @@ class ButtonMenu extends Component {
         <Button
           title={this.state.isEditModeDisplayed ? 'Cancel' : 'Edit'}
           onPress={this.toggleEditModeDisplay}
-          color="#000"
-        />
+          color="#000" />
         {
           this.state.isEditModeDisplayed &&
             <View>
@@ -99,44 +98,48 @@ class ButtonMenu extends Component {
             </View>
         }
         {
-        this.state.addRowModeOpen ?
-          <View>
-            <Button title="cancel" color="#f71b1b" onPress={this.toggleAddRowDisplay} />
-            <Button title="add" color="#32cd32" onPress={this.createRow} />
-          </View>
-          : <Button title="row+" color="#00a9bc" onPress={this.toggleAddRowDisplay} />
+          this.state.addRowModeOpen
+            ? (
+              <View>
+                <Button title="cancel" color="#f71b1b" onPress={this.toggleAddRowDisplay} />
+                <Button title="add" color="#32cd32" onPress={this.createRow} />
+              </View>
+            )
+            : <Button title="row+" color="#00a9bc" onPress={this.toggleAddRowDisplay} />
         }
         {
-        this.state.addColumnModeOpen ?
-          <View>
-            <Button title="cancel" color="#f71b1b" onPress={this.toggleColumnDisplay} />
-            <Button title="add" color="#32cd32" onPress={this.createColumn} />
-          </View>
-          : <Button title="col+" color="#00a9bc" onPress={this.toggleColumnDisplay} />
+          this.state.addColumnModeOpen
+            ? (
+              <View>
+                <Button title="cancel" color="#f71b1b" onPress={this.toggleColumnDisplay} />
+                <Button title="add" color="#32cd32" onPress={this.createColumn} />
+              </View>
+            )
+            : <Button title="col+" color="#00a9bc" onPress={this.toggleColumnDisplay} />
         }
         {
-        this.state.isEditModeDisplayed &&
-          <TextInput
-            style={style.textInput}
-            placeholder="Enter a new list name"
-            onChangeText={this.onChangeNewName}
-            value={this.state.newName} />
+          this.state.isEditModeDisplayed &&
+            <TextInput
+              style={style.textInput}
+              placeholder="Enter a new list name"
+              onChangeText={this.onChangeNewName}
+              value={this.state.newName} />
         }
         {
-        this.state.addRowModeOpen &&
-          <TextInput
-            style={style.textInput}
-            placeholder="ROW NAME"
-            onChangeText={this.onRowChange}
-            value={this.state.rowName} />
+          this.state.addRowModeOpen &&
+            <TextInput
+              style={style.textInput}
+              placeholder="ROW NAME"
+              onChangeText={this.onRowChange}
+              value={this.state.rowName} />
         }
         {
-        this.state.addColumnModeOpen &&
-          <TextInput
-            style={style.textInput}
-            placeholder="COLUMN NAME"
-            onChangeText={this.onColumnChange}
-            value={this.state.columnName} />
+          this.state.addColumnModeOpen &&
+            <TextInput
+              style={style.textInput}
+              placeholder="COLUMN NAME"
+              onChangeText={this.onColumnChange}
+              value={this.state.columnName} />
         }
       </View>
     )
