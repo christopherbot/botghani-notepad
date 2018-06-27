@@ -8,7 +8,7 @@ import ButtonMenu from '../ButtonMenu/ButtonMenu'
 import style from './List.style'
 import ustyle from '../../utils/style'
 
- const List = ({list}) =>
+ const List = ({ list }) =>
   <View style={[ustyle.fc1, style.list]}>
     <Table list={list} />
     <ButtonMenu list={list} />
