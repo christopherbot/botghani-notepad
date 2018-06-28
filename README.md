@@ -8,7 +8,9 @@ A React-native list-creating app.
    * [Setup](#setup)
    * [Running](#running)
    * [Development Tools](#development-tools)
-   * [JS Style Guide](#js-style-guide)
+1. [JS Style Guide](#js-style-guide)
+   * [Import Statements](#import-statements)
+   * [Conditional Rendering](#conditional-rendering)
 
 
 ## Development
@@ -49,13 +51,62 @@ Import statements should be structured into the following groupings:
 - styles
 
 E.g.
-```javacsript
+```javascript
 import Module from 'package'
 import { myFunction } from '../path/to/file'
 
-import Component from '../path/to/component
+import Component from '../path/to/component'
 
 import style from '../path/to/style'
+```
+
+**[Back to top](#table-of-contents)**
+
+### Conditional Rendering
+The format for conditionally rendering markup and React components depends on its size or nesting. Examples provided below:
+
+`{ condition && <Component prop1={value} /> }`
+
+`{ condition ? <Component prop1={value} /> : <OtherComponent /> }`
+
+```jsx
+{
+  condition &&
+    <Component
+      prop1={value1}
+      prop2={value2}
+      prop3={value3}
+      prop4={value4}
+      prop5={value5} />
+}
+```
+
+```jsx
+{
+  condition &&
+    <Component prop1={value}>
+      <Child />
+    </Component>
+}
+```
+
+```jsx
+{
+  condition
+    ? (
+      <Component
+        prop1={value1}
+        prop2={value2}
+        prop3={value3}
+        prop4={value4}
+        prop5={value5} />
+    )
+    : (
+      <OtherComponent>
+        <Child />
+      </OtherComponent>
+    )
+}
 ```
 
 **[Back to top](#table-of-contents)**
