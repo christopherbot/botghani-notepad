@@ -7,6 +7,7 @@ import {
   renameList,
   createRow,
   createColumn,
+  updateCellValue,
 } from '../actions'
 import generateList from '../../utils/generateList'
 import generateExampleList from '../../utils/generateExampleList'
@@ -101,6 +102,30 @@ export default handleActions({
           ...list,
           columns: [...list.columns, newColumn],
           cells: [...list.cells, ...newCells]
+        }
+      }
+
+      return list
+    })
+  },
+
+  [updateCellValue](state, { payload }) {
+    return state.map((list) => {
+      if (list.id === payload.listId) {
+        const updatedCells = list.cells.map((cell) => {
+          if (cell.id === payload.cellId) {
+            return {
+              ...cell,
+              value: payload.newValue,
+            }
+          }
+
+          return cell
+        })
+
+        return {
+          ...list,
+          cells: updatedCells,
         }
       }
 

@@ -11,3 +11,5 @@ export const renameList = createAction('RENAME_LIST', (listId, newName) => ({ li
 export const createRow = createAction('CREATE_ROW', (listId, rowName) => ({ listId, rowName }))
 
 export const createColumn = createAction('CREATE_COLUMN', (listId, columnName) => ({ listId, columnName }))
+
+export const updateCellValue = createAction('UPDATE_CELL_VALUE', (listId, cellId, newValue) => ({ listId, cellId, newValue }))

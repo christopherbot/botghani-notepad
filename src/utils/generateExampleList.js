@@ -5,26 +5,33 @@ const generateList = () => ({
   rows: [{
     id: 'row1',
     value: 'chris',
+    isHeader: true,
   }, {
     id: 'row2',
     value: 'dave',
+    isHeader: true,
   }],
   columns: [{
     id: uuidv4(),
     isFirstColumn: true,
     value: 'people',
+    isHeader: true,
   }, {
     id: 'col1',
     value: 'last name',
+    isHeader: true,
   }, {
     id: 'col2',
     value: 'hair color',
+    isHeader: true,
   }, {
     id: 'col3',
     value: 'is cool',
+    isHeader: true,
   }, {
     id: 'col4',
     value: 'job',
+    isHeader: true,
   }],
   cells: [{
     id:'111',
