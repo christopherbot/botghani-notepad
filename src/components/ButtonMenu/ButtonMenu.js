@@ -122,6 +122,7 @@ class ButtonMenu extends Component {
             <TextInput
               style={style.textInput}
               placeholder="Enter a new list name"
+              autoFocus={true}
               onChangeText={this.onChangeNewName}
               value={this.state.newName} />
         }
@@ -130,6 +131,7 @@ class ButtonMenu extends Component {
             <TextInput
               style={style.textInput}
               placeholder="ROW NAME"
+              autoFocus={true}
               onChangeText={this.onRowChange}
               value={this.state.rowName} />
         }
@@ -138,6 +140,7 @@ class ButtonMenu extends Component {
             <TextInput
               style={style.textInput}
               placeholder="COLUMN NAME"
+              autoFocus={true}
               onChangeText={this.onColumnChange}
               value={this.state.columnName} />
         }
