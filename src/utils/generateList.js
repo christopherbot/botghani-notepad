@@ -7,6 +7,7 @@ const generateList = (name) => ({
     id: uuidv4(),
     isFirstColumn: true,
     value: name,
+    isHeader: true,
   }],
   cells: [],
   isBeingEdited: false,

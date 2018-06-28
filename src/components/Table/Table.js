@@ -1,22 +1,15 @@
-import React, { PureComponent }  from 'react'
-import { View, Text } from 'react-native'
+import React  from 'react'
+import { View } from 'react-native'
 import PropTypes from 'prop-types'
 import { generateFirstColumn, getCells, generateColumn } from '../../utils/table'
 
-import ustyle from '../../utils/style'
-import style from './Table.style'
+import Cell from './Cell'
 
-const Column = ({ cells }) =>
+import ustyle from '../../utils/style'
+
+const Column = ({ cells, listId }) =>
   <View style={ustyle.fc1}>
-    {
-      cells.map(cell =>
-        <View key={cell.id} style={style.table}>
-          <Text>
-            {cell.value}
-          </Text>
-        </View>,
-      )
-    }
+    { cells.map(cell => <Cell key={cell.id} listId={listId} cell={cell} />) }
   </View>
 
 Column.propTypes = {
@@ -28,10 +21,10 @@ const Table = ({ list }) =>
     {
       list.columns.map((column) => {
         if (column.isFirstColumn) {
-          return <Column key={column.id} cells={generateFirstColumn(column, list.rows)} />
+          return <Column key={column.id} listId={list.id} cells={generateFirstColumn(column, list.rows)} />
         }
 
-        return <Column key={column.id} cells={generateColumn(column, list.rows, list.cells)} />
+        return <Column key={column.id} listId={list.id} cells={generateColumn(column, list.rows, list.cells)} />
       })
     }
   </View>
