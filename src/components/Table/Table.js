@@ -2,6 +2,7 @@ import React  from 'react'
 import { View } from 'react-native'
 import PropTypes from 'prop-types'
 import { generateFirstColumn, getCells, generateColumn } from '../../utils/table'
+import { moveFirstColumnToHead } from '../../utils/moveToHead'
 
 import Cell from './Cell'
 
@@ -19,7 +20,7 @@ Column.propTypes = {
 const Table = ({ list }) =>
   <View style={ustyle.fr1}>
     {
-      list.columns.map((column) => {
+      moveFirstColumnToHead(list.columns).map((column) => {
         if (column.isFirstColumn) {
           return <Column key={column.id} listId={list.id} cells={generateFirstColumn(column, list.rows)} />
         }
