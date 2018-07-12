@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button, View, TextInput} from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { deleteList, renameList, createRow, createColumn } from '../../state/actions'
+import { deleteList, renameList, createRow, createColumn, swapColumns } from '../../state/actions'
 
 import style from './ButtonMenu.style.js'
 import ustyle from '../../utils/style'
@@ -83,6 +83,10 @@ class ButtonMenu extends Component {
     }))
   }
 
+  swapColumns = () => {
+    this.props.swapColumns(this.props.list.id)
+  }
+
   render() {
     return (
       <View style={ustyle.fc1}>
@@ -92,6 +96,7 @@ class ButtonMenu extends Component {
             title={this.state.isEditModeDisplayed ? 'Cancel' : 'Edit'}
             onPress={this.toggleEditModeDisplay}
             color="#000" />
+          <Button title="Swap" color="#f71b1b" onPress={this.swapColumns} />
           {
             this.state.isEditModeDisplayed &&
               <View>
@@ -153,6 +158,6 @@ class ButtonMenu extends Component {
   }
 }
 
-const mapDispatchToProps = { deleteList, renameList, createRow, createColumn }
+const mapDispatchToProps = { deleteList, renameList, createRow, createColumn, swapColumns }
 
 export default connect(undefined, mapDispatchToProps)(ButtonMenu)

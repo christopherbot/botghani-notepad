@@ -13,3 +13,5 @@ export const createRow = createAction('CREATE_ROW', (listId, rowName) => ({ list
 export const createColumn = createAction('CREATE_COLUMN', (listId, columnName) => ({ listId, columnName }))
 
 export const updateCellValue = createAction('UPDATE_CELL_VALUE', (listId, cellId, newValue) => ({ listId, cellId, newValue }))
+
+export const swapColumns = createAction('SWAP_COLUMNS', listId => ({ listId }))

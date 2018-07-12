@@ -8,11 +8,13 @@ import {
   createRow,
   createColumn,
   updateCellValue,
+  swapColumns,
 } from '../actions'
 import generateList from '../../utils/generateList'
 import generateExampleList from '../../utils/generateExampleList'
 import generateRow from '../../utils/generateRow'
 import generateColumn from '../../utils/generateColumn'
+import { swapValues } from '../../utils/arrayUtils'
 
 const defaultState = []
 
@@ -126,6 +128,21 @@ export default handleActions({
         return {
           ...list,
           cells: updatedCells,
+        }
+      }
+
+      return list
+    })
+  },
+
+  [swapColumns](state, { payload }) {
+    return state.map((list) => {
+      if (list.id === payload.listId) {
+        const rearrangedColumns = swapValues(list.columns, 1, 2)
+
+        return {
+          ...list,
+          columns: rearrangedColumns,
         }
       }
 

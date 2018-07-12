@@ -9,3 +9,10 @@ export const moveToHeadBy = (key, value) => array => {
 }
 
 export const moveFirstColumnToHead = moveToHeadBy('isFirstColumn', true)
+
+export const swapValues = (array, index1, index2) => {
+  const newArray = [...array]
+  ;[newArray[index1], newArray[index2]] = [newArray[index2], newArray[index1]]
+
+  return newArray
+}
