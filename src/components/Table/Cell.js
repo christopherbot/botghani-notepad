@@ -32,13 +32,6 @@ class Cell extends PureComponent {
     this.setState({ isBeingEdited: false })
   }
 
-  cancelEditMode = () => {
-    this.setState({
-      isBeingEdited: false,
-      newCellValue: this.props.cell.value,
-    })
-  }
-
   get cellStyle() {
     return this.props.cell.isHeader ? style.headerCell : style.dataCell
   }
@@ -50,21 +43,11 @@ class Cell extends PureComponent {
         {
           this.state.isBeingEdited
             ? (
-              <Fragment>
-                <TextInput
-                  onChangeText={this.changeCellValue}
-                  value={this.state.newCellValue} />
-                <TouchableOpacity onPress={this.updateCellValue}>
-                  <Text>
-                    Ok
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={this.cancelEditMode}>
-                  <Text>
-                    Cancel
-                  </Text>
-                </TouchableOpacity>
-              </Fragment>
+              <TextInput
+                value={this.state.newCellValue}
+                onChangeText={this.changeCellValue}
+                onBlur={this.updateCellValue}
+                autoFocus={true} />
             )
             : (
               <TouchableOpacity style={this.cellStyle} onPress={this.onPressCell}>
