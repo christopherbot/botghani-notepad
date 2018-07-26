@@ -22,8 +22,8 @@ const Table = ({ list }) =>
       list.columns.map((column) => {
         if (column.isFirstColumn) {
           return (
-            <View style={ustyle.autoWidth}>
-              <Column key={column.id} listId={list.id} cells={generateFirstColumn(column, list.rows)} />
+            <View key={column.id} style={ustyle.autoWidth}>
+              <Column listId={list.id} cells={generateFirstColumn(column, list.rows)} />
             </View>
           )
         }
