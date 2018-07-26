@@ -6,4 +6,5 @@ export default StyleSheet.create({
   fc: { flexDirection: 'column' },
   fr1: { flex: 1, flexDirection: 'row' },
   fc1: { flex: 1, flexDirection: 'column' },
+  autoWidth: { width: 'auto' }
 })
