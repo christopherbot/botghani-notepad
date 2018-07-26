@@ -1,8 +1,7 @@
 import React  from 'react'
-import { View } from 'react-native'
+import { View, ScrollView } from 'react-native'
 import PropTypes from 'prop-types'
 import { generateFirstColumn, getCells, generateColumn } from '../../utils/table'
-import { moveFirstColumnToHead } from '../../utils/moveToHead'
 
 import Cell from './Cell'
 
@@ -20,14 +19,29 @@ Column.propTypes = {
 const Table = ({ list }) =>
   <View style={ustyle.fr1}>
     {
-      moveFirstColumnToHead(list.columns).map((column) => {
+      list.columns.map((column) => {
         if (column.isFirstColumn) {
-          return <Column key={column.id} listId={list.id} cells={generateFirstColumn(column, list.rows)} />
+          return (
+            <View style={ustyle.autoWidth}>
+              <Column key={column.id} listId={list.id} cells={generateFirstColumn(column, list.rows)} />
+            </View>
+          )
         }
 
-        return <Column key={column.id} listId={list.id} cells={generateColumn(column, list.rows, list.cells)} />
+        return null
       })
     }
+    <ScrollView style={ustyle.fr1} horizontal>
+      {
+        list.columns.map((column) => {
+          if (column.isFirstColumn) {
+            return null
+          }
+
+          return <Column key={column.id} listId={list.id} cells={generateColumn(column, list.rows, list.cells)} />
+        })
+      }
+    </ScrollView>
   </View>
 
 Table.propTypes = {
