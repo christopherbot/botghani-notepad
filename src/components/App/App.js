@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import Nav from '../Nav/Nav'
+import NavButton from '../Buttons/NavButton/NavButton'
 import CreateList from '../CreateList/CreateList'
 import Lists from '../Lists/Lists'
 import { toggleNav } from '../../state/actions'
@@ -21,11 +22,7 @@ class App extends PureComponent {
       <View style={ustyle.f1}>
         <View style={style.navWrapper}>
           { this.props.isNavOpen && <Nav /> }
-          <TouchableOpacity style={style.navButton} onPress={this.props.toggleNav}>
-            <Text>
-              Toggle Nav
-            </Text>
-          </TouchableOpacity>
+          <NavButton onPress={this.props.toggleNav} />
         </View>
         <View style={style.createListWrapper}>
           <CreateList />

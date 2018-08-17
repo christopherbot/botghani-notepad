@@ -2,15 +2,17 @@ import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
   view: {
-      margin: 15
+    height: 50,
+    marginVertical: 20,
+    marginHorizontal: 5,
   },
   circle: {
-      borderWidth: 2.5,
-      borderColor: 'black',
-      width: 50,
-      height: 50,
-      borderRadius: 25,
-      position: 'relative'
+    borderWidth: 2.5,
+    borderColor: 'black',
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    position: 'relative',
   },
   line1: {
     width: 30,
@@ -33,8 +35,8 @@ export default StyleSheet.create({
     transform: [
       { translateY: -4 },
       { translateX: -3 },
-      { rotate: '45deg'}
-    ]
+      { rotate: '45deg'},
+    ],
   },
   lineDownRight: {
     width: 10,
@@ -46,8 +48,8 @@ export default StyleSheet.create({
     transform: [
       { translateY: 2 },
       { translateX: -3 },
-      { rotate: '-45deg'}
-    ]
+      { rotate: '-45deg'},
+    ],
   },
   lineUpLeft: {
     width: 10,
@@ -59,8 +61,8 @@ export default StyleSheet.create({
     transform: [
       { translateY: -4 },
       { translateX: -3 },
-      { rotate: '-45deg'}
-    ]
+      { rotate: '-45deg'},
+    ],
   },
   lineDownLeft: {
     width: 10,
@@ -72,7 +74,7 @@ export default StyleSheet.create({
     transform: [
       { translateY: 2 },
       { translateX: -3 },
-      { rotate: '45deg'}
-    ]
+      { rotate: '45deg'},
+    ],
   },
 })
