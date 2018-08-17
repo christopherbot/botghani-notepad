@@ -9,12 +9,8 @@ export default StyleSheet.create({
     height: '100%',
     zIndex: 1,
   },
-  navButton: {
-    zIndex: 1,
-    marginTop: 15,
-    height: 20,
-  },
   createListWrapper: {
+    marginTop: 50,
     padding: 20,
   },
 })

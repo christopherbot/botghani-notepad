@@ -1,37 +1,44 @@
 import React, { PureComponent } from 'react'
-import {
-  TouchableOpacity,
-  View
-} from 'react-native'
+import { TouchableOpacity, View } from 'react-native'
+import PropTypes from 'prop-types'
 
 import style from './NavButton.style'
 
 export default class NavButton extends PureComponent {
+  static propTypes = {
+    onPress: PropTypes.func.isRequired,
+  }
+
   state = {
-    open: false,
-    currentStyle: {
+    isNavOpen: false,
+    buttonStyle: {
       up: style.lineUpRight,
       down: style.lineDownRight,
     },
   }
 
-  swapState = ()  => {
+  toggleButtonStyle = ()  => {
     this.setState((prevState) => ({
-      open: !prevState.open,
-      currentStyle: {
-        up: prevState.open ? style.lineUpRight : style.lineUpLeft,
-        down: prevState.open ? style.lineDownRight : style.lineDownLeft,
+      isNavOpen: !prevState.isNavOpen,
+      buttonStyle: {
+        up: prevState.isNavOpen ? style.lineUpRight : style.lineUpLeft,
+        down: prevState.isNavOpen ? style.lineDownRight : style.lineDownLeft,
       },
     }))
   }
 
+  onPress = () => {
+    this.toggleButtonStyle()
+    this.props.onPress()
+  }
+
   render() {
     return (
-      <TouchableOpacity style={style.view} onPress={this.swapState}>
+      <TouchableOpacity style={style.view} onPress={this.onPress}>
         <View style={style.circle}>
           <View style={style.line1}></View>
-          <View style={this.state.currentStyle.up}></View>
-          <View style={this.state.currentStyle.down}></View>
+          <View style={this.state.buttonStyle.up}></View>
+          <View style={this.state.buttonStyle.down}></View>
         </View>
       </TouchableOpacity>
     )
