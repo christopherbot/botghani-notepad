@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import {
   Text,
   View
@@ -7,13 +7,13 @@ import PropTypes from 'prop-types'
 
 import style from './{{pascal}}.style.js'
 
-export default class {{pascal}} extends Component {
+export default class {{pascal}} extends PureComponent {
   static propTypes = {}
 
   render() {
     return (
       <View style={style.view}>
-        <Text style={style.text}>{templateInfo}</Text>
+        <Text style={style.text}>Component {{pascal}} Rendered</Text>
       </View>
     )
   }
