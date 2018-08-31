@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions'
 import { toggleNav } from '../actions'
 
 const defaultState = {
-  isNavOpen: false,
+  isNavOpen: true,
 }
 
 export default handleActions({
