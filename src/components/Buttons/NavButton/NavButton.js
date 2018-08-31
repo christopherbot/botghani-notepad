@@ -7,38 +7,28 @@ import style from './NavButton.style'
 export default class NavButton extends PureComponent {
   static propTypes = {
     onPress: PropTypes.func.isRequired,
+    isNavOpen: PropTypes.bool.isRequired,
   }
 
   state = {
-    isNavOpen: false,
-    buttonStyle: {
-      up: style.lineUpRight,
-      down: style.lineDownRight,
-    },
+    arrowTopStyle: style.lineUpRight,
+    arrowBottomStyle: style.lineDownRight,
   }
 
-  toggleButtonStyle = ()  => {
-    this.setState((prevState) => ({
-      isNavOpen: !prevState.isNavOpen,
-      buttonStyle: {
-        up: prevState.isNavOpen ? style.lineUpRight : style.lineUpLeft,
-        down: prevState.isNavOpen ? style.lineDownRight : style.lineDownLeft,
-      },
-    }))
-  }
-
-  onPress = () => {
-    this.toggleButtonStyle()
-    this.props.onPress()
-  }
+  static getDerivedStateFromProps(nextProps) {
+    return {
+        arrowTopStyle: nextProps.isNavOpen ? style.lineUpLeft : style.lineUpRight ,
+        arrowBottomStyle: nextProps.isNavOpen ?  style.lineDownLeft : style.lineDownRight,
+      }
+    }
 
   render() {
     return (
-      <TouchableOpacity style={style.view} onPress={this.onPress}>
+      <TouchableOpacity style={style.view} onPress={this.props.onPress}>
         <View style={style.circle}>
-          <View style={style.line1}></View>
-          <View style={this.state.buttonStyle.up}></View>
-          <View style={this.state.buttonStyle.down}></View>
+          <View style={style.line1} />
+          <View style={this.state.arrowTopStyle } />
+          <View style={this.state.arrowBottomStyle} />
         </View>
       </TouchableOpacity>
     )
