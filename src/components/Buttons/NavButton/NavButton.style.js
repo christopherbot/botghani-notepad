@@ -9,13 +9,13 @@ export default StyleSheet.create({
   circle: {
     borderWidth: 2.5,
     borderColor: 'black',
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
     position: 'relative',
   },
   line1: {
-    width: 30,
+    width: 20,
     height: 2,
     backgroundColor: 'black',
     position: 'absolute',
