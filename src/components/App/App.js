@@ -21,7 +21,7 @@ class App extends PureComponent {
       <View style={ustyle.f1}>
         <View style={style.navWrapper}>
           { this.props.isNavOpen && <Nav /> }
-          <NavButton onPress={this.props.toggleNav} />
+          <NavButton onPress={this.props.toggleNav} isNavOpen={this.props.isNavOpen} />
         </View>
         <Lists />
       </View>
