@@ -2,6 +2,7 @@ import uuidv4 from 'uuid/v4'
 
 const generateList = () => ({
   id: uuidv4(),
+  name: 'people',
   rows: [{
     id: 'row1',
     value: 'chris',
