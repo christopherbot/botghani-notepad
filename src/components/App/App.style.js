@@ -9,8 +9,4 @@ export default StyleSheet.create({
     height: '100%',
     zIndex: 1,
   },
-  createListWrapper: {
-    marginTop: 50,
-    padding: 20,
-  },
 })
