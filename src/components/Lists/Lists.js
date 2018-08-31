@@ -5,10 +5,11 @@ import PropTypes from 'prop-types'
 
 import List from '../List/List'
 
+import style from './Lists.style'
 import ustyle from '../../utils/style'
 
 const Lists = ({ lists }) =>
-  <ScrollView style={ustyle.f1}>
+  <ScrollView style={[ustyle.f1, style.lists]}>
     { lists.map(list => <List key={list.id} list={list} />)}
   </ScrollView>
 
