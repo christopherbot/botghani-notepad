@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { updateCellValue } from '../../state/actions'
 
-import style from './Table.style'
+import style from './Cell.style'
+import ustyle from '../../utils/style'
 
 class Cell extends PureComponent {
   static propTypes = {
@@ -33,7 +34,7 @@ class Cell extends PureComponent {
   }
 
   get cellStyle() {
-    return this.props.cell.isHeader ? style.headerCell : style.dataCell
+    return this.props.cell.isHeader ? [style.headerCell, ustyle.fcenter] : [style.dataCell, ustyle.fcenter]
   }
 
 
