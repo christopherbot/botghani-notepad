@@ -75,7 +75,6 @@ const generateList = () => ({
     columnId: 'col4',
     value: 'dev',
   }],
-  isBeingEdited: false,
 })
 
 export default generateList
