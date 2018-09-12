@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 
 import Nav from '../Nav/Nav'
 import NavButton from '../Buttons/NavButton/NavButton'
-import Lists from '../Lists/Lists'
-import { toggleNav } from '../../state/actions'
+import List from '../List/List'
+import { toggleNav, setActiveList } from '../../state/actions'
 
 import style from './App.style'
 import ustyle from '../../utils/style'
@@ -16,6 +16,12 @@ class App extends PureComponent {
     isNavOpen: PropTypes.bool.isRequired,
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.lists !== this.props.lists) {
+      this.props.setActiveList(this.props.lists[this.props.lists.length - 1].id)
+    }
+  }
+
   render() {
     return (
       <View style={ustyle.f1}>
@@ -23,18 +29,21 @@ class App extends PureComponent {
           { this.props.isNavOpen && <Nav /> }
           <NavButton onPress={this.props.toggleNav} isNavOpen={this.props.isNavOpen} />
         </View>
-        <Lists />
+        { this.props.list && <List list={this.props.list} /> }
       </View>
     )
   }
 }
 
-const mapStateToProps = ({ globalUi }) => ({
+const mapStateToProps = ({ lists, globalUi }) => ({
   isNavOpen: globalUi.isNavOpen,
+  lists,
+  list: lists.find(list => list.id === globalUi.activeListId),
 })
 
 const mapDispatchToProps = {
   toggleNav,
+  setActiveList,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

@@ -11,7 +11,6 @@ const generateList = (name) => ({
     isHeader: true,
   }],
   cells: [],
-  isBeingEdited: false,
 })
 
 export default generateList
