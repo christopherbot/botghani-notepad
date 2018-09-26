@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import Nav from '../Nav/Nav'
 import NavButton from '../Buttons/NavButton/NavButton'
 import List from '../List/List'
+import Lists from '../Lists/Lists'
 import { toggleNav, setActiveList } from '../../state/actions'
 
 import style from './App.style'
@@ -14,6 +15,11 @@ import ustyle from '../../utils/style'
 class App extends PureComponent {
   static propTypes = {
     isNavOpen: PropTypes.bool.isRequired,
+    displayAllLists: PropTypes.bool.isRequired,
+    lists: PropTypes.array.isRequired,
+    list: PropTypes.object,
+    toggleNav: PropTypes.func.isRequired,
+    setActiveList: PropTypes.func.isRequired,
   }
 
   componentDidUpdate(prevProps) {
@@ -29,6 +35,7 @@ class App extends PureComponent {
           { this.props.isNavOpen && <Nav /> }
           <NavButton onPress={this.props.toggleNav} isNavOpen={this.props.isNavOpen} />
         </View>
+        { this.props.displayAllLists && <Lists lists={this.props.lists} /> }
         { this.props.list && <List list={this.props.list} /> }
       </View>
     )
@@ -37,6 +44,7 @@ class App extends PureComponent {
 
 const mapStateToProps = ({ lists, globalUi }) => ({
   isNavOpen: globalUi.isNavOpen,
+  displayAllLists: globalUi.activeListId === 'all',
   lists,
   list: lists.find(list => list.id === globalUi.activeListId),
 })
