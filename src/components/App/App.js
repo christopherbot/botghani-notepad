@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import Nav from '../Nav/Nav'
-import NavButton from '../Buttons/NavButton/NavButton'
+import SettingsBar from '../SettingsBar/SettingsBar'
 import List from '../List/List'
 import { toggleNav, setActiveList } from '../../state/actions'
 
@@ -29,8 +29,8 @@ class App extends PureComponent {
       <View style={ustyle.f1}>
         <View style={style.navWrapper}>
           { this.props.isNavOpen && <Nav /> }
-          <NavButton onPress={this.props.toggleNav} isNavOpen={this.props.isNavOpen} />
         </View>
+        <SettingsBar list={this.props.list} isNavOpen={this.props.isNavOpen} />
         { this.props.list && <List list={this.props.list} /> }
       </View>
     )
@@ -44,7 +44,6 @@ const mapStateToProps = ({ lists, globalUi }) => ({
 })
 
 const mapDispatchToProps = {
-  toggleNav,
   setActiveList,
 }
 

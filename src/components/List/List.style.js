@@ -8,7 +8,6 @@ export default StyleSheet.create({
   list: {
     borderTopWidth: 1,
     borderColor: 'black',
-    marginTop: 80,
     marginBottom: 30
   },
 })
