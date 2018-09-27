@@ -86,7 +86,7 @@ class ButtonMenu extends Component {
   render() {
     return (
       <View style={ustyle.fc1}>
-        <View style={ustyle.fr1}>
+        <View style={[ustyle.fr1, ustyle.fcenter, style.buttonContainer]}>
           <Button title="X" color="#f71b1b" onPress={this.deleteList} />
           <Button
             title={this.state.isEditModeDisplayed ? 'Cancel' : 'Edit'}
