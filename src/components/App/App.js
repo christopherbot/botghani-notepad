@@ -17,7 +17,9 @@ class App extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.lists !== this.props.lists) {
+    if (this.props.lists.length < prevProps.lists.length) {
+      this.props.setActiveList(null)
+    } else if (this.props.lists.length > prevProps.lists.length) {
       this.props.setActiveList(this.props.lists[this.props.lists.length - 1].id)
     }
   }
