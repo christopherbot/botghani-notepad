@@ -12,6 +12,9 @@ const Nav = ({ lists, setActiveList }) =>
   <View style={style.nav}>
     <CreateList />
     <ScrollView style={ustyle.f1}>
+      <TouchableOpacity onPress={() => setActiveList('all')}>
+        <Text>View All</Text>
+      </TouchableOpacity>
       {
         lists.map(list =>
           <TouchableOpacity key={list.id} onPress={() => setActiveList(list.id)}>
