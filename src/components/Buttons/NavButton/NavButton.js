@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { TouchableOpacity, View } from 'react-native'
+import { Animated, TouchableOpacity, View } from 'react-native'
 import PropTypes from 'prop-types'
 
 import style from './NavButton.style'
@@ -13,6 +13,16 @@ export default class NavButton extends PureComponent {
   state = {
     arrowTopStyle: style.lineUpRight,
     arrowBottomStyle: style.lineDownRight,
+    fadeIn : new Animated.Value(1)
+  }
+
+  componentDidMount() {
+    Animated.timing(
+        this.state.fadeIn, {
+          toValue : 0,
+          duration : 5000,
+        }
+    ).start()
   }
 
   static getDerivedStateFromProps(nextProps) {
@@ -23,13 +33,14 @@ export default class NavButton extends PureComponent {
     }
 
   render() {
+    let { fadeIn } = this.state
     return (
       <TouchableOpacity style={style.view} onPress={this.props.onPress}>
-        <View style={style.circle}>
+        <Animated.View style={[style.circle, {opacity : fadeIn }]}>
           <View style={style.line1} />
           <View style={this.state.arrowTopStyle } />
           <View style={this.state.arrowBottomStyle} />
-        </View>
+        </Animated.View>
       </TouchableOpacity>
     )
   }
