@@ -3,7 +3,7 @@ import { View, ScrollView, TouchableOpacity, Text, TextInput } from 'react-nativ
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { generateFirstColumn, getCells, generateColumn } from '../../utils/table'
-import { createRow } from '../../state/actions'
+import { createRow, createColumn } from '../../state/actions'
 
 import Cell from './Cell'
 
@@ -11,7 +11,13 @@ import columnStyle from './Column.style'
 
 import ustyle from '../../utils/style'
 
-class _FirstColumn extends PureComponent {
+class FirstColumn extends PureComponent {
+  static propTypes = {
+    cells: PropTypes.array,
+    listId: PropTypes.string.isRequired,
+    createRow: PropTypes.func.isRequired,
+}
+
   state = {
     rowName: '',
     isInputDisplayed: false,
@@ -71,10 +77,6 @@ class _FirstColumn extends PureComponent {
   }
 }
 
-const mapDispatchToProps = { createRow }
-
-const FirstColumn = connect(undefined, mapDispatchToProps)(_FirstColumn)
-
 const Column = ({ cells, listId }) =>
   <View style={ustyle.fc}>
     { cells.map(cell => <Cell key={cell.id} listId={listId} cell={cell} />) }
@@ -82,35 +84,95 @@ const Column = ({ cells, listId }) =>
 
 Column.propTypes = {
   cells: PropTypes.array,
+  listId: PropTypes.string.isRequired,
 }
 
-const Table = ({ list }) =>
-  <View style={ustyle.fr1}>
-    {
-      list.columns.map((column) => {
-        if (column.isFirstColumn) {
-          return (
-            <View key={column.id} style={ustyle.autoWidth}>
-              <FirstColumn listId={list.id} cells={generateFirstColumn(column, list.rows)} />
-            </View>
-          )
-        }
+class Table extends PureComponent {
+  state = {
+    columnName: '',
+    isInputDisplayed: false,
+  }
 
-        return null
-      })
+  get columnName() {
+    return this.state.columnName.trim()
+  }
+
+  createColumn = () => this.props.createColumn(this.props.list.id, this.columnName)
+
+  onChangeText = columnName => this.setState({ columnName })
+
+  onBlur = () => {
+    if (this.columnName) {
+      this.createColumn()
     }
-    <ScrollView style={ustyle.fr1} horizontal>
-      {
-        list.columns.map((column) => {
-          if (column.isFirstColumn) {
-            return null
-          }
 
-          return <Column key={column.id} listId={list.id} cells={generateColumn(column, list.rows, list.cells)} />
-        })
-      }
-    </ScrollView>
-  </View>
+    this.setState({
+      isInputDisplayed: false,
+      columnName: '',
+    })
+  }
+
+  onPress = () => {
+    if (!this.state.isInputDisplayed) {
+      this.setState({ isInputDisplayed: true })
+
+      return
+    }
+
+    if (this.columnName) {
+      this.createColumn()
+      this.setState({ columnName: '' })
+    }
+  }
+
+  render() {
+    const { list } = this.props
+    return (
+      <View style={ustyle.fr1}>
+        {
+          list.columns.map((column) => {
+            if (column.isFirstColumn) {
+              return (
+                <View key={column.id} style={ustyle.autoWidth}>
+                  <FirstColumn
+                    listId={list.id}
+                    cells={generateFirstColumn(column, list.rows)}
+                    createRow={this.props.createRow} />
+                </View>
+              )
+            }
+
+            return null
+          })
+        }
+        <ScrollView style={[ustyle.fr, ustyle.fg0]} horizontal>
+          {
+            list.columns.map((column) => {
+              if (column.isFirstColumn) {
+                return null
+              }
+
+              return <Column key={column.id} listId={list.id} cells={generateColumn(column, list.rows, list.cells)} />
+            })
+          }
+        </ScrollView>
+        {
+          this.state.isInputDisplayed &&
+            <TextInput
+              style={columnStyle.textInput}
+              placeholder="Column name..."
+              autoFocus={true}
+              onChangeText={this.onChangeText}
+              onBlur={this.onBlur}
+              value={this.state.columnName} />
+        }
+        <TouchableOpacity style={[ustyle.fcenter, columnStyle.addButton]} onPress={this.onPress}>
+          <Text style={columnStyle.addButtonText}>+</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+}
 
 Table.propTypes = {
   list: PropTypes.shape({
@@ -118,6 +180,10 @@ Table.propTypes = {
     rows: PropTypes.array.isRequired,
     cells: PropTypes.array.isRequired,
   }).isRequired,
+  createRow: PropTypes.func.isRequired,
+  createColumn: PropTypes.func.isRequired,
 }
 
-export default Table
+const mapDispatchToProps = { createRow, createColumn }
+
+export default connect(undefined, mapDispatchToProps)(Table)
