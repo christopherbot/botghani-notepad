@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Button, View, TextInput, Text} from 'react-native'
+import { Button, View, TextInput, Text } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { deleteList, renameList, createRow, createColumn } from '../../state/actions'
@@ -18,7 +18,8 @@ class ButtonMenu extends Component {
 
   state = {
     isEditModeDisplayed: false,
-    listName : this.props.list.name,
+    listName: this.props.list.name,
+    addRowModeOpen: false,
     rowName: '',
     addColumnModeOpen: false,
     columnName: '',
@@ -41,8 +42,8 @@ class ButtonMenu extends Component {
     }
   }
 
-  onChangeNewName = (listName) => {
-    this.setState({ listName: listName })
+  onChangeName = (listName) => {
+    this.setState({ listName })
   }
 
   createRow = () => {
@@ -89,16 +90,18 @@ class ButtonMenu extends Component {
           <Button title="X" color="#f71b1b" onPress={this.deleteList} />
           {
             this.state.isEditModeDisplayed
-                ? <TextInput
+                ? (
+                  <TextInput
                     onBlur={this.renameList}
-                    onChangeText={this.onChangeNewName}
+                    onChangeText={this.onChangeName}
                     value={this.state.listName}
                     autoFocus={true}
                   />
+                )
                 : (
-                    <Text style={style.mainTitle} onPress={this.toggleEditModeDisplay}>
-                      { this.state.listName }
-                    </Text>
+                  <Text style={style.mainTitle} onPress={this.toggleEditModeDisplay}>
+                    { this.state.listName }
+                  </Text>
                 )
           }
 
