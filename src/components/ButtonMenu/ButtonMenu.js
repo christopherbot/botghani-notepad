@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, View, TextInput} from 'react-native'
+import {Button, View, TextInput, Text} from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { deleteList, renameList, createRow, createColumn } from '../../state/actions'
@@ -18,8 +18,7 @@ class ButtonMenu extends Component {
 
   state = {
     isEditModeDisplayed: false,
-    newName : '',
-    addRowModeOpen: false,
+    listName : this.props.list.name,
     rowName: '',
     addColumnModeOpen: false,
     columnName: '',
@@ -32,19 +31,18 @@ class ButtonMenu extends Component {
   toggleEditModeDisplay = () => {
     this.setState(prevState => ({
       isEditModeDisplayed: !prevState.isEditModeDisplayed,
-      newName: '',
     }))
   }
 
   renameList = () => {
-    if (this.state.newName.trim()) {
-      this.props.renameList(this.props.list.id, this.state.newName.trim())
+    if (this.state.listName.trim()) {
+      this.props.renameList(this.props.list.id, this.state.listName.trim())
       this.toggleEditModeDisplay()
     }
   }
 
-  onChangeNewName = (newName) => {
-    this.setState({ newName })
+  onChangeNewName = (listName) => {
+    this.setState({ listName: listName })
   }
 
   createRow = () => {
@@ -87,17 +85,23 @@ class ButtonMenu extends Component {
     return (
       <View style={ustyle.fc1}>
         <View style={[ustyle.fr1, ustyle.fcenter, style.buttonContainer]}>
+          //todo create modal to confirm deletion of list #60 -Dave 10.18
           <Button title="X" color="#f71b1b" onPress={this.deleteList} />
-          <Button
-            title={this.state.isEditModeDisplayed ? 'Cancel' : 'Edit'}
-            onPress={this.toggleEditModeDisplay}
-            color="#000" />
           {
-            this.state.isEditModeDisplayed &&
-              <View>
-                <Button title="Rename" color="#000" onPress={this.renameList} />
-              </View>
+            this.state.isEditModeDisplayed
+                ? <TextInput
+                    onBlur={this.renameList}
+                    onChangeText={this.onChangeNewName}
+                    value={this.state.listName}
+                    autoFocus={true}
+                  />
+                : (
+                    <Text style={style.mainTitle} onPress={this.toggleEditModeDisplay}>
+                      { this.state.listName }
+                    </Text>
+                )
           }
+
           {
             this.state.addRowModeOpen
               ? (
@@ -120,15 +124,6 @@ class ButtonMenu extends Component {
           }
         </View>
         <View style={ustyle.fc1}>
-          {
-            this.state.isEditModeDisplayed &&
-              <TextInput
-                style={style.textInputField}
-                placeholder="Enter a new list name"
-                autoFocus={true}
-                onChangeText={this.onChangeNewName}
-                value={this.state.newName} />
-          }
           {
             this.state.addRowModeOpen &&
               <TextInput
