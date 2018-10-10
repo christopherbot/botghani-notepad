@@ -8,15 +8,12 @@ import ButtonMenu from '../ButtonMenu/ButtonMenu'
 import { toggleNav } from '../../state/actions'
 
 import ustyle from '../../utils/style'
-// import style from './ListHeader.style.js'
 
 const ListHeader = ({ list, isNavOpen, toggleNav }) =>
-    <View style={ustyle.fc}>
-      <View style={ustyle.fr}>
-        { list && <ButtonMenu list={list}/> }
-        <NavButton onPress={toggleNav} isNavOpen={isNavOpen} />
-      </View>
-    </View>
+  <View style={ustyle.fr}>
+    { list && <ButtonMenu list={list}/> }
+    <NavButton onPress={toggleNav} isNavOpen={isNavOpen} />
+  </View>
 
 
 ListHeader.propTypes = {
