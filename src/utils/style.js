@@ -7,6 +7,7 @@ export default StyleSheet.create({
   fc: { flexDirection: 'column' },
   fr1: { flex: 1, flexDirection: 'row' },
   fc1: { flex: 1, flexDirection: 'column' },
+  fg0: { flexGrow: 0 },
   fcenter: { justifyContent: 'center', alignItems: 'center' },
   fcenterMain: { justifyContent: 'center' }, // parallel to the flex direction
   fcenterCross: { alignItems: 'center' }, // perpendicular to the flex direction
