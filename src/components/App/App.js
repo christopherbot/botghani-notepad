@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import Nav from '../Nav/Nav'
-import SettingsBar from '../SettingsBar/SettingsBar'
+import ListHeader from '../ListHeader/ListHeader'
 import List from '../List/List'
-import { toggleNav, setActiveList } from '../../state/actions'
+import { setActiveList } from '../../state/actions'
 
 import style from './App.style'
 import ustyle from '../../utils/style'
@@ -30,7 +30,7 @@ class App extends PureComponent {
         <View style={style.navWrapper}>
           { this.props.isNavOpen && <Nav /> }
         </View>
-        <SettingsBar list={this.props.list} isNavOpen={this.props.isNavOpen} />
+        <ListHeader list={this.props.list} isNavOpen={this.props.isNavOpen} />
         { this.props.list && <List list={this.props.list} /> }
       </View>
     )
