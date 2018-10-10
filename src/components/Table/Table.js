@@ -8,7 +8,6 @@ import { createRow, createColumn } from '../../state/actions'
 import Cell from './Cell'
 
 import columnStyle from './Column.style'
-
 import ustyle from '../../utils/style'
 
 class FirstColumn extends PureComponent {
