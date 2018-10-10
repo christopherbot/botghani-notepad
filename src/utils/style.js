@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
+  debug: { backgroundColor: 'gold' },
   f1: { flex: 1 },
   fr: { flexDirection: 'row' },
   fc: { flexDirection: 'column' },
