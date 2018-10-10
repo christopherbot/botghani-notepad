@@ -8,4 +8,7 @@ export default StyleSheet.create({
   textInputField: {
     marginVertical: 5,
   },
+  mainTitle: {
+    fontSize: 15,
+  },
 })
