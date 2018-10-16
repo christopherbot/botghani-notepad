@@ -32,12 +32,14 @@ class CreateList extends PureComponent {
         <TextInput
           style={style.textInput}
           placeholder="Enter a list name"
+          placeholderTextColor="black"
+          selectionColor="yellow"
           onChangeText={this.onChangeText}
           value={this.state.listName} />
         <View style={style.buttonWrapper}>
-          <Button title="Create List" onPress={this.createList} />
+          <Button title="Create List" color="yellow" onPress={this.createList} />
         </View>
-        <Button title="#" onPress={this.props.createExampleList} />
+        <Button title="#" color="black" onPress={this.props.createExampleList} />
       </View>
     )
   }
