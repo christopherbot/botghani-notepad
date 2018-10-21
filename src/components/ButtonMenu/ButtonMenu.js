@@ -19,25 +19,31 @@ class ButtonMenu extends Component {
     listName: this.props.list.name,
   }
 
+  get listName() {
+    return this.state.listName.trim()
+  }
+
   deleteList = () => {
     //todo create modal to confirm deletion of list #60 -Dave 10.18
     this.props.deleteList(this.props.list.id)
   }
 
   toggleEditModeDisplay = () => {
-    this.setState(prevState => ({
+    this.setState((prevState, props) => ({
       isEditModeDisplayed: !prevState.isEditModeDisplayed,
+      listName: props.list.name,
     }))
   }
 
-  renameList = () => {
-    if (this.state.listName.trim()) {
-      this.props.renameList(this.props.list.id, this.state.listName.trim())
-      this.toggleEditModeDisplay()
+  onBlur = () => {
+    if (this.listName && this.listName !== this.props.list.name) {
+      this.props.renameList(this.props.list.id, this.listName)
     }
+
+    this.toggleEditModeDisplay()
   }
 
-  onChangeName = (listName) => {
+  changeName = (listName) => {
     this.setState({ listName })
   }
 
@@ -49,15 +55,15 @@ class ButtonMenu extends Component {
           this.state.isEditModeDisplayed
             ? (
               <TextInput
-                onBlur={this.renameList}
-                onChangeText={this.onChangeName}
+                onBlur={this.onBlur}
+                onChangeText={this.changeName}
                 value={this.state.listName}
                 autoFocus={true}
               />
             )
             : (
               <Text style={style.mainTitle} onPress={this.toggleEditModeDisplay}>
-                { this.state.listName }
+                { this.props.list.name }
               </Text>
             )
         }
