@@ -1,9 +1,15 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
+  textInputWrapper: {
+    height: 40,
+    width: 100,
+  },
   textInput: {
-    height:40,
-    minWidth: 50,
+    position: 'absolute',
+    height: '100%',
+    minWidth: 1000,
+    paddingLeft: 4,
   },
   addButton: {
     height: 40,

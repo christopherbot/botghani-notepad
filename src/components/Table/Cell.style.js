@@ -10,12 +10,12 @@ export default StyleSheet.create({
   headerCell: {
     padding: 4,
     backgroundColor: '#C5C5C5',
-    minWidth: 45,
     height: 33,
+    maxWidth: 100,
   },
   dataCell: {
     padding: 4,
-    minWidth: 45,
     height: 33,
+    maxWidth: 100,
   },
 })
