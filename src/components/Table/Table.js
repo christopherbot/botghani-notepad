@@ -60,13 +60,15 @@ class FirstColumn extends PureComponent {
         { this.props.cells.map(cell => <Cell key={cell.id} listId={this.props.listId} cell={cell} />) }
         {
           this.state.isInputDisplayed &&
-            <TextInput
-              style={columnStyle.textInput}
-              placeholder="Row name..."
-              autoFocus={true}
-              onChangeText={this.onChangeText}
-              onBlur={this.onBlur}
-              value={this.state.rowName} />
+            <View style={[columnStyle.textInputWrapper, ustyle.w0]}>
+              <TextInput
+                style={columnStyle.textInput}
+                placeholder="Row name..."
+                autoFocus={true}
+                onChangeText={this.onChangeText}
+                onBlur={this.onBlur}
+                value={this.state.rowName} />
+            </View>
         }
         <TouchableOpacity style={[ustyle.fcenter, columnStyle.addButton]} onPress={this.onPress}>
           <Text style={columnStyle.addButtonText}>+</Text>
@@ -157,13 +159,15 @@ class Table extends PureComponent {
         </ScrollView>
         {
           this.state.isInputDisplayed &&
-            <TextInput
-              style={columnStyle.textInput}
-              placeholder="Column name..."
-              autoFocus={true}
-              onChangeText={this.onChangeText}
-              onBlur={this.onBlur}
-              value={this.state.columnName} />
+            <View style={columnStyle.textInputWrapper}>
+              <TextInput
+                style={columnStyle.textInput}
+                placeholder="Column name..."
+                autoFocus={true}
+                onChangeText={this.onChangeText}
+                onBlur={this.onBlur}
+                value={this.state.columnName} />
+            </View>
         }
         <TouchableOpacity style={[ustyle.fcenter, columnStyle.addButton]} onPress={this.onPress}>
           <Text style={columnStyle.addButtonText}>+</Text>
