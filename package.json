@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start": "expo start",
+    "eject": "expo eject",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
     "test": "jest",
     "react-devtools": "react-devtools",
     "create-ui": "node scripts/component.js",
@@ -11,6 +14,7 @@
   },
   "dependencies": {
     "change-case": "^3.0.2",
+    "expo": "^30.0.1",
     "maxstache": "^1.0.7",
     "minimalist": "^1.0.0",
     "mkdirp": "^0.5.1",
