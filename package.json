@@ -10,7 +10,7 @@
     "test": "jest",
     "react-devtools": "react-devtools",
     "create-ui": "node scripts/component.js",
-    "rnd": "open 'rndebugger://set-debugger-loc?host=localhost&port=8081'"
+    "rnd": "open 'rndebugger://set-debugger-loc?host=localhost&port=19001'"
   },
   "dependencies": {
     "change-case": "^3.0.2",
