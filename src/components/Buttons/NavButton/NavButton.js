@@ -1,12 +1,14 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 import { TouchableOpacity, View } from 'react-native'
 import PropTypes from 'prop-types'
 
 import style from './NavButton.style'
+import { toggleNav } from '../../../state/actions'
 
-export default class NavButton extends PureComponent {
+class NavButton extends PureComponent {
   static propTypes = {
-    onPress: PropTypes.func.isRequired,
+    toggleNav: PropTypes.func.isRequired,
     isNavOpen: PropTypes.bool.isRequired,
   }
 
@@ -24,7 +26,7 @@ export default class NavButton extends PureComponent {
 
   render() {
     return (
-      <TouchableOpacity style={style.view} onPress={this.props.onPress}>
+      <TouchableOpacity style={style.view} onPress={this.props.toggleNav}>
         <View style={style.circle}>
           <View style={style.line1} />
           <View style={this.state.arrowTopStyle } />
@@ -34,3 +36,13 @@ export default class NavButton extends PureComponent {
     )
   }
 }
+
+const mapStateToProps = ({ globalUi }) => ({
+  isNavOpen: globalUi.isNavOpen,
+})
+
+const mapDispatchToProps = {
+  toggleNav,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavButton)

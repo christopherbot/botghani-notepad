@@ -2,11 +2,12 @@ import React, { PureComponent } from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { setActiveList } from '../../state/actions'
 
 import Nav from '../Nav/Nav'
 import ListHeader from '../ListHeader/ListHeader'
 import List from '../List/List'
-import { setActiveList } from '../../state/actions'
+import NavButton from '../Buttons/NavButton/NavButton'
 
 import style from './App.style'
 import ustyle from '../../utils/style'
@@ -14,6 +15,13 @@ import ustyle from '../../utils/style'
 class App extends PureComponent {
   static propTypes = {
     isNavOpen: PropTypes.bool.isRequired,
+  }
+
+  static navigationOptions = () => {
+    return {
+      headerTitle : <ListHeader />,
+      headerLeft : <NavButton />,
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -30,7 +38,6 @@ class App extends PureComponent {
         <View style={style.navWrapper}>
           { this.props.isNavOpen && <Nav /> }
         </View>
-        <ListHeader list={this.props.list} isNavOpen={this.props.isNavOpen} />
         { this.props.list && <List list={this.props.list} /> }
       </View>
     )
