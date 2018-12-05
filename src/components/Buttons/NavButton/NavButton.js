@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { TouchableOpacity, View } from 'react-native'
+import { withNavigation } from 'react-navigation'
 import PropTypes from 'prop-types'
 
 import style from './NavButton.style'
@@ -19,14 +20,14 @@ class NavButton extends PureComponent {
 
   static getDerivedStateFromProps(nextProps) {
     return {
-        arrowTopStyle: nextProps.isNavOpen ? style.lineUpLeft : style.lineUpRight ,
-        arrowBottomStyle: nextProps.isNavOpen ?  style.lineDownLeft : style.lineDownRight,
-      }
+      arrowTopStyle: nextProps.isNavOpen ? style.lineUpLeft : style.lineUpRight,
+      arrowBottomStyle: nextProps.isNavOpen ? style.lineDownLeft : style.lineDownRight,
     }
+  }
 
   render() {
     return (
-      <TouchableOpacity style={style.view} onPress={this.props.toggleNav}>
+      <TouchableOpacity style={style.view} onPress={this.props.navigation.toggleDrawer}>
         <View style={style.circle}>
           <View style={style.line1} />
           <View style={this.state.arrowTopStyle } />
@@ -45,4 +46,4 @@ const mapDispatchToProps = {
   toggleNav,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavButton)
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(NavButton))
