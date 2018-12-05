@@ -5,9 +5,7 @@ import PropTypes from 'prop-types'
 import { setActiveList } from '../../state/actions'
 
 import Nav from '../Nav/Nav'
-import ListHeader from '../ListHeader/ListHeader'
 import List from '../List/List'
-import NavButton from '../Buttons/NavButton/NavButton'
 
 import style from './App.style'
 import ustyle from '../../utils/style'
@@ -15,13 +13,6 @@ import ustyle from '../../utils/style'
 class App extends PureComponent {
   static propTypes = {
     isNavOpen: PropTypes.bool.isRequired,
-  }
-
-  static navigationOptions = () => {
-    return {
-      headerTitle : <ListHeader />,
-      headerLeft : <NavButton />,
-    }
   }
 
   componentDidUpdate(prevProps) {
