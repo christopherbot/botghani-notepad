@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { View, Button, TextInput } from 'react-native'
 import { connect } from 'react-redux'
+import { withNavigation } from 'react-navigation'
 import PropTypes from 'prop-types'
 import { createList, createExampleList } from '../../state/actions'
 
@@ -22,8 +23,14 @@ class CreateList extends PureComponent {
   createList = () => {
     if (this.state.listName.trim()) {
       this.props.createList(this.state.listName)
+      this.props.navigation.closeDrawer()
       this.setState({ listName: '' })
     }
+  }
+
+  createExampleList = () => {
+    this.props.createExampleList()
+    this.props.navigation.closeDrawer()
   }
 
   render() {
@@ -39,7 +46,7 @@ class CreateList extends PureComponent {
         <View style={style.buttonWrapper}>
           <Button title="Create List" color="yellow" onPress={this.createList} />
         </View>
-        <Button title="#" color="black" onPress={this.props.createExampleList} />
+        <Button title="#" color="black" onPress={this.createExampleList} />
       </View>
     )
   }
@@ -47,4 +54,4 @@ class CreateList extends PureComponent {
 
 const mapDispatchToProps = { createList, createExampleList }
 
-export default connect(undefined, mapDispatchToProps)(CreateList)
+export default connect(undefined, mapDispatchToProps)(withNavigation(CreateList))

@@ -23,12 +23,13 @@ class App extends PureComponent {
     }
   }
 
+  componentDidMount() {
+    this.props.navigation.openDrawer()
+  }
+
   render() {
     return (
       <View style={ustyle.f1}>
-        <View style={style.navWrapper}>
-          { this.props.isNavOpen && <Nav /> }
-        </View>
         { this.props.list && <List list={this.props.list} /> }
       </View>
     )
