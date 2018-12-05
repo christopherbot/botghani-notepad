@@ -19,8 +19,8 @@ class App extends PureComponent {
 
   static navigationOptions = () => {
     return {
-      headerTitle : <ListHeader />,
-      headerLeft : <NavButton />,
+      headerTitle: <ListHeader />,
+      // headerLeft: <NavButton />,
     }
   }
 

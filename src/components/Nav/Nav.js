@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, TouchableOpacity, Text, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
+import { createDrawerNavigator } from 'react-navigation'
 import { setActiveList } from '../../state/actions'
 
 import CreateList from '../CreateList/CreateList'
@@ -31,3 +32,9 @@ const mapStateToProps = ({ lists }) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav)
+
+export const DrawerStack = createDrawerNavigator({
+  screen1: { screen: Nav },
+}, {
+  contentComponent: () => <Nav />,
+})
