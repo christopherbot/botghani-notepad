@@ -8,6 +8,5 @@ export default StyleSheet.create({
     borderColor: 'black',
     borderStyle: 'solid',
     borderRightWidth: 1,
-    maxWidth: '75%',
   },
 })

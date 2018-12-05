@@ -7,7 +7,6 @@ import { setActiveList } from '../../state/actions'
 import Nav from '../Nav/Nav'
 import List from '../List/List'
 
-import style from './App.style'
 import ustyle from '../../utils/style'
 
 class App extends PureComponent {
@@ -23,12 +22,13 @@ class App extends PureComponent {
     }
   }
 
+  componentDidMount() {
+    this.props.navigation.openDrawer()
+  }
+
   render() {
     return (
       <View style={ustyle.f1}>
-        <View style={style.navWrapper}>
-          { this.props.isNavOpen && <Nav /> }
-        </View>
         { this.props.list && <List list={this.props.list} /> }
       </View>
     )
