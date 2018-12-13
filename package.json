@@ -7,13 +7,14 @@
     "eject": "expo eject",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "test": "jest",
+    "test": "node_modules/.bin/jest",
     "react-devtools": "react-devtools",
     "create-ui": "node scripts/component.js",
     "rnd": "open 'rndebugger://set-debugger-loc?host=localhost&port=19001'"
   },
   "dependencies": {
     "change-case": "^3.0.2",
+    "enzyme": "^3.7.0",
     "expo": "^30.0.1",
     "maxstache": "^1.0.7",
     "minimalist": "^1.0.0",
@@ -32,10 +33,11 @@
     "babel-jest": "22.4.3",
     "babel-preset-react-native": "4.0.0",
     "jest": "22.4.3",
+    "jest-expo": "^31.0.0",
     "react-devtools": "^3.2.1",
     "react-test-renderer": "16.3.1"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "jest-expo"
   }
 }
