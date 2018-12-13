@@ -11,8 +11,14 @@ import {
 } from '../actions'
 import generateList from '../../utils/generateList'
 import generateExampleList from '../../utils/generateExampleList'
-import generateRow from '../../utils/generateRow'
-import generateColumn from '../../utils/generateColumn'
+import { generateHeaderCell, generateCell } from '../../utils/cellGenerators'
+
+// A mapping of cell types to the keys in a list object
+const cellTypeMap = {
+  cell: 'cells',
+  row: 'rows',
+  column: 'columns',
+}
 
 const defaultState = []
 
@@ -55,19 +61,10 @@ export default handleActions({
   [createRow](state, { payload }) {
     return state.map((list) => {
       if (list.id === payload.listId) {
-        const newRow = generateRow(payload.rowName)
+        const newRow = generateHeaderCell(payload.rowName, 'row')
         const newCells = list.columns.reduce((cells, column) => {
           if (!column.isFirstColumn) {
-            cells.push({
-              id: uuidv4(),
-              rowId: newRow.id,
-              columnId: column.id,
-              /*
-               * Temporary value to visualize which action
-               * was responsible for creating this cell:
-               */
-              value: 'cellR',
-            })
+            cells.push(generateCell(newRow.id, column.id, 'cellR'))
           }
 
           return cells
@@ -87,17 +84,8 @@ export default handleActions({
   [createColumn](state, { payload }) {
     return state.map((list) => {
       if (list.id === payload.listId) {
-        const newColumn = generateColumn(payload.columnName)
-        const newCells = list.rows.map((row) => ({
-          id: uuidv4(),
-          rowId: row.id,
-          columnId: newColumn.id,
-          /*
-           * Temporary value to visualize which action
-           * was responsible for creating this cell:
-           */
-          value: 'cellC',
-        }))
+        const newColumn = generateHeaderCell(payload.columnName, 'column')
+        const newCells = list.rows.map(row => generateCell(row.id, newColumn.id, 'cellC'))
 
         return {
           ...list,
@@ -111,22 +99,34 @@ export default handleActions({
   },
 
   [updateCellValue](state, { payload }) {
+    const { listId, cellId, cellType, newValue } = payload
+
     return state.map((list) => {
-      if (list.id === payload.listId) {
-        const updatedCells = list.cells.map((cell) => {
-          if (cell.id === payload.cellId) {
+      const listDataType = cellTypeMap[cellType]
+      const data = list[listDataType]
+
+      let changeListName = false
+
+      if (list.id === listId) {
+        const updatedData = data.map((datum) => {
+          if (datum.id === cellId) {
+            // Ensure that the list name property gets
+            // updated if the cell is the first column.
+            changeListName = datum.isFirstColumn
+
             return {
-              ...cell,
-              value: payload.newValue,
+              ...datum,
+              value: newValue,
             }
           }
 
-          return cell
+          return datum
         })
 
         return {
           ...list,
-          cells: updatedCells,
+          [listDataType]: updatedData,
+          name: changeListName ? newValue : list.name,
         }
       }
 

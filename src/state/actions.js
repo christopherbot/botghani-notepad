@@ -12,7 +12,10 @@ export const createRow = createAction('CREATE_ROW', (listId, rowName) => ({ list
 
 export const createColumn = createAction('CREATE_COLUMN', (listId, columnName) => ({ listId, columnName }))
 
-export const updateCellValue = createAction('UPDATE_CELL_VALUE', (listId, cellId, newValue) => ({ listId, cellId, newValue }))
+export const updateCellValue = createAction(
+  'UPDATE_CELL_VALUE',
+  (listId, cellId, cellType, newValue) => ({ listId, cellId, cellType, newValue }),
+)
 
 export const toggleNav = createAction('TOGGLE_NAV')
 
