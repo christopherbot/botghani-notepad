@@ -14,6 +14,4 @@ export const createColumn = createAction('CREATE_COLUMN', (listId, columnName) =
 
 export const updateCellValue = createAction('UPDATE_CELL_VALUE', (listId, cellId, newValue) => ({ listId, cellId, newValue }))
 
-export const toggleNav = createAction('TOGGLE_NAV')
-
 export const setActiveList = createAction('SET_ACTIVE_LIST', listId => ({ listId }))

@@ -51,30 +51,4 @@ export default StyleSheet.create({
       { rotate: '-45deg'},
     ],
   },
-  lineUpLeft: {
-    width: 10,
-    height: 2,
-    backgroundColor: 'black',
-    position: 'absolute',
-    top: '50%',
-    left: 7.5,
-    transform: [
-      { translateY: -4 },
-      { translateX: -3 },
-      { rotate: '-45deg'},
-    ],
-  },
-  lineDownLeft: {
-    width: 10,
-    height: 2,
-    backgroundColor: 'black',
-    position: 'absolute',
-    top: '50%',
-    left: 7.5,
-    transform: [
-      { translateY: 2 },
-      { translateX: -3 },
-      { rotate: '45deg'},
-    ],
-  },
 })

@@ -63,6 +63,8 @@ class Cell extends PureComponent {
   }
 }
 
-const mapDispatchToProps = { updateCellValue }
+const mapDispatchToProps = { 
+  updateCellValue,
+}
 
 export default connect(undefined, mapDispatchToProps)(Cell)
