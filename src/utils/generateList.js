@@ -1,14 +1,13 @@
 import uuidv4 from 'uuid/v4'
+import { generateHeaderCell } from './cellGenerators'
 
 const generateList = (name) => ({
   id: uuidv4(),
   name,
   rows: [],
   columns: [{
-    id: uuidv4(),
+    ...generateHeaderCell(name, 'column'),
     isFirstColumn: true,
-    value: name,
-    isHeader: true,
   }],
   cells: [],
 })
