@@ -4,15 +4,15 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { setActiveList } from '../../state/actions'
 
-import Nav from '../Nav/Nav'
 import List from '../List/List'
 
-import style from './App.style'
 import ustyle from '../../utils/style'
 
 class App extends PureComponent {
   static propTypes = {
-    isNavOpen: PropTypes.bool.isRequired,
+    lists: PropTypes.array.isRequired,
+    list: PropTypes.object,
+    setActiveList: PropTypes.func.isRequired,
   }
 
   componentDidUpdate(prevProps) {
@@ -37,7 +37,6 @@ class App extends PureComponent {
 }
 
 const mapStateToProps = ({ lists, globalUi }) => ({
-  isNavOpen: globalUi.isNavOpen,
   lists,
   list: lists.find(list => list.id === globalUi.activeListId),
 })

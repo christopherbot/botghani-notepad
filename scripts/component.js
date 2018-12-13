@@ -37,7 +37,7 @@ fs.stat(dir, (err, stat) => {
   } else {
     console.log(`Path at ${path.relative(cwd, dir)} already exists! Try another name`)
   }
-});
+})
 
 function write() {
   mkdirp(dir, err => {
@@ -59,7 +59,7 @@ function template(input, output) {
   const data = {
     pascal: changeCase.pascal(name),
     param: changeCase.paramCase(name),
-  };
+  }
   return new Promise((resolve, reject) => {
     fs.readFile(input, 'utf8', (err, str) => {
       if (err) return reject(err)
