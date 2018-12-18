@@ -1,8 +1,9 @@
 import { handleActions } from 'redux-actions'
-import { setActiveList } from '../actions'
+import { setActiveList, setIsModalOpen } from '../actions'
 
 const defaultState = {
   activeListId: null,
+  isModalOpen: false,
 }
 
 export default handleActions({
@@ -10,6 +11,12 @@ export default handleActions({
     return {
       ...state,
       activeListId: payload.listId,
+    }
+  },
+  [setIsModalOpen](state, { payload }) {
+    return {
+      ...state,
+      isModalOpen: payload.isOpen,
     }
   },
 }, defaultState)

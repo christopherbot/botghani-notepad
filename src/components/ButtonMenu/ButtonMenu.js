@@ -2,17 +2,17 @@ import React, { Component } from 'react'
 import { Button, View, TextInput, Text } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { deleteList, renameList } from '../../state/actions'
+import { setIsModalOpen, renameList } from '../../state/actions'
 
-import style from './ButtonMenu.style.js'
+import style from './ButtonMenu.style'
 import gStyle from '../../styles/globalStyle'
 import colors from '../../styles/colors'
 
 class ButtonMenu extends Component {
   static propTypes = {
     list: PropTypes.object.isRequired,
-    deleteList: PropTypes.func.isRequired,
     renameList: PropTypes.func.isRequired,
+    openModal: PropTypes.func.isRequired,
   }
 
   state = {
@@ -22,11 +22,6 @@ class ButtonMenu extends Component {
 
   get listName() {
     return this.state.listName.trim()
-  }
-
-  deleteList = () => {
-    //todo create modal to confirm deletion of list #60 -Dave 10.18
-    this.props.deleteList(this.props.list.id)
   }
 
   toggleEditModeDisplay = () => {
@@ -51,7 +46,7 @@ class ButtonMenu extends Component {
   render() {
     return (
       <View style={[gStyle.fr1, gStyle.fcenter]}>
-        <Button title="X" color={colors.deleteButton} onPress={this.deleteList} />
+        <Button title="X" color={colors.deleteButton} onPress={this.props.openModal} />
         {
           this.state.isEditModeDisplayed
             ? (
@@ -73,6 +68,9 @@ class ButtonMenu extends Component {
   }
 }
 
-const mapDispatchToProps = { deleteList, renameList }
+const mapDispatchToProps = { 
+  renameList,
+  openModal: setIsModalOpen.bind(null, true)
+}
 
-export default connect(undefined, mapDispatchToProps)(ButtonMenu)
+export default connect(null, mapDispatchToProps)(ButtonMenu)

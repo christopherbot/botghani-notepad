@@ -41,3 +41,5 @@ export const updateCellValue = createAction(
   }))
 
 export const setActiveList = createAction('SET_ACTIVE_LIST', listId => ({ listId }))
+
+export const setIsModalOpen = createAction('SET_IS_MODAL_OPEN', isOpen => ({ isOpen }))
