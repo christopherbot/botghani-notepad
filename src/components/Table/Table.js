@@ -8,7 +8,7 @@ import { createRow, createColumn } from '../../state/actions'
 import Cell from './Cell'
 
 import columnStyle from './Column.style'
-import ustyle from '../../utils/style'
+import gStyle from '../../styles/globalStyle'
 
 class FirstColumn extends PureComponent {
   static propTypes = {
@@ -56,11 +56,11 @@ class FirstColumn extends PureComponent {
 
   render() {
     return (
-      <View style={ustyle.fc}>
+      <View style={gStyle.fc}>
         { this.props.cells.map(cell => <Cell key={cell.id} listId={this.props.listId} cell={cell} />) }
         {
           this.state.isInputDisplayed &&
-            <View style={[columnStyle.textInputWrapper, ustyle.w0]}>
+            <View style={[columnStyle.textInputWrapper, gStyle.w0]}>
               <TextInput
                 style={columnStyle.textInput}
                 placeholder="Row name..."
@@ -70,7 +70,7 @@ class FirstColumn extends PureComponent {
                 value={this.state.rowName} />
             </View>
         }
-        <TouchableOpacity style={[ustyle.fcenter, columnStyle.addButton]} onPress={this.onPress}>
+        <TouchableOpacity style={[gStyle.fcenter, columnStyle.addButton]} onPress={this.onPress}>
           <Text style={columnStyle.addButtonText}>+</Text>
         </TouchableOpacity>
       </View>
@@ -79,7 +79,7 @@ class FirstColumn extends PureComponent {
 }
 
 const Column = ({ cells, listId }) =>
-  <View style={ustyle.fc}>
+  <View style={gStyle.fc}>
     { cells.map(cell => <Cell key={cell.id} listId={listId} cell={cell} />) }
   </View>
 
@@ -129,12 +129,12 @@ class Table extends PureComponent {
   render() {
     const { list } = this.props
     return (
-      <View style={ustyle.fr1}>
+      <View style={gStyle.fr1}>
         {
           list.columns.map((column) => {
             if (column.isFirstColumn) {
               return (
-                <View key={column.id} style={ustyle.autoWidth}>
+                <View key={column.id} style={gStyle.autoWidth}>
                   <FirstColumn
                     listId={list.id}
                     cells={generateFirstColumn(column, list.rows)}
@@ -146,7 +146,7 @@ class Table extends PureComponent {
             return null
           })
         }
-        <ScrollView style={[ustyle.fr, ustyle.fg0]} horizontal>
+        <ScrollView style={[gStyle.fr, gStyle.fg0]} horizontal>
           {
             list.columns.map((column) => {
               if (column.isFirstColumn) {
@@ -169,7 +169,7 @@ class Table extends PureComponent {
                 value={this.state.columnName} />
             </View>
         }
-        <TouchableOpacity style={[ustyle.fcenter, columnStyle.addButton]} onPress={this.onPress}>
+        <TouchableOpacity style={[gStyle.fcenter, columnStyle.addButton]} onPress={this.onPress}>
           <Text style={columnStyle.addButtonText}>+</Text>
         </TouchableOpacity>
       </View>

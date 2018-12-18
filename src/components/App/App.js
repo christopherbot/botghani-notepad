@@ -6,7 +6,7 @@ import { setActiveList } from '../../state/actions'
 
 import List from '../List/List'
 
-import ustyle from '../../utils/style'
+import gStyle from '../../styles/globalStyle'
 
 class App extends PureComponent {
   static propTypes = {
@@ -29,7 +29,7 @@ class App extends PureComponent {
 
   render() {
     return (
-      <View style={ustyle.f1}>
+      <View style={gStyle.f1}>
         { this.props.list && <List list={this.props.list} /> }
       </View>
     )

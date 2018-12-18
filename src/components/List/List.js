@@ -5,10 +5,10 @@ import PropTypes from 'prop-types'
 import Table from '../Table/Table'
 
 import style from './List.style'
-import ustyle from '../../utils/style'
+import gStyle from '../../styles/globalStyle'
 
  const List = ({ list }) =>
-  <View style={[ustyle.fc1, style.list]}>
+  <View style={[gStyle.fc1, style.list]}>
     <Table list={list} />
   </View>
 

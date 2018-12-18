@@ -1,15 +1,16 @@
 import { StyleSheet } from 'react-native'
+import colors from '../../styles/colors'
 
 export default StyleSheet.create({
   cell: {
     borderRightWidth: 0.25,
     borderBottomWidth: 0.25,
-    borderColor: 'black',
+    borderColor: colors.cellBorder,
     height: 33,
   },
   headerCell: {
     padding: 4,
-    backgroundColor: '#C5C5C5',
+    backgroundColor: colors.cellBackground,
     height: 33,
     maxWidth: 100,
   },

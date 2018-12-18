@@ -7,7 +7,7 @@ import { withNavigation } from 'react-navigation'
 import CreateList from '../CreateList/CreateList'
 
 import style from './Nav.style.js'
-import ustyle from '../../utils/style'
+import gStyle from '../../styles/globalStyle'
 
 class Nav extends PureComponent {
   setActiveList = (listId) => {
@@ -19,7 +19,7 @@ class Nav extends PureComponent {
     return (
       <View style={style.nav}>
         <CreateList />
-        <ScrollView style={ustyle.f1}>
+        <ScrollView style={gStyle.f1}>
           {
             this.props.lists.map(list =>
               <TouchableOpacity key={list.id} onPress={() => this.setActiveList(list.id)}>
