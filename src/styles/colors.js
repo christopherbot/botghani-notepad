@@ -7,4 +7,5 @@ export default {
   cellBackground: '#c5c5c5',
   cellBorder: '#000',
   deleteButton: '#f71b1b',
+  modalBackground: "#efe",
 }
