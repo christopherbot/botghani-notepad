@@ -1,5 +1,4 @@
 import { handleActions } from 'redux-actions'
-import uuidv4 from 'uuid/v4'
 import {
   createList,
   createExampleList,
@@ -24,11 +23,11 @@ const defaultState = []
 
 export default handleActions({
   [createList](state, { payload }) {
-    return [...state, generateList(payload.name)]
+    return [...state, generateList(payload.name, payload.createdAt)]
   },
 
   [createExampleList](state, { payload }) {
-    return [...state, generateExampleList()]
+    return [...state, generateExampleList(payload.createdAt)]
   },
 
   [deleteList](state, { payload }) {
@@ -50,7 +49,8 @@ export default handleActions({
             }
 
             return column
-          })
+          }),
+          updatedAt: payload.updatedAt,
         }
       }
 
@@ -73,7 +73,8 @@ export default handleActions({
         return {
           ...list,
           rows: [...list.rows, newRow],
-          cells: [...list.cells, ...newCells]
+          cells: [...list.cells, ...newCells],
+          updatedAt: payload.updatedAt,
         }
       }
 
@@ -90,7 +91,8 @@ export default handleActions({
         return {
           ...list,
           columns: [...list.columns, newColumn],
-          cells: [...list.cells, ...newCells]
+          cells: [...list.cells, ...newCells],
+          updatedAt: payload.updatedAt,
         }
       }
 
@@ -127,6 +129,7 @@ export default handleActions({
           ...list,
           [listDataType]: updatedData,
           name: changeListName ? newValue : list.name,
+          updatedAt: payload.updatedAt,
         }
       }
 

@@ -29,8 +29,10 @@ class Cell extends PureComponent {
   }
 
   updateCellValue = () => {
-    this.props.updateCellValue(this.props.listId, this.props.cell.id, this.props.cell.type, this.state.newCellValue)
     this.setState({ isBeingEdited: false })
+    if (this.state.newCellValue !== this.props.cell.value) {
+      this.props.updateCellValue(this.props.listId, this.props.cell.id, this.props.cell.type, this.state.newCellValue)
+    }
   }
 
   get cellStyle() {
