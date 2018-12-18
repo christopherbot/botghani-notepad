@@ -6,7 +6,8 @@ import PropTypes from 'prop-types'
 import { createList, createExampleList } from '../../state/actions'
 
 import style from './CreateList.style'
-import ustyle from '../../utils/style'
+import gStyle from '../../styles/globalStyle'
+import colors from '../../styles/colors'
 
 class CreateList extends PureComponent {
   static propTypes = {
@@ -35,18 +36,18 @@ class CreateList extends PureComponent {
 
   render() {
     return (
-      <View style={ustyle.fr}>
+      <View style={gStyle.fr}>
         <TextInput
           style={style.textInput}
           placeholder="Enter a list name"
-          placeholderTextColor="black"
-          selectionColor="yellow"
+          placeholderTextColor={colors.navText}
+          selectionColor={colors.navAccent}
           onChangeText={this.onChangeText}
           value={this.state.listName} />
         <View style={style.buttonWrapper}>
-          <Button title="Create List" color="yellow" onPress={this.createList} />
+          <Button title="Create List" color={colors.navAccent} onPress={this.createList} />
         </View>
-        <Button title="#" color="black" onPress={this.createExampleList} />
+        <Button title="#" color={colors.exampleListButton} onPress={this.createExampleList} />
       </View>
     )
   }

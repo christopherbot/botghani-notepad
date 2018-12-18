@@ -5,10 +5,10 @@ import PropTypes from 'prop-types'
 
 import ButtonMenu from '../ButtonMenu/ButtonMenu'
 
-import ustyle from '../../utils/style'
+import gStyle from '../../styles/globalStyle'
 
 const ListHeader = ({ list }) =>
-  <View style={ustyle.fr}>
+  <View style={gStyle.fr}>
     { list && <ButtonMenu list={list}/> }
   </View>
 

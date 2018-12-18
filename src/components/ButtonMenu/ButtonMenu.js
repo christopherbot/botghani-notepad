@@ -5,7 +5,8 @@ import PropTypes from 'prop-types'
 import { deleteList, renameList } from '../../state/actions'
 
 import style from './ButtonMenu.style.js'
-import ustyle from '../../utils/style'
+import gStyle from '../../styles/globalStyle'
+import colors from '../../styles/colors'
 
 class ButtonMenu extends Component {
   static propTypes = {
@@ -49,8 +50,8 @@ class ButtonMenu extends Component {
 
   render() {
     return (
-      <View style={[ustyle.fr1, ustyle.fcenter]}>
-        <Button title="X" color="#f71b1b" onPress={this.deleteList} />
+      <View style={[gStyle.fr1, gStyle.fcenter]}>
+        <Button title="X" color={colors.deleteButton} onPress={this.deleteList} />
         {
           this.state.isEditModeDisplayed
             ? (

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import colors from '../../styles/colors'
 
 export default StyleSheet.create({
   textInput: {
@@ -7,7 +8,7 @@ export default StyleSheet.create({
   },
   list: {
     borderTopWidth: 1,
-    borderColor: 'black',
-    marginBottom: 30
+    borderColor: colors.cellBorder,
+    marginBottom: 30,
   },
 })
