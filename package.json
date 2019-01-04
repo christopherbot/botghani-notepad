@@ -1,7 +1,20 @@
 {
-  "name": "botghaniNotepad",
+  "name": "botghani-notepad",
   "version": "0.0.1",
+  "description": "A simple, elegant, and generation shaping 2D list mobile application",
   "private": true,
+  "contributors": [
+    {
+      "name": "Chris Bot",
+      "email": "chrisadambot@gmail.com",
+      "url" : "https://github.com/christopherbot"
+    },
+    {
+      "name": "Dave Dehghani",
+      "email": "davedehghani@gmail.com",
+      "url" : "https://github.com/deefourple"
+    }
+  ],
   "scripts": {
     "start": "expo start",
     "eject": "expo eject",
