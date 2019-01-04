@@ -1,11 +1,11 @@
 export default {
   debug: '#ffd700',
-  navBackground: '#00b32c',
-  navText: '#fff',
-  navAccent: '#ff0012',
+  navBackground: '#6fe2f2',
+  navText: '#006d7e',
+  navAccent: '#492a86',
   exampleListButton: '#000',
   cellBackground: '#c5c5c5',
   cellBorder: '#000',
   deleteButton: '#f71b1b',
-  modalBackground: "#efe",
+  modalBackground: '#9ff6fd',
 }
