@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 
 import CreateList from '../CreateList/CreateList'
 
-import style from './Nav.style.js'
+import style from './Nav.style'
 import gStyle from '../../styles/globalStyle'
 
 class Nav extends PureComponent {

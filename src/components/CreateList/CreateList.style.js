@@ -8,6 +8,10 @@ export default StyleSheet.create({
     color: colors.navText,
   },
   buttonWrapper: {
-    width: '50%',
+    width: '45%',
+  },
+  exampleListButton: {
+    height: 50,
+    marginLeft: 5,
   },
 })

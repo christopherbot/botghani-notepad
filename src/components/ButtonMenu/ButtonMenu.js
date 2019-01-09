@@ -46,7 +46,13 @@ class ButtonMenu extends Component {
   render() {
     return (
       <View style={[gStyle.fr1, gStyle.fcenter]}>
-        <Button title="X" color={colors.deleteButton} onPress={this.props.openModal} />
+        <View style={style.deleteButton}>
+          <Button
+            title="X"
+            color={colors.deleteButton}
+            onPress={this.props.openModal}
+          />
+        </View>
         {
           this.state.isEditModeDisplayed
             ? (
