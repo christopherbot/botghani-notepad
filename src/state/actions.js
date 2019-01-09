@@ -38,7 +38,8 @@ export const updateCellValue = createAction(
     cellType,
     newValue,
     updatedAt: new Date().toISOString(),
-  }))
+  }),
+)
 
 export const setActiveList = createAction('SET_ACTIVE_LIST', listId => ({ listId }))
 

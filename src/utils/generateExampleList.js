@@ -1,6 +1,6 @@
 import uuidv4 from 'uuid/v4'
 
-const generateList = (createdAt) => ({
+export default createdAt => ({
   id: uuidv4(),
   name: 'people',
   rows: [{
@@ -93,5 +93,3 @@ const generateList = (createdAt) => ({
   createdAt,
   updatedAt: createdAt,
 })
-
-export default generateList
