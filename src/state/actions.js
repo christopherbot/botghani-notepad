@@ -1,46 +1,27 @@
 import { createAction } from 'redux-actions'
+import {
+  createPayload,
+  createPayloadWithCreatedDate,
+  createPayloadWithUpdatedDate,
+} from '../utils/reduxUtils'
 
-export const createList = createAction('CREATE_LIST', name => ({ 
-  name,
-  createdAt: new Date().toISOString(),
-}))
+export const createList = createAction('CREATE_LIST', createPayloadWithCreatedDate('name'))
 
-export const createExampleList = createAction('CREATE_EXAMPLE_LIST', name => ({ 
-  name,
-  createdAt: new Date().toISOString(),
-}))
+export const createExampleList = createAction('CREATE_EXAMPLE_LIST', createPayloadWithCreatedDate('name'))
 
-export const deleteList = createAction('DELETE_LIST', listId => ({ listId }))
+export const deleteList = createAction('DELETE_LIST', createPayload('listId'))
 
-export const renameList = createAction('RENAME_LIST', (listId, newName) => ({ 
-  listId,
-  newName,
-  updatedAt: new Date().toISOString(),
-}))
+export const renameList = createAction('RENAME_LIST', createPayloadWithUpdatedDate('listId', 'newName'))
 
-export const createRow = createAction('CREATE_ROW', (listId, rowName) => ({ 
-  listId,
-  rowName,
-  updatedAt: new Date().toISOString(),
-}))
+export const createRow = createAction('CREATE_ROW', createPayloadWithUpdatedDate('listId', 'rowName'))
 
-export const createColumn = createAction('CREATE_COLUMN', (listId, columnName) => ({ 
-  listId,
-  columnName,
-  updatedAt: new Date().toISOString(),
-}))
+export const createColumn = createAction('CREATE_COLUMN', createPayloadWithUpdatedDate('listId', 'columnName'))
 
 export const updateCellValue = createAction(
   'UPDATE_CELL_VALUE',
-  (listId, cellId, cellType, newValue) => ({ 
-    listId,
-    cellId,
-    cellType,
-    newValue,
-    updatedAt: new Date().toISOString(),
-  }),
+  createPayloadWithUpdatedDate('listId', 'cellId', 'cellType', 'newValue'),
 )
 
-export const setActiveList = createAction('SET_ACTIVE_LIST', listId => ({ listId }))
+export const setActiveList = createAction('SET_ACTIVE_LIST', createPayload('listId'))
 
-export const setIsModalOpen = createAction('SET_IS_MODAL_OPEN', isOpen => ({ isOpen }))
+export const setIsModalOpen = createAction('SET_IS_MODAL_OPEN', createPayload('isOpen'))
