@@ -5,7 +5,7 @@ import {
 } from 'react-native'
 import PropTypes from 'prop-types'
 
-import style from './{{pascal}}.style.js'
+import style from './{{pascal}}.style'
 
 export default class {{pascal}} extends PureComponent {
   static propTypes = {}

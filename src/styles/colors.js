@@ -1,5 +1,6 @@
 export default {
   debug: '#ffd700',
+  splashBackground: '#f2c16f',
   navBackground: '#6fe2f2',
   navText: '#006d7e',
   navAccent: '#492a86',

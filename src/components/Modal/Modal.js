@@ -7,7 +7,7 @@ import {
 } from 'react-native'
 import PropTypes from 'prop-types'
 
-import style from './Modal.style.js'
+import style from './Modal.style'
 import gStyle from '../../styles/globalStyle'
 
 export default Modal = ({ closeModal, deleteList }) =>

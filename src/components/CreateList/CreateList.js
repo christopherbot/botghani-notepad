@@ -43,11 +43,18 @@ class CreateList extends PureComponent {
           placeholderTextColor={colors.navText}
           selectionColor={colors.navAccent}
           onChangeText={this.onChangeText}
-          value={this.state.listName} />
+          value={this.state.listName}
+        />
         <View style={style.buttonWrapper}>
           <Button title="Create List" color={colors.navAccent} onPress={this.createList} />
         </View>
-        <Button title="#" color={colors.exampleListButton} onPress={this.createExampleList} />
+        <View style={style.exampleListButton}>
+          <Button
+            title="#"
+            color={colors.exampleListButton}
+            onPress={this.createExampleList}
+          />
+        </View>
       </View>
     )
   }
