@@ -99,7 +99,8 @@ The format for conditionally rendering markup and React components depends on it
       prop2={value2}
       prop3={value3}
       prop4={value4}
-      prop5={value5} />
+      prop5={value5}
+    />
 }
 ```
 
@@ -121,7 +122,8 @@ The format for conditionally rendering markup and React components depends on it
         prop2={value2}
         prop3={value3}
         prop4={value4}
-        prop5={value5} />
+        prop5={value5}
+      />
     )
     : (
       <OtherComponent>
