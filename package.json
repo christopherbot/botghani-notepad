@@ -7,12 +7,12 @@
     {
       "name": "Chris Bot",
       "email": "chrisadambot@gmail.com",
-      "url" : "https://github.com/christopherbot"
+      "url": "https://github.com/christopherbot"
     },
     {
       "name": "Dave Dehghani",
       "email": "davedehghani@gmail.com",
-      "url" : "https://github.com/deefourple"
+      "url": "https://github.com/deefourple"
     }
   ],
   "scripts": {
@@ -46,6 +46,7 @@
     "babel-preset-react-native": "4.0.0",
     "jest": "22.4.3",
     "react-devtools": "^3.2.1",
+    "react-native-dotenv": "^0.2.0",
     "react-test-renderer": "16.3.1"
   },
   "jest": {

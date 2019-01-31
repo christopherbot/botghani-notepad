@@ -6,6 +6,7 @@ A React-native list-creating app.
 
 1. [Development](#development)
    * [Setup](#setup)
+   * [Env Variables](#env-variables)
    * [Running](#running)
    * [Development Tools](#development-tools)
 1. [JS Style Guide](#js-style-guide)
@@ -27,6 +28,18 @@ Then install the app dependencies:
     yarn install
 
 **[Back to top](#table-of-contents)**
+
+### Env Variables
+
+Create a file named `.env` in the root directory with the following format:
+
+```
+PERSIST_STATE=false
+```
+
+Flags:
+
+`PERSIST_STATE`: `<bool>` Indicates whether the app state should be persisted across closing and restarting the app
 
 ### Running
 
