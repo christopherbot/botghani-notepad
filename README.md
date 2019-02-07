@@ -41,6 +41,11 @@ Flags:
 
 `PERSIST_STATE`: `<bool>` Indicates whether the app state should be persisted across closing and restarting the app
 
+**IMPORTANT NOTE:**
+
+If you change the value of a variable in `.env`, you must make a change to `env.js` in order for the new value to be applied.
+See: https://github.com/christopherbot/botghani-notepad/issues/168
+
 ### Running
 
 To run the application on an iphone simulator (like Xcode):
