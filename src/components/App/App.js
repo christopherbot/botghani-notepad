@@ -38,6 +38,7 @@ class App extends PureComponent {
   deleteList = () => {
     this.props.deleteList(this.props.list.id)
     this.props.closeModal()
+    this.props.navigation.openDrawer()
   }
 
   render() {
