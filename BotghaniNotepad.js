@@ -1,20 +1,15 @@
 import React, { PureComponent } from 'react'
 import { Provider } from 'react-redux'
 import { createStackNavigator, createDrawerNavigator, createAppContainer } from 'react-navigation'
-import { PERSIST_STATE } from 'react-native-dotenv'
 import { PersistGate } from 'redux-persist/integration/react'
+import store, { persister } from './src/state/store'
+import env from './env'
 
 import App from './src/components/App/App'
 import Splash from './src/components/Splash/Splash'
 import ListHeader from './src/components/ListHeader/ListHeader'
 import NavButton from './src/components/Buttons/NavButton/NavButton'
 import Nav from './src/components/Nav/Nav'
-
-import store, { persister } from './src/state/store'
-
-const persistState = PERSIST_STATE === 'true'
-
-console.log('Persisting state:', persistState)
 
 const StackNavigator = createStackNavigator({
   Splash: {
@@ -62,7 +57,7 @@ class BotghaniNotepad extends PureComponent {
   render() {
     return (
       <Provider store={store}>
-        {this.renderAppContainer(persistState)}
+        {this.renderAppContainer(env.persistState)}
       </Provider>
     )
   }
