@@ -25,3 +25,5 @@ export const updateCellValue = createAction(
 export const setActiveList = createAction('SET_ACTIVE_LIST', createPayload('listId'))
 
 export const setIsModalOpen = createAction('SET_IS_MODAL_OPEN', createPayload('isOpen'))
+
+export const setFavouriteList = createAction('SET_FAVOURITE_LIST', createPayloadWithUpdatedDate('listId'))
