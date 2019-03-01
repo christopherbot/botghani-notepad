@@ -93,11 +93,11 @@ Import statements should be structured into the following groupings:
 E.g.
 ```javascript
 import Module from 'package'
-import { myFunction } from '../path/to/file'
+import { myFunction } from 'path/to/file'
 
-import Component from '../path/to/component'
+import Component from 'path/to/component'
 
-import style from '../path/to/style'
+import style from 'path/to/style'
 ```
 
 **[Back to top](#table-of-contents)**

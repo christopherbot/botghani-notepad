@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { Button, View, TextInput, Text } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { setIsModalOpen, renameList } from '../../state/actions'
+import { setIsModalOpen, renameList } from 'state/actions'
 
+import gStyle from 'styles/globalStyle'
+import colors from 'styles/colors'
 import style from './ButtonMenu.style'
-import gStyle from '../../styles/globalStyle'
-import colors from '../../styles/colors'
 
 class ButtonMenu extends Component {
   static propTypes = {

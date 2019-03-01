@@ -6,12 +6,12 @@ import {
   setActiveList, 
   deleteList,
   setIsModalOpen,
-} from '../../state/actions'
+} from 'state/actions'
 
-import List from '../List/List'
+import List from 'components/List/List'
+import Modal from 'components/Modal/Modal'
 
-import gStyle from '../../styles/globalStyle'
-import Modal from '../Modal/Modal'
+import gStyle from 'styles/globalStyle'
 
 class App extends PureComponent {
   static propTypes = {
