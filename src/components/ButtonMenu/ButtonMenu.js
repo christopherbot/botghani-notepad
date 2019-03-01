@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button, View, TextInput, Text } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { setIsModalOpen, renameList } from 'state/actions'
+import { setIsModalOpen, renameList, setFavouriteList } from 'state/actions'
 
 import gStyle from 'styles/globalStyle'
 import colors from 'styles/colors'
@@ -13,6 +13,7 @@ class ButtonMenu extends Component {
     list: PropTypes.object.isRequired,
     renameList: PropTypes.func.isRequired,
     openModal: PropTypes.func.isRequired,
+    setFavouriteList: PropTypes.func.isRequired,
   }
 
   state = {
@@ -43,7 +44,15 @@ class ButtonMenu extends Component {
     this.setState({ listName })
   }
 
-  render() {
+  setFavouriteList = () => {
+    if (this.props.favouriteListId === this.props.list.id) {
+      this.props.setFavouriteList(null)
+    } else {
+      this.props.setFavouriteList(this.props.list.id)
+    }
+  }
+
+  render() {    
     return (
       <View style={[gStyle.fr1, gStyle.fcenter]}>
         <View style={style.deleteButton}>
@@ -69,14 +78,26 @@ class ButtonMenu extends Component {
               </Text>
             )
         }
+        <View>
+          <Button
+            title={this.props.favouriteListId === this.props.list.id ? "💛" : "♡"}
+            color={colors.cellBackground}
+            onPress={this.setFavouriteList}
+          />
+        </View>
       </View>
     )
   }
 }
 
+const mapStateToProps = ({ globalUi }) => ({
+  favouriteListId: globalUi.favouriteListId,
+})
+
 const mapDispatchToProps = { 
   renameList,
-  openModal: setIsModalOpen.bind(null, true)
+  openModal: setIsModalOpen.bind(null, true),
+  setFavouriteList,
 }
 
-export default connect(null, mapDispatchToProps)(ButtonMenu)
+export default connect(mapStateToProps, mapDispatchToProps)(ButtonMenu)

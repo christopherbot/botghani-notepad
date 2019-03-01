@@ -32,7 +32,11 @@ class App extends PureComponent {
   }
 
   componentDidMount() {
-    this.props.navigation.openDrawer()
+    if (this.props.favouriteListId) {
+      this.props.setActiveList(this.props.favouriteListId)
+    } else {
+      this.props.navigation.openDrawer()
+    }
   }
 
   deleteList = () => {
@@ -60,6 +64,7 @@ const mapStateToProps = ({ lists, globalUi }) => ({
   lists,
   list: lists.find(list => list.id === globalUi.activeListId),
   isModalOpen: globalUi.isModalOpen,
+  favouriteListId: globalUi.favouriteListId,
 })
 
 const mapDispatchToProps = {
