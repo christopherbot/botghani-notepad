@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { View } from 'react-native'
 import PropTypes from 'prop-types'
 
-import ButtonMenu from '../ButtonMenu/ButtonMenu'
+import ButtonMenu from 'components/ButtonMenu/ButtonMenu'
 
-import gStyle from '../../styles/globalStyle'
+import gStyle from 'styles/globalStyle'
 
 const ListHeader = ({ list }) =>
   <View style={gStyle.fr}>

@@ -3,7 +3,7 @@ import {
   createPayload,
   createPayloadWithCreatedDate,
   createPayloadWithUpdatedDate,
-} from '../utils/reduxUtils'
+} from 'utils/reduxUtils'
 
 export const createList = createAction('CREATE_LIST', createPayloadWithCreatedDate('name'))
 

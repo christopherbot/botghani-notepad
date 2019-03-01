@@ -1,5 +1,5 @@
 import uuidv4 from 'uuid/v4'
-import { generateHeaderCell } from './cellGenerators'
+import { generateHeaderCell } from 'utils/cellGenerators'
 
 const generateList = (name, createdAt) => ({
   id: uuidv4(),

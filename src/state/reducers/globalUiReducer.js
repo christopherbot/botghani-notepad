@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions'
-import { setActiveList, setIsModalOpen } from '../actions'
+import { setActiveList, setIsModalOpen } from 'state/actions'
 
 const defaultState = {
   activeListId: null,

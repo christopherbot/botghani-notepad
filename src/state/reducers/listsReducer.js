@@ -7,10 +7,10 @@ import {
   createRow,
   createColumn,
   updateCellValue,
-} from '../actions'
-import generateList from '../../utils/generateList'
-import generateExampleList from '../../utils/generateExampleList'
-import { generateHeaderCell, generateCell } from '../../utils/cellGenerators'
+} from 'state/actions'
+import generateList from 'utils/generateList'
+import generateExampleList from 'utils/generateExampleList'
+import { generateHeaderCell, generateCell } from 'utils/cellGenerators'
 
 // A mapping of cell types to the keys in a list object
 const cellTypeMap = {

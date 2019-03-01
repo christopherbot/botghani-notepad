@@ -2,10 +2,10 @@ import React, { PureComponent, Fragment }  from 'react'
 import { View, Text, TouchableOpacity, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { updateCellValue } from '../../state/actions'
+import { updateCellValue } from 'state/actions'
 
+import gStyle from 'styles/globalStyle'
 import style from './Cell.style'
-import gStyle from '../../styles/globalStyle'
 
 class Cell extends PureComponent {
   static propTypes = {

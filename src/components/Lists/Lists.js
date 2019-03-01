@@ -3,10 +3,10 @@ import { ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import List from '../List/List'
+import List from 'components/List/List'
 
+import gStyle from 'styles/globalStyle'
 import style from './Lists.style'
-import gStyle from '../../styles/globalStyle'
 
 const Lists = ({ lists }) =>
   <ScrollView style={[gStyle.f1, style.lists]}>

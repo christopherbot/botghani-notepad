@@ -2,13 +2,13 @@ import React, { PureComponent }  from 'react'
 import { View, ScrollView, TouchableOpacity, Text, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { generateFirstColumn, getCells, generateColumn } from '../../utils/table'
-import { createRow, createColumn } from '../../state/actions'
+import { generateFirstColumn, getCells, generateColumn } from 'utils/table'
+import { createRow, createColumn } from 'state/actions'
 
-import Cell from './Cell'
+import Cell from 'components/Table/Cell'
 
+import gStyle from 'styles/globalStyle'
 import columnStyle from './Column.style'
-import gStyle from '../../styles/globalStyle'
 
 class FirstColumn extends PureComponent {
   static propTypes = {

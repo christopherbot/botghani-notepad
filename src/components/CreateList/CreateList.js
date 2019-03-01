@@ -3,11 +3,11 @@ import { View, Button, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import { withNavigation } from 'react-navigation'
 import PropTypes from 'prop-types'
-import { createList, createExampleList } from '../../state/actions'
+import { createList, createExampleList } from 'state/actions'
 
+import gStyle from 'styles/globalStyle'
+import colors from 'styles/colors'
 import style from './CreateList.style'
-import gStyle from '../../styles/globalStyle'
-import colors from '../../styles/colors'
 
 class CreateList extends PureComponent {
   static propTypes = {

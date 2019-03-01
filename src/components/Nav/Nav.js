@@ -1,14 +1,14 @@
 import React, { PureComponent } from 'react'
 import { View, TouchableOpacity, Text, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
-import { setActiveList } from '../../state/actions'
+import { setActiveList } from 'state/actions'
 import { withNavigation } from 'react-navigation'
 import PropTypes from 'prop-types'
 
-import CreateList from '../CreateList/CreateList'
+import CreateList from 'components/CreateList/CreateList'
 
+import gStyle from 'styles/globalStyle'
 import style from './Nav.style'
-import gStyle from '../../styles/globalStyle'
 
 class Nav extends PureComponent {
   static propTypes = {
