@@ -13,7 +13,7 @@ import Modal from 'components/Modal/Modal'
 
 import gStyle from 'styles/globalStyle'
 
-class App extends PureComponent {
+export class App extends PureComponent {
   static propTypes = {
     lists: PropTypes.array.isRequired,
     list: PropTypes.object,
@@ -21,6 +21,10 @@ class App extends PureComponent {
     deleteList: PropTypes.func.isRequired,
     closeModal: PropTypes.func.isRequired,
     isModalOpen: PropTypes.bool.isRequired,
+    navigation: PropTypes.shape({
+      openDrawer: PropTypes.func.isRequired,
+      closeDrawer: PropTypes.func.isRequired,
+    }).isRequired,
   }
 
   componentDidUpdate(prevProps) {
