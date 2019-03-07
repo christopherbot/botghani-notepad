@@ -11,4 +11,7 @@ export default StyleSheet.create({
     borderStyle: 'solid',
     borderRightWidth: 1,
   },
+  heartIcon: {
+    marginLeft: 25,
+  },
 })
