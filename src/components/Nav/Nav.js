@@ -29,12 +29,17 @@ class Nav extends PureComponent {
         <ScrollView style={gStyle.f1}>
           {
             this.props.lists.map(list =>
-              <TouchableOpacity 
+              <TouchableOpacity
                 key={list.id} 
                 onPress={() => this.setActiveList(list.id)}
-                style={gStyle.fr}
+                style={[
+                  gStyle.fr,
+                  list.id === this.props.activeListId ? style.activeItem : style.item,
+                ]}
               >
-                <Text>{list.name}</Text>
+                <Text style={style.itemText}>
+                  { list.name }
+                </Text>
                 { list.id === this.props.favouriteListId && <Text style={style.heartIcon}>💛</Text> }
               </TouchableOpacity>
             )
@@ -51,6 +56,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = ({ lists, globalUi }) => ({
   lists,
+  activeListId: globalUi.activeListId,
   favouriteListId: globalUi.favouriteListId,
 })
 

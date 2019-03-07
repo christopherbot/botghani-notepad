@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { View, Button, TextInput } from 'react-native'
+import { View, TextInput, TouchableOpacity, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { withNavigation } from 'react-navigation'
 import PropTypes from 'prop-types'
@@ -36,25 +36,25 @@ class CreateList extends PureComponent {
 
   render() {
     return (
-      <View style={gStyle.fr}>
+      <View style={[gStyle.fr, gStyle.fcenterCross]}>
         <TextInput
           style={style.textInput}
-          placeholder="Enter a list name"
+          placeholder="New list"
           placeholderTextColor={colors.navText}
           selectionColor={colors.navAccent}
           onChangeText={this.onChangeText}
           value={this.state.listName}
         />
-        <View style={style.buttonWrapper}>
-          <Button title="Create List" color={colors.navAccent} onPress={this.createList} />
-        </View>
-        <View style={style.exampleListButton}>
-          <Button
-            title="#"
-            color={colors.exampleListButton}
-            onPress={this.createExampleList}
-          />
-        </View>
+        <TouchableOpacity style={gStyle.fcenter} onPress={this.createList}>
+          <Text style={style.buttonText}>
+            +
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={[gStyle.fcenter, style.exampleButton]} onPress={this.createExampleList}>
+          <Text style={style.buttonText}>
+            #
+          </Text>
+        </TouchableOpacity>
       </View>
     )
   }

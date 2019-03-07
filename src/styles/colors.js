@@ -1,10 +1,10 @@
 export default {
   debug: '#ffd700',
   splashBackground: '#f2c16f',
-  navBackground: '#6fe2f2',
-  navText: '#006d7e',
+  headerColor: '#a5e5da',
+  navBackground: '#fff',
+  navText: '#6f938b',
   navAccent: '#492a86',
-  exampleListButton: '#000',
   cellBackground: '#c5c5c5',
   cellBorder: '#000',
   deleteButton: '#f71b1b',
