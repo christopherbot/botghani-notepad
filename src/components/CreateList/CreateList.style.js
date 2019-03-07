@@ -5,13 +5,16 @@ export default StyleSheet.create({
   textInput: {
     height: 50,
     width: '50%',
+    fontSize: 17,
+    color: colors.navText,
+    paddingLeft: 10,
+  },
+  buttonText: {
+    fontSize: 25,
+    lineHeight: 25,
     color: colors.navText,
   },
-  buttonWrapper: {
-    width: '45%',
-  },
-  exampleListButton: {
-    height: 50,
-    marginLeft: 5,
+  exampleButton: {
+    marginLeft: 30,
   },
 })
