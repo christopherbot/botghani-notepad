@@ -26,6 +26,7 @@
     "rnd": "open 'rndebugger://set-debugger-loc?host=localhost&port=19001'"
   },
   "dependencies": {
+    "@babel/runtime": "^7.4.0",
     "change-case": "^3.0.2",
     "expo": "^30.0.1",
     "maxstache": "^1.0.7",
@@ -43,6 +44,9 @@
     "yarn": "^1.6.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.4.0",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.4.0",
     "babel-jest": "22.4.3",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-preset-react-native": "4.0.0",
