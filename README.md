@@ -79,6 +79,12 @@ To see the scanable QR code run:
 
     yarn start 
 
+In order to install a fresh version of the Expo app, you can do the following:
+
+1. In the simulator menu bar, click `Hardware > Erase All Content and Settings...`.
+1. Delete the Expo app within the simulator by clicking and holding down on the Expo app icon on the home page and clicking the `x`.
+1. Run `yarn start` and the expo app will be re-installed.
+
 **[Back to top](#table-of-contents)**
 
 ### JS Style Guide
