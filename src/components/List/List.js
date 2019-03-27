@@ -7,7 +7,7 @@ import Table from 'components/Table/Table'
 import gStyle from 'styles/globalStyle'
 import style from './List.style'
 
- const List = ({ list }) =>
+const List = ({ list }) =>
   <View style={[gStyle.fc1, style.list]}>
     <Table list={list} />
   </View>

@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render a list if it exists 1`] = `
+<Component
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <List
+    list={Object {}}
+  />
+</Component>
+`;
+
+exports[`App should render a modal when it is open 1`] = `
+<Component
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Modal
+    closeModal={[MockFunction]}
+    deleteList={[Function]}
+  />
+</Component>
+`;
+
+exports[`App should render the app 1`] = `
+<Component
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+/>
+`;
