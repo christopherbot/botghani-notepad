@@ -13,7 +13,7 @@ import Modal from 'components/Modal/Modal'
 
 import gStyle from 'styles/globalStyle'
 
-class App extends PureComponent {
+export class App extends PureComponent {
   static propTypes = {
     lists: PropTypes.array.isRequired,
     list: PropTypes.object,
