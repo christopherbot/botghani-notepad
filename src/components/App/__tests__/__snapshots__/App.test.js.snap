@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match current snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "column",
+      }
+    }
+  >
+    <Modal
+      animationType="slide"
+      hardwareAccelerated={false}
+      onRequestClose={[MockFunction]}
+      visible={true}
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "flexDirection": "column",
+            },
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+            Object {
+              "backgroundColor": "#9ff6fd",
+              "height": "100%",
+              "paddingVertical": 50,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "marginBottom": 20,
+            }
+          }
+        >
+          Are you sure you want to delete this list?
+        </Text>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingHorizontal": 125,
+              "width": "100%",
+            }
+          }
+        >
+          <View
+            accessible={true}
+            isTVSelectable={true}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          >
+            <Text>
+              Cancel
+            </Text>
+          </View>
+          <View
+            accessible={true}
+            isTVSelectable={true}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          >
+            <Text>
+              Yes
+            </Text>
+          </View>
+        </View>
+      </View>
+    </Modal>
+  </View>
+</View>
+`;
