@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import { Provider } from 'react-redux'
+import { SafeAreaView } from 'react-native'
 import { createStackNavigator, createDrawerNavigator, createAppContainer } from 'react-navigation'
 import { PersistGate } from 'redux-persist/integration/react'
 import store, { persister } from 'state/store'
@@ -26,7 +27,6 @@ const StackNavigator = createStackNavigator({
     headerTitle: <ListHeader />,
     headerLeft: <NavButton />,
     headerStyle: {
-      marginTop: 29,
       backgroundColor: colors.headerColor,
     },
   },
@@ -60,7 +60,9 @@ class BotghaniNotepad extends PureComponent {
   render() {
     return (
       <Provider store={store}>
-        {this.renderAppContainer(env.persistState)}
+        <SafeAreaView style={{ flex: 1, backgroundColor: colors.headerColor }}>
+          {this.renderAppContainer(env.persistState)}
+        </SafeAreaView>
       </Provider>
     )
   }
