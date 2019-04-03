@@ -5,9 +5,9 @@ import PropTypes from 'prop-types'
 import gStyle from 'styles/globalStyle'
 import style from './AddButton.style'
 
-const AddButton = ({ children, onPress }) =>
-  <TouchableOpacity style={[gStyle.fcenter, style.button]} onPress={onPress}>
-    <Text style={style.text}>
+const AddButton = ({ children, onPress, textStyle }) =>
+  <TouchableOpacity onPress={onPress} style={[gStyle.fcenter, style.button]}>
+    <Text style={[style.text, textStyle]}>
       { children }
     </Text>
   </TouchableOpacity>
@@ -15,6 +15,7 @@ const AddButton = ({ children, onPress }) =>
 AddButton.propTypes = {
   onPress: PropTypes.func.isRequired,
   children: PropTypes.any.isRequired,
+  textStyle: PropTypes.object,
 }
 
 AddButton.defaultProps = {

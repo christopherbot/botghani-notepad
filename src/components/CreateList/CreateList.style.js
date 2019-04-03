@@ -10,11 +10,6 @@ export default StyleSheet.create({
     paddingLeft: 10,
   },
   buttonText: {
-    fontSize: 25,
-    lineHeight: 25,
     color: colors.navText,
-  },
-  exampleButton: {
-    marginLeft: 30,
   },
 })
