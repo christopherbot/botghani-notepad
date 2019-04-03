@@ -11,12 +11,4 @@ export default StyleSheet.create({
     minWidth: 1000,
     paddingLeft: 4,
   },
-  addButton: {
-    height: 40,
-    minWidth: 50,
-  },
-  addButtonText: {
-    fontSize: 30,
-    lineHeight: 30,
-  },
 })

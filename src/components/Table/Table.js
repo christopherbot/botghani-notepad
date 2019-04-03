@@ -1,10 +1,11 @@
 import React, { PureComponent }  from 'react'
-import { View, ScrollView, TouchableOpacity, Text, TextInput } from 'react-native'
+import { View, ScrollView, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { generateFirstColumn, getCells, generateColumn } from 'utils/table'
 import { createRow, createColumn } from 'state/actions'
 
+import AddButton from 'components/Buttons/AddButton/AddButton'
 import Cell from 'components/Table/Cell'
 
 import gStyle from 'styles/globalStyle'
@@ -70,9 +71,7 @@ class FirstColumn extends PureComponent {
                 value={this.state.rowName} />
             </View>
         }
-        <TouchableOpacity style={[gStyle.fcenter, columnStyle.addButton]} onPress={this.onPress}>
-          <Text style={columnStyle.addButtonText}>+</Text>
-        </TouchableOpacity>
+        <AddButton onPress={this.onPress} />
       </View>
     )
   }
@@ -169,9 +168,7 @@ class Table extends PureComponent {
                 value={this.state.columnName} />
             </View>
         }
-        <TouchableOpacity style={[gStyle.fcenter, columnStyle.addButton]} onPress={this.onPress}>
-          <Text style={columnStyle.addButtonText}>+</Text>
-        </TouchableOpacity>
+        <AddButton onPress={this.onPress} />
       </View>
     )
   }
