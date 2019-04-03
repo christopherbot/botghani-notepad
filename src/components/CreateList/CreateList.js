@@ -5,6 +5,8 @@ import { withNavigation } from 'react-navigation'
 import PropTypes from 'prop-types'
 import { createList, createExampleList } from 'state/actions'
 
+import AddButton from 'components/Buttons/AddButton/AddButton'
+
 import gStyle from 'styles/globalStyle'
 import colors from 'styles/colors'
 import style from './CreateList.style'
@@ -45,16 +47,10 @@ class CreateList extends PureComponent {
           onChangeText={this.onChangeText}
           value={this.state.listName}
         />
-        <TouchableOpacity style={gStyle.fcenter} onPress={this.createList}>
-          <Text style={style.buttonText}>
-            +
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[gStyle.fcenter, style.exampleButton]} onPress={this.createExampleList}>
-          <Text style={style.buttonText}>
-            #
-          </Text>
-        </TouchableOpacity>
+        <AddButton onPress={this.createList} textStyle={style.buttonText} />
+        <AddButton onPress={this.createExampleList} textStyle={style.buttonText}>
+          #
+        </AddButton>
       </View>
     )
   }
