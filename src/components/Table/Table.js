@@ -62,7 +62,8 @@ class Table extends PureComponent {
                   <FirstColumn
                     listId={list.id}
                     cells={generateFirstColumn(column, list.rows)}
-                    createRow={this.props.createRow} />
+                    createRow={this.props.createRow}
+                  />
                 </View>
               )
             }
@@ -77,7 +78,13 @@ class Table extends PureComponent {
                 return null
               }
 
-              return <Column key={column.id} listId={list.id} cells={generateColumn(column, list.rows, list.cells)} />
+              return (
+                <Column
+                  key={column.id}
+                  listId={list.id}
+                  cells={generateColumn(column, list.rows, list.cells)}
+                />
+              )
             })
           }
         </ScrollView>
@@ -90,7 +97,8 @@ class Table extends PureComponent {
                 autoFocus={true}
                 onChangeText={this.onChangeText}
                 onBlur={this.onBlur}
-                value={this.state.columnName} />
+                value={this.state.columnName}
+              />
             </View>
         }
         <AddButton onPress={this.onPress} />
