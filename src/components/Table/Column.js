@@ -65,7 +65,8 @@ export class FirstColumn extends PureComponent {
                 autoFocus={true}
                 onChangeText={this.onChangeText}
                 onBlur={this.onBlur}
-                value={this.state.rowName} />
+                value={this.state.rowName}
+              />
             </View>
         }
         <AddButton onPress={this.onPress} />
@@ -76,7 +77,15 @@ export class FirstColumn extends PureComponent {
 
 export const Column = ({ cells, listId }) =>
   <View style={gStyle.fc}>
-    { cells.map(cell => <Cell key={cell.id} listId={listId} cell={cell} />) }
+    {
+      cells.map(cell =>
+        <Cell
+          key={cell.id}
+          listId={listId}
+          cell={cell}
+        />
+      )
+    }
   </View>
 
 Column.propTypes = {
