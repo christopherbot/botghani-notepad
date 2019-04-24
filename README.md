@@ -8,6 +8,7 @@ A React-native list-creating app.
    * [Setup](#setup)
    * [Env Variables](#env-variables)
    * [Running](#running)
+   * [Debugging](#debugging)
    * [Development Tools](#development-tools)
 1. [JS Style Guide](#js-style-guide)
    * [Import Statements](#import-statements)
@@ -55,6 +56,18 @@ To run the application on an iphone simulator (like Xcode):
 To run the application on an android emulator:
 
     yarn andriod    
+
+**[Back to top](#table-of-contents)**
+
+### Debugging
+
+In order to debug the app, `remote debugging` must be enabled on the device or simulator.
+
+On the iPhone simulator:
+1. Press `Cmd + D` to open the development menu
+1. Click `Debug Remote JS`
+
+If remote debugging is unavailable, ensure that `production mode` is not enabled. In the browser Metro bundler, `production mode` is displayed as a toggle near the QR code.
 
 **[Back to top](#table-of-contents)**
 
