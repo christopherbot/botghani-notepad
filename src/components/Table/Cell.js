@@ -35,26 +35,27 @@ class Cell extends PureComponent {
     }
   }
 
-  get cellStyle() {
-    return this.props.cell.isHeader ? [style.headerCell, gStyle.fcenter] : [style.dataCell, gStyle.fcenter]
+  get cellTextStyle() {
+    return this.props.cell.isHeader && this.props.cell.type === 'column' && style.headerCellText
   }
-
 
   render() {
     return (
-      <View style={style.cell}>
+      <View style={style.cellWrapper}>
         {
           this.state.isBeingEdited
             ? (
               <TextInput
+                style={style.textInput}
                 value={this.state.newCellValue}
                 onChangeText={this.changeCellValue}
                 onBlur={this.updateCellValue}
-                autoFocus={true} />
+                autoFocus={true}
+              />
             )
             : (
-              <TouchableOpacity style={this.cellStyle} onPress={this.onPressCell}>
-                <Text numberOfLines={1}>
+              <TouchableOpacity style={[gStyle.fcenter, style.cell]} onPress={this.onPressCell}>
+                <Text style={this.cellTextStyle} numberOfLines={1}>
                   {this.props.cell.value}
                 </Text>
               </TouchableOpacity>
