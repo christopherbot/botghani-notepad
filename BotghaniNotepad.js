@@ -29,6 +29,7 @@ const StackNavigator = createStackNavigator({
       marginTop: 29,
       backgroundColor: colors.headerColor,
     },
+    gesturesEnabled: false, // prevents swiping the splash screen back into view
   },
 })
 
