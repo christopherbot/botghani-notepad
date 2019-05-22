@@ -1,5 +1,5 @@
 import React from 'react'
-import { 
+import {
   View,
   Text,
   Modal as ReactNativeModal,

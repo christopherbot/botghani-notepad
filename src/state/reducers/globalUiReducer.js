@@ -33,7 +33,7 @@ export default handleActions({
         favouriteListId: null,
       }
     }
-    
+
     return state
   },
 }, defaultState)

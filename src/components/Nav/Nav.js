@@ -30,7 +30,7 @@ class Nav extends PureComponent {
           {
             this.props.lists.map(list =>
               <TouchableOpacity
-                key={list.id} 
+                key={list.id}
                 onPress={() => this.setActiveList(list.id)}
                 style={[
                   gStyle.fr,
