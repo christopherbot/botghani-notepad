@@ -1,54 +1,20 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-  view: {
-    height: 50,
-    marginVertical: 20,
-    marginHorizontal: 5,
+  wrapper: {
+    height: 25,
+    marginHorizontal: 15,
   },
-  circle: {
-    borderWidth: 2.5,
-    borderColor: 'black',
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+  line: {
     position: 'relative',
-  },
-  line1: {
-    width: 20,
     height: 2,
+    width: 30,
     backgroundColor: 'black',
-    position: 'absolute',
-    top: '50%',
-    left: 7.5,
-    transform: [
-      { translateY: -1 },
-    ],
   },
-  lineUpRight: {
-    width: 10,
-    height: 2,
-    backgroundColor: 'black',
-    position: 'absolute',
-    top: '50%',
-    right: 2.5,
-    transform: [
-      { translateY: -4 },
-      { translateX: -3 },
-      { rotate: '45deg'},
-    ],
+  middleLine: {
+    top: 8,
   },
-  lineDownRight: {
-    width: 10,
-    height: 2,
-    backgroundColor: 'black',
-    position: 'absolute',
-    top: '50%',
-    right: 2.5,
-    transform: [
-      { translateY: 2 },
-      { translateX: -3 },
-      { rotate: '-45deg'},
-    ],
+  bottomLine: {
+    top: 16,
   },
 })
