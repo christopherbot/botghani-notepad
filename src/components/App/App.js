@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { 
-  setActiveList, 
+import {
+  setActiveList,
   deleteList,
   setIsModalOpen,
 } from 'state/actions'
@@ -57,7 +57,7 @@ export class App extends PureComponent {
           <Modal
             closeModal={this.props.closeModal}
             deleteList={this.deleteList}
-          /> 
+          />
         }
       </View>
     )

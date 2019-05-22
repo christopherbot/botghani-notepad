@@ -66,7 +66,7 @@ class Cell extends PureComponent {
   }
 }
 
-const mapDispatchToProps = { 
+const mapDispatchToProps = {
   updateCellValue,
 }
 

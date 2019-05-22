@@ -50,7 +50,7 @@ class BotghaniNotepad extends PureComponent {
       return (
         <PersistGate persistor={persister} loading={null}>
           <AppContainer />
-        </PersistGate> 
+        </PersistGate>
       )
     }
 

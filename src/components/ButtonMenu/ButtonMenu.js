@@ -52,7 +52,7 @@ class ButtonMenu extends Component {
     }
   }
 
-  render() {    
+  render() {
     return (
       <View style={[gStyle.fr1, gStyle.fcenter]}>
         <View style={style.deleteButton}>
@@ -94,7 +94,7 @@ const mapStateToProps = ({ globalUi }) => ({
   favouriteListId: globalUi.favouriteListId,
 })
 
-const mapDispatchToProps = { 
+const mapDispatchToProps = {
   renameList,
   openModal: setIsModalOpen.bind(null, true),
   setFavouriteList,
