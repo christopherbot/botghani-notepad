@@ -1,6 +1,12 @@
 import React, { PureComponent } from 'react'
+import { Keyboard } from 'react-native'
 import { Provider } from 'react-redux'
-import { createStackNavigator, createDrawerNavigator, createAppContainer } from 'react-navigation'
+import { 
+  createStackNavigator, 
+  createDrawerNavigator, 
+  createAppContainer, 
+  DrawerActions,
+} from 'react-navigation'
 import { PersistGate } from 'redux-persist/integration/react'
 import store, { persister } from 'state/store'
 import env from '~/env'
@@ -42,6 +48,13 @@ const MainNavigator = createDrawerNavigator({
   drawerType: 'slide',
   drawerWidth: 230, // default is 280
 })
+
+const defaultGetStateForAction = MainNavigator.router.getStateForAction
+MainNavigator.router.getStateForAction = (action, state) => {
+  if (action.type === DrawerActions.MARK_DRAWER_SETTLING) Keyboard.dismiss()
+
+  return defaultGetStateForAction(action, state)
+}
 
 const AppContainer = createAppContainer(MainNavigator)
 
