@@ -1,6 +1,11 @@
 import 'react-native'
 import Adapter from 'enzyme-adapter-react-16'
-import { configure, shallow, mount, render } from 'enzyme'
+import {
+  configure,
+  shallow,
+  mount,
+  render,
+} from 'enzyme'
 
 /**
  * Set up DOM in node.js environment for Enzyme to mount to
