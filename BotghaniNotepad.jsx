@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react'
 import { Keyboard } from 'react-native'
 import { Provider } from 'react-redux'
-import { 
-  createStackNavigator, 
-  createDrawerNavigator, 
-  createAppContainer, 
+import {
+  createStackNavigator,
+  createDrawerNavigator,
+  createAppContainer,
   DrawerActions,
 } from 'react-navigation'
 import { PersistGate } from 'redux-persist/integration/react'
