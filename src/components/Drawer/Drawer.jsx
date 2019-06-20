@@ -8,9 +8,9 @@ import PropTypes from 'prop-types'
 import CreateList from 'components/CreateList/CreateList'
 
 import gStyle from 'styles/globalStyle'
-import style from './Nav.style'
+import style from './Drawer.style'
 
-class Nav extends PureComponent {
+class Drawer extends PureComponent {
   static propTypes = {
     setActiveList: PropTypes.func.isRequired,
     navigation: PropTypes.object.isRequired,
@@ -24,7 +24,7 @@ class Nav extends PureComponent {
 
   render() {
     return (
-      <View style={style.nav}>
+      <View style={style.wrapper}>
         <CreateList />
         <ScrollView style={gStyle.f1}>
           {
@@ -60,4 +60,4 @@ const mapStateToProps = ({ lists, globalUi }) => ({
   favouriteListId: globalUi.favouriteListId,
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(Nav))
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(Drawer))

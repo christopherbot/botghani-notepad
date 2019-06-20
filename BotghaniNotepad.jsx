@@ -14,8 +14,8 @@ import env from '~/env'
 import App from 'components/App/App'
 import Splash from 'components/Splash/Splash'
 import ListHeader from 'components/ListHeader/ListHeader'
-import NavButton from 'components/Buttons/NavButton/NavButton'
-import Nav from 'components/Nav/Nav'
+import DrawerButton from 'components/Buttons/DrawerButton/DrawerButton'
+import Drawer from 'components/Drawer/Drawer'
 import colors from 'styles/colors'
 
 const StackNavigator = createStackNavigator({
@@ -30,7 +30,7 @@ const StackNavigator = createStackNavigator({
   initialRouteName: 'Splash',
   defaultNavigationOptions: {
     headerTitle: <ListHeader />,
-    headerLeft: <NavButton />,
+    headerLeft: <DrawerButton />,
     headerStyle: {
       marginTop: 29,
       backgroundColor: colors.headerColor,
@@ -44,7 +44,7 @@ const MainNavigator = createDrawerNavigator({
     screen: StackNavigator,
   },
 }, {
-  contentComponent: Nav,
+  contentComponent: Drawer,
   drawerType: 'slide',
   drawerWidth: 230, // default is 280
 })

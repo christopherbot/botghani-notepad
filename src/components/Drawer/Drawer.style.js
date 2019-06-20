@@ -4,7 +4,7 @@ import colors from 'styles/colors'
 const barWidth = 2
 
 export default StyleSheet.create({
-  nav: {
+  wrapper: {
     height: '100%',
     padding: 20,
     paddingTop: 35,
