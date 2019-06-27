@@ -43,7 +43,7 @@ function write() {
   mkdirp(dir, err => {
     if (err) throw err
     const files = [
-      template(path.resolve(__dirname, 'templates/Component.js'), path.resolve(dir, `${name}.js`)),
+      template(path.resolve(__dirname, 'templates/Component.jsx'), path.resolve(dir, `${name}.jsx`)),
       template(path.resolve(__dirname, 'templates/Component.style.js'), path.resolve(dir, `${name}.style.js`)),
     ]
 
