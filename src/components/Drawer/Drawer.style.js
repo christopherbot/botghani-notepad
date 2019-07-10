@@ -8,8 +8,8 @@ export default StyleSheet.create({
     height: '100%',
     padding: 20,
     paddingTop: 35,
-    backgroundColor: colors.navBackground,
-    borderColor: colors.navAccent,
+    backgroundColor: colors.drawerBackground,
+    borderColor: colors.drawerAccent,
     borderStyle: 'solid',
     borderRightWidth: 1,
   },
@@ -25,7 +25,7 @@ export default StyleSheet.create({
   },
   itemText: {
     fontSize: 17,
-    color: colors.navText,
+    color: colors.drawerText,
   },
   heartIcon: {
     marginLeft: 25,

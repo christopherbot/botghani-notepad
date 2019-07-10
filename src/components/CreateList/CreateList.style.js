@@ -6,10 +6,10 @@ export default StyleSheet.create({
     height: 50,
     width: '50%',
     fontSize: 17,
-    color: colors.navText,
+    color: colors.drawerText,
     paddingLeft: 10,
   },
   buttonText: {
-    color: colors.navText,
+    color: colors.drawerText,
   },
 })
