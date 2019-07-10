@@ -42,8 +42,8 @@ class CreateList extends PureComponent {
         <TextInput
           style={style.textInput}
           placeholder="New list"
-          placeholderTextColor={colors.navText}
-          selectionColor={colors.navAccent}
+          placeholderTextColor={colors.drawerText}
+          selectionColor={colors.drawerAccent}
           onChangeText={this.onChangeText}
           value={this.state.listName}
         />
