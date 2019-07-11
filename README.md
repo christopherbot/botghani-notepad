@@ -20,12 +20,12 @@ A React-native list-creating app.
 
 [Expo](https://github.com/expo/expo) is a set of tools, libraries and services which let you build native iOS and Android apps by writing JavaScript and React.
 
-Install [Expo-CLI](https://github.com/expo/expo-cli) globally first: 
+Install [Expo-CLI](https://github.com/expo/expo-cli) globally first:
 
-    npm install -g expo-cli    
+    npm install -g expo-cli
 
 Then install the app dependencies:
-    
+
     yarn install
 
 **[Back to top](#table-of-contents)**
@@ -52,10 +52,10 @@ See: https://github.com/christopherbot/botghani-notepad/issues/168
 To run the application on an iphone simulator (like Xcode):
 
     yarn ios
-    
+
 To run the application on an android emulator:
 
-    yarn andriod    
+    yarn andriod
 
 **[Back to top](#table-of-contents)**
 
@@ -90,7 +90,7 @@ To run your Expo app on your own personal mobile device download the Expo mobile
 
 To see the scanable QR code run:
 
-    yarn start 
+    yarn start
 
 In order to install a fresh version of the Expo app, you can do the following:
 
