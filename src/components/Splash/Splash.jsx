@@ -33,7 +33,7 @@ class Splash extends PureComponent {
     return (
       <View style={[gStyle.f1, gStyle.fcenter, style.view]}>
         <Text style={style.text}>
-          DUOLIST
+          PAD.io
         </Text>
       </View>
     )
