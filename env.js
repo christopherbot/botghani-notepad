@@ -9,10 +9,12 @@ import { PERSIST_STATE } from 'react-native-dotenv'
  * See: https://github.com/christopherbot/botghani-notepad/issues/168
  */
 
-const persistState = PERSIST_STATE === 'true'
+const isTrue = x => x === 'true'
 
-console.log('Persisting state:', persistState)
-
-export default {
-  persistState,
+const env = {
+  PERSIST_STATE: isTrue(PERSIST_STATE),
 }
+
+console.log('Using env:', env)
+
+window.env = env
