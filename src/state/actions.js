@@ -27,3 +27,5 @@ export const setActiveList = createAction('SET_ACTIVE_LIST', createPayload('list
 export const setIsModalOpen = createAction('SET_IS_MODAL_OPEN', createPayload('isOpen'))
 
 export const setFavouriteList = createAction('SET_FAVOURITE_LIST', createPayloadWithUpdatedDate('listId'))
+
+export const setIsCellOptionsOpen = createAction('SET_IS_CELL_OPTIONS_OPEN', createPayload('isOpen'))

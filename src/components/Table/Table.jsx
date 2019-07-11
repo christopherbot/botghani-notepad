@@ -3,10 +3,10 @@ import { View, ScrollView, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { generateFirstColumn, getCells, generateColumn } from 'utils/table'
-import { createRow, createColumn } from 'state/actions'
+import { createRow, createColumn, setIsCellOptionsOpen } from 'state/actions'
 
 import AddButton from 'components/Buttons/AddButton/AddButton'
-import Cell from 'components/Table/Cell'
+import CellOptions from '../CellOptions/CellOptions'
 import { Column, FirstColumn } from './Column'
 
 import gStyle from 'styles/globalStyle'
@@ -88,6 +88,12 @@ class Table extends PureComponent {
             })
           }
         </ScrollView>
+
+        <CellOptions 
+          isOpen={this.props.modalOpen} 
+          closeModal={() => this.props.setIsCellOptionsOpen(false)} 
+        />
+
         {
           this.state.isInputDisplayed &&
             <View style={columnStyle.textInputWrapper}>
@@ -117,6 +123,10 @@ Table.propTypes = {
   createColumn: PropTypes.func.isRequired,
 }
 
-const mapDispatchToProps = { createRow, createColumn }
+const mapStateToProps = ({ globalUi }) => ({
+  modalOpen: globalUi.isCellModalOpen,
+})
 
-export default connect(undefined, mapDispatchToProps)(Table)
+const mapDispatchToProps = { createRow, createColumn, setIsCellOptionsOpen }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Table)

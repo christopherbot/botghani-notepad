@@ -1,10 +1,17 @@
 import { handleActions } from 'redux-actions'
-import { setActiveList, setIsModalOpen, setFavouriteList, deleteList } from 'state/actions'
+import { 
+  setActiveList, 
+  setIsModalOpen,
+  setFavouriteList, 
+  deleteList,
+  setIsCellOptionsOpen,
+} from 'state/actions'
 
 const defaultState = {
   activeListId: null,
   isModalOpen: false,
   favouriteListId: null,
+  isCellModalOpen: false
 }
 
 export default handleActions({
@@ -35,5 +42,11 @@ export default handleActions({
     }
 
     return state
+  },
+  [setIsCellOptionsOpen](state, { payload }) {
+    return {
+      ...state,
+      isCellModalOpen: payload.isOpen
+    }
   },
 }, defaultState)

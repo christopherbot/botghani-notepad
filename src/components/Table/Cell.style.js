@@ -6,6 +6,7 @@ export default StyleSheet.create({
     height: 33,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'white',
   },
   textInput: {
     paddingHorizontal: 4,

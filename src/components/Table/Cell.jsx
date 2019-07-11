@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment }  from 'react'
 import { View, Text, TouchableOpacity, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { updateCellValue } from 'state/actions'
+import { updateCellValue, setIsCellOptionsOpen } from 'state/actions'
 
 import gStyle from 'styles/globalStyle'
 import style from './Cell.style'
@@ -22,6 +22,10 @@ class Cell extends PureComponent {
 
   onPressCell = () => {
     this.setState({ isBeingEdited: true })
+  }
+
+  onLongPressCell = () => {
+    this.props.setIsCellOptionsOpen(true)
   }
 
   changeCellValue = (newCellValue) => {
@@ -54,7 +58,12 @@ class Cell extends PureComponent {
               />
             )
             : (
-              <TouchableOpacity style={[gStyle.fcenter, style.cell]} onPress={this.onPressCell}>
+              <TouchableOpacity 
+                style={[gStyle.fcenter, style.cell]} 
+                onPress={this.onPressCell}
+                onLongPress={this.onLongPressCell}
+                delayLongPress={500}
+              >
                 <Text style={this.cellTextStyle} numberOfLines={1}>
                   {this.props.cell.value}
                 </Text>
@@ -68,6 +77,7 @@ class Cell extends PureComponent {
 
 const mapDispatchToProps = {
   updateCellValue,
+  setIsCellOptionsOpen,
 }
 
 export default connect(undefined, mapDispatchToProps)(Cell)
