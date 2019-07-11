@@ -1,4 +1,4 @@
-# Botghani Notepad
+# PAD.io
 
 A React-native list-creating app.
 
