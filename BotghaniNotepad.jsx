@@ -1,3 +1,11 @@
+/*
+ * This attaches the env variables directly to the window so
+ * they can be accessed anywhere by doing `env.VARIABLE`.
+ *
+ * This needs to be imported before everything else.
+ */
+import '~/env'
+
 import React, { PureComponent } from 'react'
 import { Keyboard } from 'react-native'
 import { Provider } from 'react-redux'
@@ -9,7 +17,6 @@ import {
 } from 'react-navigation'
 import { PersistGate } from 'redux-persist/integration/react'
 import store, { persister } from 'state/store'
-import env from '~/env'
 
 import App from 'components/App/App'
 import Splash from 'components/Splash/Splash'
@@ -74,7 +81,7 @@ class BotghaniNotepad extends PureComponent {
   render() {
     return (
       <Provider store={store}>
-        {this.renderAppContainer(env.persistState)}
+        {this.renderAppContainer(env.PERSIST_STATE)}
       </Provider>
     )
   }
