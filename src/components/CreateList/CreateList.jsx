@@ -15,6 +15,7 @@ class CreateList extends PureComponent {
   static propTypes = {
     createList: PropTypes.func.isRequired,
     createExampleList: PropTypes.func.isRequired,
+    isCreateExampleListDisplayed: PropTypes.bool.isRequired,
   }
 
   state = { listName: '' }
@@ -48,14 +49,21 @@ class CreateList extends PureComponent {
           value={this.state.listName}
         />
         <AddButton onPress={this.createList} textStyle={style.buttonText} />
-        <AddButton onPress={this.createExampleList} textStyle={style.buttonText}>
-          #
-        </AddButton>
+        {
+          this.props.isCreateExampleListDisplayed &&
+            <AddButton onPress={this.createExampleList} textStyle={style.buttonText}>
+              #
+            </AddButton>
+        }
       </View>
     )
   }
 }
 
+const mapStateToProps = () => ({
+  isCreateExampleListDisplayed: env.DEBUG,
+})
+
 const mapDispatchToProps = { createList, createExampleList }
 
-export default connect(undefined, mapDispatchToProps)(withNavigation(CreateList))
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(CreateList))
