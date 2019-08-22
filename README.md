@@ -35,12 +35,14 @@ Then install the app dependencies:
 Create a file named `.env` in the root directory with the following format:
 
 ```
+DEBUG=false
 PERSIST_STATE=false
 ```
 
-Flags:
-
-`PERSIST_STATE`: `<bool>` Indicates whether the app state should be persisted across closing and restarting the app
+| **Flag** | **Type** | **Description** |
+| --- | --- | --- |
+| **DEBUG** | `bool` | Indicates whether the app should run in development mode |
+| **PERSIST_STATE** | `bool` | Indicates whether the app state should be persisted across closing and restarting the app |
 
 **IMPORTANT NOTE:**
 

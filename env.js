@@ -1,4 +1,7 @@
-import { PERSIST_STATE } from 'react-native-dotenv'
+import {
+  DEBUG,
+  PERSIST_STATE,
+} from 'react-native-dotenv'
 
 /*
  * IMPORTANT NOTE
@@ -12,6 +15,7 @@ import { PERSIST_STATE } from 'react-native-dotenv'
 const isTrue = x => x === 'true'
 
 const env = {
+  DEBUG: isTrue(DEBUG),
   PERSIST_STATE: isTrue(PERSIST_STATE),
 }
 
