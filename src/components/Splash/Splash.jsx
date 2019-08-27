@@ -3,6 +3,8 @@ import { withNavigation } from 'react-navigation'
 import { Text, View } from 'react-native'
 import PropTypes from 'prop-types'
 
+import InkBottle from 'assets/inkBottle.svgx'
+
 import gStyle from 'styles/globalStyle'
 import style from './Splash.style'
 
@@ -35,6 +37,7 @@ class Splash extends PureComponent {
         <Text style={style.text}>
           PAD.io
         </Text>
+        <InkBottle />
       </View>
     )
   }
