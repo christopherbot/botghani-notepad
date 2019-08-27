@@ -11,6 +11,7 @@ module.exports = {
         extensions: ['.ios.js', '.android.js', '.js', '.jsx', '.json'],
         alias: {
           '~': './',
+          assets: './assets',
         },
       },
     ],
