@@ -73,7 +73,11 @@ class ButtonMenu extends Component {
               />
             )
             : (
-              <Text style={style.mainTitle} onPress={this.toggleEditModeDisplay}>
+              <Text
+                style={style.mainTitle}
+                numberOfLines={2}
+                onPress={this.toggleEditModeDisplay}
+              >
                 { this.props.list.name }
               </Text>
             )
