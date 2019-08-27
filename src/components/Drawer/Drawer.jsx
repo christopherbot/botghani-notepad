@@ -6,16 +6,55 @@ import { withNavigation } from 'react-navigation'
 import PropTypes from 'prop-types'
 
 import CreateList from 'components/CreateList/CreateList'
+import Tabs from './Tabs'
 
 import gStyle from 'styles/globalStyle'
+import colors from 'styles/colors'
 import style from './Drawer.style'
+
+const drawerTabTypes = {
+  Add: 'Add',
+  List: 'List',
+}
 
 class Drawer extends PureComponent {
   static propTypes = {
     setActiveList: PropTypes.func.isRequired,
     navigation: PropTypes.object.isRequired,
-    lists: PropTypes.array,
+    lists: PropTypes.array.isRequired,
   }
+
+  state = {
+    drawerTab: this.props.lists.length ? drawerTabTypes.List : drawerTabTypes.Add
+  }
+
+  componentDidUpdate({ lists }) {
+    if (this.props.lists.length > lists.length) {
+      // 500 ms to let drawer close before state changes
+      setTimeout(() => {
+        this.setState({ drawerTab: drawerTabTypes.List })
+      }, 500)
+    } else if (this.props.lists.length === 0 && lists.length !== 0) {
+      this.setState({ drawerTab: drawerTabTypes.Add })
+    }
+  }
+
+  get tabData() {
+    return [
+      {
+        title: '+',
+        onClick: () => this.setState({ drawerTab: drawerTabTypes.Add }),
+        color: colors.drawerTabOne,
+        active: this.state.drawerTab === drawerTabTypes.Add,
+      },
+      {
+        title: 'Lists',
+        onClick: () => this.setState({ drawerTab: drawerTabTypes.List }),
+        color: colors.drawerTabTwo,
+        active: this.state.drawerTab === drawerTabTypes.List,
+      },
+    ]
+  } 
 
   setActiveList = (listId) => {
     this.props.navigation.closeDrawer()
@@ -25,26 +64,30 @@ class Drawer extends PureComponent {
   render() {
     return (
       <View style={style.wrapper}>
-        <CreateList />
-        <ScrollView style={gStyle.f1}>
-          {
-            this.props.lists.map(list =>
-              <TouchableOpacity
-                key={list.id}
-                onPress={() => this.setActiveList(list.id)}
-                style={[
-                  gStyle.fr,
-                  list.id === this.props.activeListId ? style.activeItem : style.item,
-                ]}
-              >
-                <Text style={style.itemText}>
-                  { list.name }
-                </Text>
-                { list.id === this.props.favouriteListId && <Text style={style.heartIcon}>💛</Text> }
-              </TouchableOpacity>
-            )
-          }
-        </ScrollView>
+        <Tabs tabData={this.tabData} />
+        {
+          this.state.drawerTab === drawerTabTypes.Add 
+          ? <CreateList />
+          : <ScrollView style={gStyle.f1}>
+              {
+                this.props.lists.map(list =>
+                  <TouchableOpacity
+                    key={list.id}
+                    onPress={() => this.setActiveList(list.id)}
+                    style={[
+                      gStyle.fr,
+                      list.id === this.props.activeListId ? style.activeItem : style.item,
+                    ]}
+                  >
+                    <Text style={style.itemText}>
+                      {list.name}
+                    </Text>
+                    {list.id === this.props.favouriteListId && <Text style={style.heartIcon}>💛</Text>}
+                  </TouchableOpacity>
+                )
+              }
+            </ScrollView>
+        }
       </View>
     )
   }
