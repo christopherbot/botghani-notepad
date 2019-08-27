@@ -12,6 +12,7 @@ export default StyleSheet.create({
     borderColor: colors.drawerAccent,
     borderStyle: 'solid',
     borderRightWidth: 1,
+    marginBottom: 10,
   },
   item: {
     marginVertical: 15,
