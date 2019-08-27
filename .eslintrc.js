@@ -5,9 +5,9 @@ module.exports = {
   },
   extends: ['airbnb-base'],
   globals: {
-    shallow: true,
-    mount: true,
-    render: true,
+    shallow: 'readonly',
+    mount: 'readonly',
+    render: 'readonly',
   },
   parser: 'babel-eslint',
   parserOptions: {
@@ -22,6 +22,7 @@ module.exports = {
   ],
   rules: {
     semi: 0,
+    'arrow-parens': 0,
     'no-console': 0,
     'import/no-named-as-default': 0,
     'import/no-extraneous-dependencies': 0,
