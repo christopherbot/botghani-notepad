@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 import gStyle from 'styles/globalStyle'
 import style from './Modal.style'
 
-export default Modal = ({ closeModal, deleteList }) =>
+const Modal = ({ closeModal, deleteList }) =>
   <View style={gStyle.fc1}>
     <ReactNativeModal animationType="slide" onRequestClose={closeModal}>
       <View style={[gStyle.fc1, gStyle.fcenter, style.innerModalContainer]}>
@@ -31,3 +31,5 @@ Modal.propTypes = {
   deleteList: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
 }
+
+export default Modal

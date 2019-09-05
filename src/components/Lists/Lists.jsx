@@ -2,6 +2,7 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { listPropType } from 'components/propTypeDefinitions'
 
 import List from 'components/List/List'
 
@@ -14,7 +15,7 @@ const Lists = ({ lists }) =>
   </ScrollView>
 
 Lists.propTypes = {
-  lists: PropTypes.array.isRequired,
+  lists: PropTypes.arrayOf(listPropType).isRequired,
 }
 
 const mapStateToProps = ({ lists }) => ({

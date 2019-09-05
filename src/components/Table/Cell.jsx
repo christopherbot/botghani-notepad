@@ -3,16 +3,19 @@ import { View, Text, TouchableOpacity, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { updateCellValue } from 'state/actions'
+import { cellPropType, headerCellPropType } from 'components/propTypeDefinitions'
 
 import gStyle from 'styles/globalStyle'
 import style from './Cell.style'
 
 class Cell extends PureComponent {
   static propTypes = {
-    cell: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      value: PropTypes.string,
-    }),
+    cell: PropTypes.oneOfType([
+      cellPropType,
+      headerCellPropType,
+    ]).isRequired,
+    updateCellValue: PropTypes.func.isRequired,
+    listId: PropTypes.string.isRequired,
   }
 
   state = {
@@ -56,7 +59,7 @@ class Cell extends PureComponent {
             : (
               <TouchableOpacity style={[gStyle.fcenter, style.cell]} onPress={this.onPressCell}>
                 <Text style={this.cellTextStyle} numberOfLines={1}>
-                  {this.props.cell.value}
+                  { this.props.cell.value }
                 </Text>
               </TouchableOpacity>
             )

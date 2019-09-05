@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { generateFirstColumn, generateColumn } from 'utils/table'
 import { createRow, createColumn } from 'state/actions'
+import { listPropType } from 'components/propTypeDefinitions'
 
 import AddButton from 'components/Buttons/AddButton/AddButton'
 import { Column, FirstColumn } from './Column'
@@ -12,6 +13,12 @@ import gStyle from 'styles/globalStyle'
 import columnStyle from './Column.style'
 
 class Table extends PureComponent {
+  static propTypes = {
+    list: listPropType.isRequired,
+    createRow: PropTypes.func.isRequired,
+    createColumn: PropTypes.func.isRequired,
+  }
+
   state = {
     columnName: '',
     isInputDisplayed: false,
@@ -104,16 +111,6 @@ class Table extends PureComponent {
       </View>
     )
   }
-}
-
-Table.propTypes = {
-  list: PropTypes.shape({
-    columns: PropTypes.array.isRequired,
-    rows: PropTypes.array.isRequired,
-    cells: PropTypes.array.isRequired,
-  }).isRequired,
-  createRow: PropTypes.func.isRequired,
-  createColumn: PropTypes.func.isRequired,
 }
 
 const mapDispatchToProps = { createRow, createColumn }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { View } from 'react-native'
-import PropTypes from 'prop-types'
+import { listPropType } from 'components/propTypeDefinitions'
 
 import ButtonMenu from 'components/ButtonMenu/ButtonMenu'
 
@@ -13,7 +13,7 @@ const ListHeader = ({ list }) =>
   </View>
 
 ListHeader.propTypes = {
-  list: PropTypes.object,
+  list: listPropType,
 }
 
 const mapStateToProps = ({ lists, globalUi }) => ({

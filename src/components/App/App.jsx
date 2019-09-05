@@ -7,6 +7,7 @@ import {
   deleteList,
   setIsModalOpen,
 } from 'state/actions'
+import { listPropType } from 'components/propTypeDefinitions'
 
 import List from 'components/List/List'
 import Modal from 'components/Modal/Modal'
@@ -15,8 +16,9 @@ import gStyle from 'styles/globalStyle'
 
 export class App extends PureComponent {
   static propTypes = {
-    lists: PropTypes.array.isRequired,
-    list: PropTypes.object,
+    lists: PropTypes.arrayOf(listPropType).isRequired,
+    list: listPropType,
+    favouriteListId: PropTypes.string,
     setActiveList: PropTypes.func.isRequired,
     deleteList: PropTypes.func.isRequired,
     closeModal: PropTypes.func.isRequired,

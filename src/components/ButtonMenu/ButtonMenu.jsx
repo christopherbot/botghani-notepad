@@ -3,6 +3,7 @@ import { Button, View, TextInput, Text } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { setIsModalOpen, renameList, setFavouriteList } from 'state/actions'
+import { listPropType } from 'components/propTypeDefinitions'
 
 import gStyle from 'styles/globalStyle'
 import colors from 'styles/colors'
@@ -10,10 +11,11 @@ import style from './ButtonMenu.style'
 
 class ButtonMenu extends Component {
   static propTypes = {
-    list: PropTypes.object.isRequired,
+    list: listPropType.isRequired,
     renameList: PropTypes.func.isRequired,
     openModal: PropTypes.func.isRequired,
     setFavouriteList: PropTypes.func.isRequired,
+    isFavouriteList: PropTypes.bool.isRequired,
   }
 
   state = {
@@ -45,7 +47,7 @@ class ButtonMenu extends Component {
   }
 
   setFavouriteList = () => {
-    if (this.props.favouriteListId === this.props.list.id) {
+    if (this.props.isFavouriteList) {
       this.props.setFavouriteList(null)
     } else {
       this.props.setFavouriteList(this.props.list.id)
@@ -80,7 +82,7 @@ class ButtonMenu extends Component {
         }
         <View>
           <Button
-            title={this.props.favouriteListId === this.props.list.id ? '💛' : '♡'}
+            title={this.props.isFavouriteList ? '💛' : '♡'}
             color={colors.cellBackground}
             onPress={this.setFavouriteList}
           />
@@ -90,8 +92,8 @@ class ButtonMenu extends Component {
   }
 }
 
-const mapStateToProps = ({ globalUi }) => ({
-  favouriteListId: globalUi.favouriteListId,
+const mapStateToProps = ({ globalUi }, ownProps) => ({
+  isFavouriteList: globalUi.favouriteListId === ownProps.list.id,
 })
 
 const mapDispatchToProps = {

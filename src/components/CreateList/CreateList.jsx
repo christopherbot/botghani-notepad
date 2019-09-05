@@ -16,6 +16,7 @@ class CreateList extends PureComponent {
     createList: PropTypes.func.isRequired,
     createExampleList: PropTypes.func.isRequired,
     isCreateExampleListDisplayed: PropTypes.bool.isRequired,
+    navigation: PropTypes.object.isRequired,
   }
 
   state = { listName: '' }
