@@ -48,7 +48,7 @@ describe('App', () => {
     app = shallow(<App {...props} />)
 
     expect(props.setActiveList).toHaveBeenCalledWith(favouriteListId)
-  })  
+  })
 
   it('should clear the active list when a list is removed', () => {
     app.setProps({ lists: [{}, {}] })
@@ -72,7 +72,7 @@ describe('App', () => {
     app.setProps({ list })
 
     app.instance().deleteList()
-    
+
     expect(props.deleteList).toHaveBeenCalledWith(list.id)
     expect(props.closeModal).toHaveBeenCalled()
     expect(mockNavigation.openDrawer).toHaveBeenCalled()

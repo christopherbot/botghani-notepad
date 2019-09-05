@@ -1,12 +1,11 @@
-import React, { PureComponent }  from 'react'
+import React, { PureComponent } from 'react'
 import { View, ScrollView, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { generateFirstColumn, getCells, generateColumn } from 'utils/table'
+import { generateFirstColumn, generateColumn } from 'utils/table'
 import { createRow, createColumn } from 'state/actions'
 
 import AddButton from 'components/Buttons/AddButton/AddButton'
-import Cell from 'components/Table/Cell'
 import { Column, FirstColumn } from './Column'
 
 import gStyle from 'styles/globalStyle'

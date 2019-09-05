@@ -5,12 +5,12 @@ import gStyle from 'styles/globalStyle'
 import style from './Tabs.style'
 
 const Tab = props =>
-  <TouchableHighlight 
+  <TouchableHighlight
     onPress={props.onClick}
     style={[
-      style.tabContainer, 
-      gStyle.fcenter, 
-      { 
+      style.tabContainer,
+      gStyle.fcenter,
+      {
         backgroundColor: props.color,
         borderWidth: props.active ? 1 : 0,
         opacity: props.active ? 1 : 0.5,
@@ -22,7 +22,7 @@ const Tab = props =>
   </TouchableHighlight>
 
 const Tabs = props =>
-  <View style={{ flexDirection: 'row' }}> 
+  <View style={{ flexDirection: 'row' }}>
     {
       props.tabData.map((tab, index) => (
         <Tab

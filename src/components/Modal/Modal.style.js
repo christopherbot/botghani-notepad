@@ -5,7 +5,7 @@ export default StyleSheet.create({
   innerModalContainer: {
     paddingVertical: 50,
     backgroundColor: colors.modalBackground,
-    height: '100%'
+    height: '100%',
   },
   questionText: {
     marginBottom: 20,
