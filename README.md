@@ -106,19 +106,23 @@ In order to install a fresh version of the Expo app, you can do the following:
 
 ### Import Statements
 
-Import statements should be structured into the following groupings:
-- packages and state/util files
+Import statements should be written in the following order:
+- external packages & libs
+- state files
+- util files
 - React components
 - styles
+- relative path imports
 
 E.g.
 ```javascript
 import Module from 'package'
-import { myFunction } from 'path/to/file'
-
-import Component from 'path/to/component'
-
-import style from 'path/to/style'
+import { action } from 'state/actions'
+import { myFunction } from 'utils/myFunction'
+import Component from 'components/Component'
+import style from 'styles/style'
+import LocalComponent from './LocalComponent'
+import localStyle from './localStyle'
 ```
 
 **[Back to top](#table-of-contents)**
