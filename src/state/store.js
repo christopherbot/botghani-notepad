@@ -8,10 +8,12 @@ const persistConfig = {
   storage,
 }
 
+/* eslint-disable no-underscore-dangle */
 const store = createStore(
   env.PERSIST_STATE ? persistReducer(persistConfig, globalReducer) : globalReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 )
+/* eslint-enable no-underscore-dangle */
 
 export const persister = persistStore(store)
 
