@@ -5,12 +5,10 @@ import { withNavigation } from 'react-navigation'
 import PropTypes from 'prop-types'
 import { setActiveList } from 'state/actions'
 import { listPropType } from 'components/propTypeDefinitions'
-
 import CreateList from 'components/CreateList/CreateList'
-import Tabs from './Tabs'
-
 import gStyle from 'styles/globalStyle'
 import colors from 'styles/colors'
+import Tabs from './Tabs'
 import style from './Drawer.style'
 
 const drawerTabTypes = {
