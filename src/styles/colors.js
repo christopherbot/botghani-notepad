@@ -10,6 +10,6 @@ export default {
   headerCellText: '#58867c',
   deleteButton: '#f71b1b',
   modalBackground: '#9ff6fd',
-  drawerTabOne: "#b0e5a5",
-  drawerTabTwo: "#e5daa5",
+  drawerTabOne: '#b0e5a5',
+  drawerTabTwo: '#e5daa5',
 }
