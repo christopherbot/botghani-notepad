@@ -13,6 +13,6 @@ export default StyleSheet.create({
   fcenterMain: { justifyContent: 'center' }, // parallel to the flex direction
   fcenterCross: { alignItems: 'center' }, // perpendicular to the flex direction
   autoWidth: { width: 'auto' },
-  w0:{ width: 0 },
+  w0: { width: 0 },
   z1: { zIndex: 1 },
 })
