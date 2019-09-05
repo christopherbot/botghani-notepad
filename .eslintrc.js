@@ -36,6 +36,7 @@ module.exports = {
     'implicit-arrow-linebreak': 0,
     'import/no-extraneous-dependencies': 0,
     'import/no-named-as-default': 0,
+    'max-len': [2, 120],
     'no-console': 1,
     'no-param-reassign': 0,
     'object-curly-newline': 0,

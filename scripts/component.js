@@ -1,6 +1,17 @@
-// HOW TO USE:
-// use the command 'yarn run create-ui {componentName}' to render a folder in ../src/components/{componentName} and two files:
-// {componenyName}.js + {componentName}.style.js
+/*
+ * Use the command:
+ *
+ *   yarn run create-ui {componentName}
+ *
+ * to render a folder in:
+ *
+ *   ../src/components/{componentName}
+ *
+ * and two files:
+ *
+ *   {componenyName}.jsx
+ *   {componentName}.style.js
+ */
 
 const path = require('path')
 const fs = require('fs')
