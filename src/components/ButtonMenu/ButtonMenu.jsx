@@ -80,7 +80,7 @@ class ButtonMenu extends Component {
         }
         <View>
           <Button
-            title={this.props.favouriteListId === this.props.list.id ? "💛" : "♡"}
+            title={this.props.favouriteListId === this.props.list.id ? '💛' : '♡'}
             color={colors.cellBackground}
             onPress={this.setFavouriteList}
           />

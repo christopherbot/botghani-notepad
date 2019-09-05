@@ -13,7 +13,7 @@ const mkdirp = require('mkdirp')
 
 const type = argv.stateless ? 'stateless-component' : 'component'
 
-const COMPONENTS_FOLDER = `../src/components/`
+const COMPONENTS_FOLDER = '../src/components/'
 
 function formatComponentName(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
