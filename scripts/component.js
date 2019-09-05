@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return, no-console */
+
 /*
  * Use the command:
  *
@@ -42,29 +44,6 @@ targetfolder = targetfolder ? `${formatComponentName(targetfolder)}/` : ''
 
 const cwd = process.cwd()
 const dir = path.resolve(__dirname, [COMPONENTS_FOLDER, targetfolder, name].join(''))
-fs.stat(dir, (err, stat) => {
-  if (err) {
-    write()
-  } else {
-    console.log(`Path at ${path.relative(cwd, dir)} already exists! Try another name`)
-  }
-})
-
-function write() {
-  mkdirp(dir, err => {
-    if (err) throw err
-    const files = [
-      template(path.resolve(__dirname, 'templates/Component.jsx'), path.resolve(dir, `${name}.jsx`)),
-      template(path.resolve(__dirname, 'templates/Component.style.js'), path.resolve(dir, `${name}.style.js`)),
-    ]
-
-    Promise.all(files)
-      .then(() => {
-        console.log(`Created new ${name} ${type} at ${dir}`)
-      })
-      .catch(err => console.error(err))
-  })
-}
 
 function template(input, output) {
   const data = {
@@ -72,13 +51,38 @@ function template(input, output) {
     param: changeCase.paramCase(name),
   }
   return new Promise((resolve, reject) => {
-    fs.readFile(input, 'utf8', (err, str) => {
-      if (err) return reject(err)
+    fs.readFile(input, 'utf8', (readErr, str) => {
+      if (readErr) return reject(readErr)
+
       str = maxstache(str, data)
-      fs.writeFile(output, str, err => {
-        if (err) return reject(err)
+      fs.writeFile(output, str, writeErr => {
+        if (writeErr) return reject(writeErr)
         resolve()
       })
     })
   })
 }
+
+function write() {
+  mkdirp(dir, err => {
+    if (err) throw err
+    const files = [
+      template(path.resolve(__dirname, 'templates/Component.template'), path.resolve(dir, `${name}.jsx`)),
+      template(path.resolve(__dirname, 'templates/Component.style.template'), path.resolve(dir, `${name}.style.js`)),
+    ]
+
+    Promise.all(files)
+      .then(() => {
+        console.log(`Created new ${name} ${type} at ${dir}`)
+      })
+      .catch(console.error)
+  })
+}
+
+fs.stat(dir, (err) => {
+  if (err) {
+    write()
+  } else {
+    console.log(`Path at ${path.relative(cwd, dir)} already exists! Try another name`)
+  }
+})
