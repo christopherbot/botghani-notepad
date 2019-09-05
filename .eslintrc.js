@@ -13,6 +13,7 @@ module.exports = {
     shallow: 'readonly',
     mount: 'readonly',
     render: 'readonly',
+    env: 'readonly',
   },
   parser: 'babel-eslint',
   parserOptions: {
