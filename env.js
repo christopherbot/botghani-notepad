@@ -19,6 +19,6 @@ const env = {
   PERSIST_STATE: isTrue(PERSIST_STATE),
 }
 
-console.log('Using env:', env)
+console.log('Using env:', env) // eslint-disable-line no-console
 
 window.env = env
