@@ -26,7 +26,7 @@
     "react-devtools": "react-devtools",
     "create-ui": "node scripts/component.js",
     "rnd": "open 'rndebugger://set-debugger-loc?host=localhost&port=19001'",
-    "lint": "esw *.js --color",
+    "lint": "esw --ext .jsx --ext .js --color",
     "lint:watch": "yarn lint --watch"
   },
   "dependencies": {
