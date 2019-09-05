@@ -1,5 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { View, TouchableHighlight, Text } from 'react-native'
+import { tabPropType } from 'components/propTypeDefinitions'
 
 import gStyle from 'styles/globalStyle'
 import style from './Tabs.style'
@@ -18,13 +20,19 @@ const Tab = props =>
     ]}
     underlayColor={props.color}
   >
-    <Text style={style.tabTitle}>{props.title}</Text>
+    <Text style={style.tabTitle}>
+      { props.title }
+    </Text>
   </TouchableHighlight>
+
+Tab.propTypes = {
+  ...tabPropType,
+}
 
 const Tabs = props =>
   <View style={{ flexDirection: 'row' }}>
     {
-      props.tabData.map((tab, index) => (
+      props.tabs.map((tab, index) => (
         <Tab
           key={index}
           title={tab.title}
@@ -35,5 +43,9 @@ const Tabs = props =>
       ))
   }
   </View>
+
+Tabs.propTypes = {
+  tabs: PropTypes.arrayOf(PropTypes.shape(tabPropType)).isRequired,
+}
 
 export default Tabs

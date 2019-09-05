@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { View, TextInput } from 'react-native'
 import PropTypes from 'prop-types'
+import { cellPropType, headerCellPropType } from 'components/propTypeDefinitions'
 
 import AddButton from 'components/Buttons/AddButton/AddButton'
 import Cell from './Cell'
@@ -10,7 +11,7 @@ import columnStyle from './Column.style'
 
 export class FirstColumn extends PureComponent {
   static propTypes = {
-    cells: PropTypes.array,
+    cells: PropTypes.arrayOf(headerCellPropType),
     listId: PropTypes.string.isRequired,
     createRow: PropTypes.func.isRequired,
   }
@@ -55,7 +56,15 @@ export class FirstColumn extends PureComponent {
   render() {
     return (
       <View style={gStyle.fc}>
-        { this.props.cells.map(cell => <Cell key={cell.id} listId={this.props.listId} cell={cell} />) }
+        {
+          this.props.cells.map(cell =>
+            <Cell
+              key={cell.id}
+              listId={this.props.listId}
+              cell={cell}
+            />,
+          )
+        }
         {
           this.state.isInputDisplayed &&
             <View style={[columnStyle.textInputWrapper, gStyle.w0]}>
@@ -89,6 +98,11 @@ export const Column = ({ cells, listId }) =>
   </View>
 
 Column.propTypes = {
-  cells: PropTypes.array,
+  cells: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      cellPropType,
+      headerCellPropType,
+    ]),
+  ),
   listId: PropTypes.string.isRequired,
 }

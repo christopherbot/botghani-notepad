@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react'
 import { View, TouchableOpacity, Text, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
-import { setActiveList } from 'state/actions'
 import { withNavigation } from 'react-navigation'
 import PropTypes from 'prop-types'
+import { setActiveList } from 'state/actions'
+import { listPropType } from 'components/propTypeDefinitions'
 
 import CreateList from 'components/CreateList/CreateList'
 import Tabs from './Tabs'
@@ -21,7 +22,9 @@ class Drawer extends PureComponent {
   static propTypes = {
     setActiveList: PropTypes.func.isRequired,
     navigation: PropTypes.object.isRequired,
-    lists: PropTypes.array.isRequired,
+    lists: PropTypes.arrayOf(listPropType).isRequired,
+    activeListId: PropTypes.string,
+    favouriteListId: PropTypes.string,
   }
 
   state = {
@@ -39,7 +42,7 @@ class Drawer extends PureComponent {
     }
   }
 
-  get tabData() {
+  get tabs() {
     return [
       {
         title: '+',
@@ -64,7 +67,7 @@ class Drawer extends PureComponent {
   render() {
     return (
       <View style={style.wrapper}>
-        <Tabs tabData={this.tabData} />
+        <Tabs tabs={this.tabs} />
         {
           this.state.drawerTab === drawerTabTypes.Add
             ? <CreateList />

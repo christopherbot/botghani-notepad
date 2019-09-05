@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-import PropTypes from 'prop-types'
+import { listPropType } from 'components/propTypeDefinitions'
 
 import Table from 'components/Table/Table'
 
@@ -13,7 +13,7 @@ const List = ({ list }) =>
   </View>
 
 List.propTypes = {
-  list: PropTypes.object.isRequired,
+  list: listPropType.isRequired,
 }
 
 export default List
