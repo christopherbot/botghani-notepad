@@ -25,7 +25,7 @@ class Drawer extends PureComponent {
   }
 
   state = {
-    drawerTab: this.props.lists.length ? drawerTabTypes.List : drawerTabTypes.Add
+    drawerTab: this.props.lists.length ? drawerTabTypes.List : drawerTabTypes.Add,
   }
 
   componentDidUpdate({ lists }) {
@@ -54,7 +54,7 @@ class Drawer extends PureComponent {
         active: this.state.drawerTab === drawerTabTypes.List,
       },
     ]
-  } 
+  }
 
   setActiveList = (listId) => {
     this.props.navigation.closeDrawer()
@@ -66,27 +66,34 @@ class Drawer extends PureComponent {
       <View style={style.wrapper}>
         <Tabs tabData={this.tabData} />
         {
-          this.state.drawerTab === drawerTabTypes.Add 
-          ? <CreateList />
-          : <ScrollView style={gStyle.f1}>
-              {
-                this.props.lists.map(list =>
-                  <TouchableOpacity
-                    key={list.id}
-                    onPress={() => this.setActiveList(list.id)}
-                    style={[
-                      gStyle.fr,
-                      list.id === this.props.activeListId ? style.activeItem : style.item,
-                    ]}
-                  >
-                    <Text style={style.itemText}>
-                      {list.name}
-                    </Text>
-                    {list.id === this.props.favouriteListId && <Text style={style.heartIcon}>💛</Text>}
-                  </TouchableOpacity>
-                )
-              }
-            </ScrollView>
+          this.state.drawerTab === drawerTabTypes.Add
+            ? <CreateList />
+            : (
+              <ScrollView style={gStyle.f1}>
+                {
+                  this.props.lists.map(list =>
+                    <TouchableOpacity
+                      key={list.id}
+                      onPress={() => this.setActiveList(list.id)}
+                      style={[
+                        gStyle.fr,
+                        list.id === this.props.activeListId ? style.activeItem : style.item,
+                      ]}
+                    >
+                      <Text style={style.itemText}>
+                        { list.name }
+                      </Text>
+                      {
+                        list.id === this.props.favouriteListId &&
+                          <Text style={style.heartIcon}>
+                            💛
+                          </Text>
+                      }
+                    </TouchableOpacity>,
+                  )
+                }
+              </ScrollView>
+            )
         }
       </View>
     )

@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment }  from 'react'
+import React, { PureComponent } from 'react'
 import { View, Text, TouchableOpacity, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -12,7 +12,7 @@ class Cell extends PureComponent {
     cell: PropTypes.shape({
       id: PropTypes.string.isRequired,
       value: PropTypes.string,
-    })
+    }),
   }
 
   state = {

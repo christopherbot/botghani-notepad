@@ -5,7 +5,7 @@
 const path = require('path')
 const fs = require('fs')
 const argv = require('minimist')(process.argv.slice(2), {
-  boolean: ['stateless']
+  boolean: ['stateless'],
 })
 const maxstache = require('maxstache')
 const changeCase = require('change-case')

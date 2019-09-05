@@ -1,4 +1,4 @@
-import React, { PureComponent }  from 'react'
+import React, { PureComponent } from 'react'
 import { View, TextInput } from 'react-native'
 import PropTypes from 'prop-types'
 
@@ -83,7 +83,7 @@ export const Column = ({ cells, listId }) =>
           key={cell.id}
           listId={listId}
           cell={cell}
-        />
+        />,
       )
     }
   </View>
