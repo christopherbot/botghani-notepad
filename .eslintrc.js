@@ -15,7 +15,9 @@ module.exports = {
     render: 'readonly',
     env: 'readonly',
   },
+
   parser: 'babel-eslint',
+
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -23,16 +25,24 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
+
   plugins: [
     'react',
   ],
+
   rules: {
-    semi: 0,
+    'arrow-body-style': 0,
     'arrow-parens': 0,
-    'no-console': 0,
-    'import/no-named-as-default': 0,
+    'implicit-arrow-linebreak': 0,
     'import/no-extraneous-dependencies': 0,
+    'import/no-named-as-default': 0,
+    'no-console': 1,
+    'no-param-reassign': 0,
+    'object-curly-newline': 0,
+    'operator-linebreak': 0,
+    semi: [1, 'never'],
   },
+
   settings: {
     'import/resolver': {
       alias: [
