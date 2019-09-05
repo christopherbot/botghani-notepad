@@ -7,7 +7,8 @@ describe('App', () => {
     closeDrawer: jest.fn(),
   }
 
-  let app, props
+  let app
+  let props
 
   beforeEach(() => {
     props = {
