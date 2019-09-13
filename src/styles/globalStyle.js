@@ -2,7 +2,11 @@ import { StyleSheet } from 'react-native'
 import colors from 'styles/colors'
 
 export default StyleSheet.create({
-  debug: { backgroundColor: colors.debug },
+  debug: {
+    backgroundColor: colors.debugBackground,
+    borderColor: colors.debugBorder,
+    borderWidth: 1,
+  },
   f1: { flex: 1 },
   fr: { flexDirection: 'row' },
   fc: { flexDirection: 'column' },
