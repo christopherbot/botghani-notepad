@@ -12,7 +12,8 @@ describe('App', () => {
 
   beforeEach(() => {
     props = {
-      lists: [],
+      lists: [{}],
+      list: {},
       setActiveList: jest.fn(),
       deleteList: jest.fn(),
       closeModal: jest.fn(),
@@ -23,7 +24,8 @@ describe('App', () => {
     app = shallow(<App {...props} />)
   })
 
-  it('should render the app', () => {
+  it('should render the app with no lists', () => {
+    app.setProps({ lists: [], list: null })
     expect(app).toMatchSnapshot()
   })
 
@@ -34,13 +36,7 @@ describe('App', () => {
   })
 
   it('should render a list if it exists', () => {
-    app.setProps({ list: {} })
-
     expect(app).toMatchSnapshot()
-  })
-
-  it('should open the drawer if there is no existing favourite list on mount', () => {
-    expect(mockNavigation.openDrawer).toHaveBeenCalled()
   })
 
   it('should set an existing favourite list as active on mount', () => {
@@ -51,11 +47,20 @@ describe('App', () => {
     expect(props.setActiveList).toHaveBeenCalledWith(favouriteListId)
   })
 
-  it('should clear the active list when a list is removed', () => {
-    app.setProps({ lists: [{}, {}] })
-    app.setProps({ lists: [{}] })
+  describe('removing a list', () => {
+    it('should clear the active list', () => {
+      app.setProps({ lists: [{}, {}] })
+      app.setProps({ lists: [{}] })
 
-    expect(props.setActiveList).toHaveBeenCalledWith(null)
+      expect(props.setActiveList).toHaveBeenCalledWith(null)
+    })
+
+    it('should render a different empty state display if another list exists', () => {
+      app.setProps({ lists: [{}, {}] })
+      app.setProps({ lists: [{}], list: null })
+
+      expect(app).toMatchSnapshot()
+    })
   })
 
   it('should set the most recent list as the active list', () => {

@@ -10,6 +10,7 @@ module.exports = {
     '^.+\\.jsx?$': 'babel-jest',
     '^.+\\.js?$': 'babel-jest',
     '^.+\\.js$': '<rootDir>/node_modules/react-native/jest/preprocessor.js',
+    '^.+\\.svgx?$': '<rootDir>/jestSvgTransform',
   },
   testEnvironment: 'jsdom',
 }
