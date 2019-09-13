@@ -1,5 +1,6 @@
 export default {
-  debug: '#ffd700',
+  debugBackground: '#ffd700',
+  debugBorder: '#0000ff',
   splashBackground: '#f2c16f',
   headerColor: '#a5e5da',
   drawerBackground: '#fff',
