@@ -11,4 +11,10 @@ export default StyleSheet.create({
   ink: {
     marginLeft: 25,
   },
+  paper: {
+    position: 'absolute',
+    bottom: -16,
+    right: -22,
+    transform: [{ rotate: '-45deg' }],
+  },
 })

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 
 import InkBottle from 'assets/inkBottle.svgx'
 import PadioLogo from 'assets/padioLogo.svgx'
+import CheekyPaper from 'assets/cheekyPaper.svgx'
 
 import gStyle from 'styles/globalStyle'
 import style from './Splash.style'
@@ -24,6 +25,7 @@ const Splash = ({ navigation }) => {
     <View style={[gStyle.f1, gStyle.fcenter, style.view]}>
       <PadioLogo width={150} style={style.logo} />
       <InkBottle style={style.ink} />
+      <CheekyPaper style={style.paper} />
     </View>
   )
 }
