@@ -1,5 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`App removing a list should render a different empty state display if another list exists 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "justifyContent": "center",
+        },
+        Object {
+          "flex": 1,
+        },
+        Object {
+          "height": "100%",
+          "marginTop": -275,
+        },
+      ]
+    }
+  >
+    <HappyPaper />
+    <Text
+      style={
+        Object {
+          "fontSize": 20,
+        }
+      }
+    >
+      Hey, go select a list or create a new one.
+    </Text>
+  </View>
+</View>
+`;
+
 exports[`App should render a list if it exists 1`] = `
 <View
   style={
@@ -26,15 +65,47 @@ exports[`App should render a modal when it is open 1`] = `
     closeModal={[MockFunction]}
     deleteList={[Function]}
   />
+  <List
+    list={Object {}}
+  />
 </View>
 `;
 
-exports[`App should render the app 1`] = `
+exports[`App should render the app with no lists 1`] = `
 <View
   style={
     Object {
       "flex": 1,
     }
   }
-/>
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "justifyContent": "center",
+        },
+        Object {
+          "flex": 1,
+        },
+        Object {
+          "height": "100%",
+          "marginTop": -275,
+        },
+      ]
+    }
+  >
+    <SurprisedPaper />
+    <Text
+      style={
+        Object {
+          "fontSize": 20,
+        }
+      }
+    >
+      Woah, you don't have any lists yet.
+    </Text>
+  </View>
+</View>
 `;

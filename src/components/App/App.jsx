@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import {
@@ -11,8 +11,11 @@ import { listPropType } from 'components/propTypeDefinitions'
 
 import List from 'components/List/List'
 import Modal from 'components/Modal/Modal'
+import HappyPaper from 'assets/happyPaper.svgx'
+import SurprisedPaper from 'assets/surprisedPaper.svgx'
 
 import gStyle from 'styles/globalStyle'
+import style from './App.style'
 
 export class App extends PureComponent {
   static propTypes = {
@@ -40,8 +43,6 @@ export class App extends PureComponent {
   componentDidMount() {
     if (this.props.favouriteListId) {
       this.props.setActiveList(this.props.favouriteListId)
-    } else {
-      this.props.navigation.openDrawer()
     }
   }
 
@@ -54,12 +55,37 @@ export class App extends PureComponent {
   render() {
     return (
       <View style={gStyle.f1}>
-        { this.props.list && <List list={this.props.list} /> }
-        { this.props.isModalOpen &&
-          <Modal
-            closeModal={this.props.closeModal}
-            deleteList={this.deleteList}
-          />
+        {
+          this.props.isModalOpen &&
+            <Modal
+              closeModal={this.props.closeModal}
+              deleteList={this.deleteList}
+            />
+        }
+
+        {
+          this.props.lists.length === 0 &&
+            <View style={[gStyle.fcenter, gStyle.f1, style.emptyState]}>
+              <SurprisedPaper />
+              <Text style={style.emptyStateText}>
+                Woah, you don&apos;t have any lists yet.
+              </Text>
+            </View>
+        }
+
+        {
+          this.props.lists.length > 0 && !this.props.list &&
+            <View style={[gStyle.fcenter, gStyle.f1, style.emptyState]}>
+              <HappyPaper />
+              <Text style={style.emptyStateText}>
+                Hey, go select a list or create a new one.
+              </Text>
+            </View>
+        }
+
+        {
+          this.props.list &&
+            <List list={this.props.list} />
         }
       </View>
     )
