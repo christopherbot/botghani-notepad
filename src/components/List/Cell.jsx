@@ -23,6 +23,12 @@ class Cell extends PureComponent {
     newCellValue: this.props.cell.value,
   }
 
+  componentDidUpdate({ cell }) {
+    if (cell.value !== this.props.cell.value && this.props.cell.value !== this.state.newCellValue) {
+      this.setState({ newCellValue: this.props.cell.value })
+    }
+  }
+
   onPressCell = () => {
     this.setState({ isBeingEdited: true })
   }
