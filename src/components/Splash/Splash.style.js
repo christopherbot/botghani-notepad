@@ -5,7 +5,10 @@ export default StyleSheet.create({
   view: {
     backgroundColor: colors.splashBackground,
   },
-  text: {
-    fontSize: 30,
+  logo: {
+    marginBottom: 20,
+  },
+  ink: {
+    marginLeft: 25,
   },
 })
