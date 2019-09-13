@@ -7,6 +7,9 @@ export default StyleSheet.create({
     backgroundColor: colors.modalBackground,
     height: '100%',
   },
+  svgWrapper: {
+    alignItems: 'flex-end',
+  },
   questionText: {
     marginBottom: 20,
   },
