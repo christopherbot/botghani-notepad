@@ -13,8 +13,7 @@ export default StyleSheet.create({
   },
   paper: {
     position: 'absolute',
-    bottom: -16,
-    right: -22,
-    transform: [{ rotate: '-45deg' }],
+    bottom: 0,
+    right: 0,
   },
 })
