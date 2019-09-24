@@ -58,12 +58,31 @@ class List extends PureComponent {
   render() {
     const { list } = this.props
     return (
-      <View style={[gStyle.fr1, style.listContainer]}>
+      <ScrollView style={[
+        gStyle.fr,
+        // gStyle.fg0,
+        style.listContainer,
+        gStyle.debug,
+        {
+          flexWrap: 'wrap',
+        }
+      ]}
+      contentContainerStyle={{
+        alignItems: 'flex-start',
+      }}>
         {
           list.columns.map((column) => {
             if (column.isFirstColumn) {
               return (
-                <View key={column.id} style={gStyle.autoWidth}>
+                <View key={column.id} style={[
+                  // gStyle.autoWidth,
+                  // gStyle.fr,
+                  // gStyle.fg0,
+                  gStyle.debug,
+                  {
+                    alignSelf: 'flex-start',
+                  },
+                ]}>
                   <FirstColumn
                     listId={list.id}
                     cells={generateFirstColumn(column, list.rows)}
@@ -76,7 +95,15 @@ class List extends PureComponent {
             return null
           })
         }
-        <ScrollView style={[gStyle.fr, gStyle.fg0]} horizontal>
+        <ScrollView style={[
+          gStyle.fr,
+          gStyle.fg0,
+          gStyle.debug,
+          {
+            flex: -1,
+            // alignSelf: 'flex-start',
+          },
+        ]} horizontal>
           {
             list.columns.map((column) => {
               if (column.isFirstColumn) {
@@ -107,7 +134,7 @@ class List extends PureComponent {
             </View>
         }
         <AddButton onPress={this.onPress} />
-      </View>
+      </ScrollView>
     )
   }
 }

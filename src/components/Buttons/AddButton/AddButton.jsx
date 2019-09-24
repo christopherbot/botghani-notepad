@@ -6,7 +6,7 @@ import gStyle from 'styles/globalStyle'
 import style from './AddButton.style'
 
 const AddButton = ({ children, onPress, textStyle }) =>
-  <TouchableOpacity onPress={onPress} style={[gStyle.fcenter, style.button]}>
+  <TouchableOpacity onPress={onPress} style={[gStyle.fcenter, style.button, gStyle.debug]}>
     <Text style={[style.text, textStyle]}>
       { children }
     </Text>

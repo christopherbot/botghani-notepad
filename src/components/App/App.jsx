@@ -6,6 +6,7 @@ import {
   setActiveList,
   deleteList,
   setIsModalOpen,
+  createExampleList,
 } from 'state/actions'
 import { listPropType } from 'components/propTypeDefinitions'
 
@@ -41,6 +42,7 @@ export class App extends PureComponent {
   }
 
   componentDidMount() {
+    this.props.createExampleList()
     if (this.props.favouriteListId) {
       this.props.setActiveList(this.props.favouriteListId)
     }
@@ -103,6 +105,7 @@ const mapDispatchToProps = {
   setActiveList,
   deleteList,
   closeModal: setIsModalOpen.bind(null, false),
+  createExampleList,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
