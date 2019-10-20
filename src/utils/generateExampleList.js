@@ -90,6 +90,8 @@ export default createdAt => ({
     columnId: 'col4',
     value: 'dev',
   }],
+  isChecklist: false,
+  color: '#fff',
   createdAt,
   updatedAt: createdAt,
 })

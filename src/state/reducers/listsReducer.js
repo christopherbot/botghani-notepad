@@ -23,7 +23,15 @@ const defaultState = []
 
 export default handleActions({
   [createList](state, { payload }) {
-    return [...state, generateList(payload.name, payload.createdAt)]
+    return [
+      ...state,
+      generateList(
+        payload.name,
+        payload.isChecklist,
+        payload.color,
+        payload.createdAt,
+      ),
+    ]
   },
 
   [createExampleList](state, { payload }) {

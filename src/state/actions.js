@@ -5,7 +5,10 @@ import {
   createPayloadWithUpdatedDate,
 } from 'utils/reduxUtils'
 
-export const createList = createAction('CREATE_LIST', createPayloadWithCreatedDate('name'))
+export const createList = createAction(
+  'CREATE_LIST',
+  createPayloadWithCreatedDate('name', 'isChecklist', 'color'),
+)
 
 export const createExampleList = createAction('CREATE_EXAMPLE_LIST', createPayloadWithCreatedDate())
 
