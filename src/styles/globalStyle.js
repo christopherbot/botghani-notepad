@@ -20,3 +20,15 @@ export default StyleSheet.create({
   w0: { width: 0 },
   z1: { zIndex: 1 },
 })
+
+export const border = ({
+  c = 'black',
+  w = 1,
+  s = 'solid',
+  r = 0,
+} = {}) => ({
+  borderWidth: w,
+  borderStyle: s,
+  borderColor: c,
+  borderRadius: r,
+})
