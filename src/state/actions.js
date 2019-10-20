@@ -7,7 +7,7 @@ import {
 
 export const createList = createAction('CREATE_LIST', createPayloadWithCreatedDate('name'))
 
-export const createExampleList = createAction('CREATE_EXAMPLE_LIST', createPayloadWithCreatedDate('name'))
+export const createExampleList = createAction('CREATE_EXAMPLE_LIST', createPayloadWithCreatedDate())
 
 export const deleteList = createAction('DELETE_LIST', createPayload('listId'))
 
