@@ -5,7 +5,7 @@ import { withNavigation } from 'react-navigation'
 import PropTypes from 'prop-types'
 import { createList, createExampleList } from 'state/actions'
 
-import AddButton from 'components/Buttons/AddButton/AddButton'
+import Button from 'components/Buttons/Button/Button'
 
 import gStyle from 'styles/globalStyle'
 import colors from 'styles/colors'
@@ -49,12 +49,14 @@ class CreateList extends PureComponent {
           onChangeText={this.onChangeText}
           value={this.state.listName}
         />
-        <AddButton onPress={this.createList} textStyle={style.buttonText} />
+        <Button onPress={this.createList} textStyle={style.buttonText}>
+          +
+        </Button>
         {
           this.props.isCreateExampleListDisplayed &&
-            <AddButton onPress={this.createExampleList} textStyle={style.buttonText}>
+            <Button onPress={this.createExampleList} textStyle={style.buttonText}>
               #
-            </AddButton>
+            </Button>
         }
       </View>
     )

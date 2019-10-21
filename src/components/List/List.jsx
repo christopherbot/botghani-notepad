@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { generateFirstColumn, generateColumn } from 'utils/table'
 import { createRow, createColumn } from 'state/actions'
 import { listPropType } from 'components/propTypeDefinitions'
-import AddButton from 'components/Buttons/AddButton/AddButton'
+import Button from 'components/Buttons/Button/Button'
 import gStyle from 'styles/globalStyle'
 import { Column, FirstColumn } from './Column'
 import style from './List.style'
@@ -106,7 +106,9 @@ class List extends PureComponent {
               />
             </View>
         }
-        <AddButton onPress={this.onPress} />
+        <Button onPress={this.onPress}>
+          +
+        </Button>
       </View>
     )
   }

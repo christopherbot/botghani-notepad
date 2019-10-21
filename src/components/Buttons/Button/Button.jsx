@@ -3,23 +3,20 @@ import { TouchableOpacity, Text } from 'react-native'
 import PropTypes from 'prop-types'
 
 import gStyle from 'styles/globalStyle'
-import style from './AddButton.style'
+import style from './Button.style'
 
-const AddButton = ({ children, onPress, textStyle }) =>
-  <TouchableOpacity onPress={onPress} style={[gStyle.fcenter, style.button]}>
+const Button = ({ children, onPress, buttonStyle, textStyle }) =>
+  <TouchableOpacity onPress={onPress} style={[gStyle.fcenter, style.button, buttonStyle]}>
     <Text style={[style.text, textStyle]}>
       { children }
     </Text>
   </TouchableOpacity>
 
-AddButton.propTypes = {
+Button.propTypes = {
   onPress: PropTypes.func.isRequired,
-  children: PropTypes.any.isRequired,
+  children: PropTypes.any,
+  buttonStyle: PropTypes.object,
   textStyle: PropTypes.object,
 }
 
-AddButton.defaultProps = {
-  children: '+',
-}
-
-export default AddButton
+export default Button

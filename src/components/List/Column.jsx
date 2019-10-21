@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { View, TextInput } from 'react-native'
 import PropTypes from 'prop-types'
 import { cellPropType, headerCellPropType } from 'components/propTypeDefinitions'
-import AddButton from 'components/Buttons/AddButton/AddButton'
+import Button from 'components/Buttons/Button/Button'
 import gStyle from 'styles/globalStyle'
 import Cell from './Cell'
 import columnStyle from './Column.style'
@@ -76,7 +76,9 @@ export class FirstColumn extends PureComponent {
               />
             </View>
         }
-        <AddButton onPress={this.onPress} />
+        <Button onPress={this.onPress}>
+          +
+        </Button>
       </View>
     )
   }
