@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react'
-import { View, TextInput } from 'react-native'
+import { Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { connect } from 'react-redux'
 import { withNavigation } from 'react-navigation'
 import PropTypes from 'prop-types'
 import { createList, createExampleList } from 'state/actions'
 
 import Button from 'components/Buttons/Button/Button'
+import ColorPicker, { DEFAULT_LIST_COLORS } from 'components/ColorPicker/ColorPicker'
 
 import gStyle from 'styles/globalStyle'
 import colors from 'styles/colors'
@@ -19,18 +20,51 @@ class CreateList extends PureComponent {
     navigation: PropTypes.object.isRequired,
   }
 
-  state = { listName: '' }
+  static ListTypes = {
+    TEXT: 'text',
+    CHECKLIST: 'checklist',
+  }
 
-  onChangeText = (text) => {
-    this.setState({ listName: text })
+  state = {
+    listName: '',
+    listType: CreateList.ListTypes.TEXT,
+    listColor: DEFAULT_LIST_COLORS[0],
+    isNameInvalid: false,
+  }
+
+  onChangeListName = (listName) => {
+    this.setState({
+      listName,
+      isNameInvalid: false,
+    })
+  }
+
+  onSelectTextList = () => {
+    this.setState({ listType: CreateList.ListTypes.TEXT })
+  }
+
+  onSelectChecklist = () => {
+    this.setState({ listType: CreateList.ListTypes.CHECKLIST })
+  }
+
+  onChangeListColor = (listColor) => {
+    this.setState({ listColor })
   }
 
   createList = () => {
-    if (this.state.listName.trim()) {
-      this.props.createList(this.state.listName)
-      this.props.navigation.closeDrawer()
-      this.setState({ listName: '' })
+    if (!this.state.listName.trim()) {
+      this.setState({ isNameInvalid: true })
+
+      return
     }
+
+    this.props.createList(
+      this.state.listName,
+      this.state.listType === CreateList.ListTypes.CHECKLIST,
+      this.state.listColor,
+    )
+    this.props.navigation.closeDrawer()
+    this.setState({ listName: '' })
   }
 
   createExampleList = () => {
@@ -40,21 +74,59 @@ class CreateList extends PureComponent {
 
   render() {
     return (
-      <View style={[gStyle.fr, gStyle.fcenterCross]}>
+      <View style={gStyle.fc}>
         <TextInput
-          style={style.textInput}
-          placeholder="New list"
+          style={[
+            style.textInput,
+            this.state.isNameInvalid && style.invalidTextInput,
+          ]}
+          placeholder="Enter list name"
           placeholderTextColor={colors.drawerText}
           selectionColor={colors.drawerAccent}
-          onChangeText={this.onChangeText}
+          onChangeText={this.onChangeListName}
           value={this.state.listName}
         />
-        <Button onPress={this.createList} textStyle={style.buttonText}>
-          +
+        <View style={[gStyle.fr, style.toggleButtonWrapper]}>
+          <TouchableOpacity
+            onPress={this.onSelectTextList}
+            style={[
+              style.toggleButton,
+              this.state.listType === CreateList.ListTypes.TEXT && style.activeToggleButton,
+            ]}
+          >
+            <Text>
+              Text
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={this.onSelectChecklist}
+            style={[
+              style.toggleButton,
+              this.state.listType === CreateList.ListTypes.CHECKLIST && style.activeToggleButton,
+            ]}
+          >
+            <Text>
+              Checklist
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <View style={style.colorPickerWrapper}>
+          <ColorPicker
+            colors={DEFAULT_LIST_COLORS}
+            activeColor={this.state.listColor}
+            onChangeColor={this.onChangeListColor}
+          />
+        </View>
+        <Button
+          onPress={this.createList}
+          buttonStyle={style.createButton}
+          textStyle={style.createButtonText}
+        >
+          Create
         </Button>
         {
           this.props.isCreateExampleListDisplayed &&
-            <Button onPress={this.createExampleList} textStyle={style.buttonText}>
+            <Button onPress={this.createExampleList} textStyle={style.createButtonText}>
               #
             </Button>
         }
