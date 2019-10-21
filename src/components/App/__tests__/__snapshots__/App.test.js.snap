@@ -47,7 +47,7 @@ exports[`App should render a list if it exists 1`] = `
     }
   }
 >
-  <List
+  <Connect(List)
     list={Object {}}
   />
 </View>
@@ -65,7 +65,7 @@ exports[`App should render a modal when it is open 1`] = `
     closeModal={[MockFunction]}
     deleteList={[Function]}
   />
-  <List
+  <Connect(List)
     list={Object {}}
   />
 </View>
