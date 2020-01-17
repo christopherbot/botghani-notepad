@@ -5,8 +5,11 @@
     "description": "This project is really great.",
     "slug": "botghani-notepad",
     "privacy": "public",
-    "sdkVersion": "33.0.0",
-    "platforms": ["ios", "android"],
+    "sdkVersion": "36.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "updates": {
@@ -20,7 +23,13 @@
     },
     "packagerOpts": {
       "config": "metro.config.js",
-      "sourceExts": ["js", "jsx", "svgx"],
+      "sourceExts": [
+        "js",
+        "jsx",
+        "svgx",
+        "ts",
+        "tsx"
+      ],
       "transformer": "node_modules/react-native-svg-transformer/index.js"
     }
   }
