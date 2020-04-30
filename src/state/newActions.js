@@ -3,7 +3,7 @@ import { createPayload } from 'utils/reduxUtils'
 
 const addList = createAction(
   'ADD_LIST',
-  createPayload('list'),
+  // createPayload('list'),
 )
 
 const updateList = createAction(
@@ -61,6 +61,11 @@ const setIsModalOpen = createAction(
   createPayload('isOpen'),
 )
 
+const mergeLists = createAction(
+  'MERGE_LISTS',
+  createPayload('incomingListId', 'outgoingListId', 'deepMerge')
+)
+
 export {
   addList,
   updateList,
@@ -74,4 +79,5 @@ export {
   setActiveList,
   setFavouriteList,
   setIsModalOpen,
+  mergeLists,
 }

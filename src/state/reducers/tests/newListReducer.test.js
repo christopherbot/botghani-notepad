@@ -8,6 +8,7 @@ import {
   addListItemNote,
   updateListItemNote,
   deleteListItemNote,
+  mergeLists,
 } from 'state/newActions'
 import listReducer from '../newListReducer'
 
@@ -25,7 +26,7 @@ describe('listReducer', () => {
   const list1 = {
     id: 'list1',
     name: 'List 1',
-    color: '#fefefe',
+    color: '#123123',
     isChecklist: true,
     items: [item1],
   }
@@ -33,7 +34,7 @@ describe('listReducer', () => {
   const list2 = {
     id: 'list2',
     name: 'List 2',
-    color: '#fefefe',
+    color: '#678678',
     isChecklist: true,
     items: [{
       id: 'item2',
@@ -46,6 +47,33 @@ describe('listReducer', () => {
     }],
   }
 
+  const list3 = {
+    id: 'list3',
+    name: 'List 3',
+    color: '#abcabc',
+    isChecklist: false,
+    items: [{
+      id: 'item1-2',
+      name: item1.name, // purposely a duplicate
+      notes: [{
+        id: 'note1-1',
+        name: note1.name // purposely a duplicate
+      }, {
+        id: 'note3',
+        name: 'Note 3',
+      }],
+      isChecked: false,
+    }, {
+      id: 'item3',
+      name: 'Item 3',
+      notes: [{
+        id: 'note4',
+        name: 'Note 4',
+      }],
+      isChecked: false,
+    }]
+  }
+
   let state
 
   beforeEach(() => {
@@ -54,7 +82,7 @@ describe('listReducer', () => {
 
   it('should add a list', () => {
     const newList = {}
-    const action = addList(newList)
+    const action = addList({ list: newList })
 
     expect(
       listReducer(state, action),
@@ -198,6 +226,48 @@ describe('listReducer', () => {
           ...item1,
           notes: [],
         }],
+      },
+      list2,
+    ])
+  })
+
+  it('should deep merge two lists', () => {
+    state = [list1, list2, list3]
+    const action = mergeLists(list3.id, list1.id, true)
+
+    expect(
+      listReducer(state, action),
+    ).toStrictEqual([
+      {
+        ...list1,
+        items: [
+          {
+            ...item1,
+            notes: [
+              note1,
+              list3.items[0].notes[1],
+            ],
+          },
+          list3.items[1],
+        ]
+      },
+      list2,
+    ])
+  })
+
+  it('should shallow merge two lists', () => {
+    state = [list1, list2, list3]
+    const action = mergeLists(list3.id, list1.id, false)
+
+    expect(
+      listReducer(state, action),
+    ).toStrictEqual([
+      {
+        ...list1,
+        items: [
+          item1,
+          ...list3.items,
+        ],
       },
       list2,
     ])
